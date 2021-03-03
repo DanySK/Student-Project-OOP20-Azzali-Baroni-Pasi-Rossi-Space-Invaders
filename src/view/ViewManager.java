@@ -1,9 +1,12 @@
 package view;
 
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import model.SpaceInvadersButton;
 
 public class ViewManager {
 	
@@ -24,7 +27,7 @@ public class ViewManager {
 		return mainStage;
 	}
 	private void createButtons() {
-		Button button = new Button();
+		SpaceInvadersButton button = new SpaceInvadersButton("click me");
 		mainPane.getChildren().add(button);
 	}	
 }
