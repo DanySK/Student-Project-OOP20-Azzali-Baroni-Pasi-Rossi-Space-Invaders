@@ -33,6 +33,11 @@ public class ViewManager {
 	private final static int MENU_BUTTONS_START_Y = 150;
 	
 	private SpaceInvadersSubscene credistsSubScene;
+	private SpaceInvadersSubscene helpSubScene;
+	private SpaceInvadersSubscene scoreSubScene;
+	private SpaceInvadersSubscene playSubScene;
+
+
 	
 	List<SpaceInvadersButton> menuButtons;
 	

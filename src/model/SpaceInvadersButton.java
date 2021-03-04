@@ -2,7 +2,6 @@ package model;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.effect.DropShadow;
