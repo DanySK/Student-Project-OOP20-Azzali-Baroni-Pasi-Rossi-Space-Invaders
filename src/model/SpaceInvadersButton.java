@@ -13,8 +13,8 @@ import javafx.scene.text.Font;
 public class SpaceInvadersButton extends Button{
 
 	private final String FONT_PATH = "src/model/resources/kenvector_future.ttf";
-	private final String BUTTON_PRESSED_STYLE = "-fx-background-color:transparent; -fx-background-image: url('/model/resources/red_button_pressed.png');";
-	private final String BUTTON_STYLE = "-fx-background-color:transparent; -fx-background-image: url('/model/resources/red_button.png');";
+	private final String BUTTON_STYLE = "-fx-background-color:transparent; -fx-background-image: url('/model/resources/red_button_pressed.png');";
+	private final String BUTTON_PRESSED_STYLE = "-fx-background-color:transparent; -fx-background-image: url('/model/resources/red_button.png');";
 	
 	public SpaceInvadersButton(String text) {
 		setText(text);
@@ -35,13 +35,13 @@ public class SpaceInvadersButton extends Button{
 	
 	
 	private void setButtonPressed() {
-		setStyle(BUTTON_PRESSED_STYLE);
+		setStyle(BUTTON_STYLE);
 		setPrefHeight(45);
 		setLayoutY(getLayoutY()+4);
 	}
 	
 	private void setButtonRelased() {
-		setStyle(BUTTON_PRESSED_STYLE);
+		setStyle(BUTTON_STYLE);
 		setPrefHeight(49);
 		setLayoutY(getLayoutY()-4);
 	}
