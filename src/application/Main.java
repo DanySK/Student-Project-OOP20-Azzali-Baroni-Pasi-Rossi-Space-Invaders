@@ -10,8 +10,8 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 	
-    private static final int SCENE_WIDTH = 1270;
-    private static final int SCENE_HEIGHT = 700;
+    private static final int SCENE_WIDTH = 854;
+    private static final int SCENE_HEIGHT = 480;
     private static final String MENU = "/menu.fxml";
     private static final String TITLE = "Space Invaders";
     
