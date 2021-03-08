@@ -50,23 +50,6 @@ public class MenuViewController {
 
 }
 
-/*public class MenuViewController {
 
-    @FXML
-    void clickScore(ActionEvent event) throws IOException {
-    	final Parent scoreBoard = FXMLLoader.load(getClass().getResource("/scoreBoard.fxml"));
-    	final Scene scoreBoardScene = new Scene(scoreBoard);
-    	final Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    	
-    	window.setScene(scoreBoardScene);
-    	window.show();
-    }
-
-    @FXML
-    void clickPlay(ActionEvent event) {
-    	final Stage secondaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    	 new SpaceInvadersControllerImpl(secondaryStage);
-    }
-}*/
 
 
