@@ -42,8 +42,9 @@ public class MenuViewController {
     }
 
     @FXML
-    void openHelp(ActionEvent event) {
-        System.out.println("AIUTO");
+    void openContacts(ActionEvent event) throws IOException {
+    	Pane contactsPane = FXMLLoader.load(getClass().getResource("/contacts.fxml"));
+        RootPane.getChildren().setAll(contactsPane);
     }
 
     @FXML

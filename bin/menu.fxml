@@ -33,7 +33,7 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="HelpButton" mnemonicParsing="false" onAction="#openHelp" prefHeight="42.0" prefWidth="298.0" text="Help" textAlignment="CENTER">
+            <Button fx:id="ContactsButton" mnemonicParsing="false" onAction="#openContacts" prefHeight="42.0" prefWidth="298.0" text="Contacts" textAlignment="CENTER">
                <font>
                   <Font name="Bauhaus 93" size="22.0" />
                </font>
