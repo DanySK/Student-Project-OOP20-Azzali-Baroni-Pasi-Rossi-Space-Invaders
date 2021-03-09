@@ -18,14 +18,14 @@ import javafx.stage.Stage;
 public class SpaceInvadersViewImpl implements SpaceInvadersView{
 	
 	private static final String TITLE = "SpaceInvaders";
-	private static final double HEIGHT=480;
+	private static final double HEIGHT = 480;
 	private static final double WIDTH = 854;
-	private static final double FONT_SIZE=18;
+	private static final double FONT_SIZE = 18;
 	private final Label score = new Label();
 	private Stage secondaryStage;
 	private final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	private Pane root;
-	URL url = getClass().getClassLoader().getResource("BackgroundMenu.jpg");
+	//URL url = getClass().getClassLoader().getResource("BackgroundMenu.jpg");
 	
 	
 	public SpaceInvadersViewImpl(final Stage secondaryStage) {
@@ -41,14 +41,15 @@ public class SpaceInvadersViewImpl implements SpaceInvadersView{
 		this.setBackgroundGame(screenSize);
 	
 	}
-	private void setBackgroundGame(final Dimension sxreensize) {
+	
+	private void setBackgroundGame(final Dimension screensize) {
 		this.root = new Pane();
 		final Scene scene = new Scene(this.root,screenSize.getWidth(),screenSize.getHeight());
 		final ImageView background = new ImageView(new Image(ClassLoader.getSystemResource("backgroundGame.png").toString()));
 		this.root.getChildren().add(background);
 		
-		this.score.setText("Score: 0");
-		this.score.setFont(new Font("Arial",this.root.getHeight() / FONT_SIZE));
+		this.score.setText(" Score: 0");
+		this.score.setFont(new Font("Bauhaus 93",this.root.getHeight() / FONT_SIZE));
 		this.score.setTextFill(Paint.valueOf(String.valueOf(Color.WHITE)));
 		this.root.getChildren().add(this.score);
 		
