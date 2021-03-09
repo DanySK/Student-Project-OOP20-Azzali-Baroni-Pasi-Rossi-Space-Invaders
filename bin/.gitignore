@@ -4,4 +4,13 @@
 /black.png
 /backgroundGame.png
 /kenvector_future.ttf
+<<<<<<< HEAD
 /contacts.fxml
+=======
+/model/
+/Arena.fxml
+/application/
+>>>>>>> 77356fcbfa892621ac1dc0dcc8e71fc8ff9c2000
+/scoreBoard.fxml.BASE.fxml
+/scoreBoard.fxml.LOCAL.fxml
+/scoreBoard.fxml.REMOTE.fxml
