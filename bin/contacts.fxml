@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="RootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="854.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.view.ContactsViewController">
+   <children>
+      <ImageView fitHeight="488.0" fitWidth="861.0" layoutX="-3.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@BackgroundMenu.jpg" />
+         </image>
+      </ImageView>
+      <VBox layoutX="71.0" layoutY="218.0" prefHeight="182.0" prefWidth="724.0" style="-fx-background-color: white;">
+         <children>
+            <Label contentDisplay="TOP" prefHeight="36.0" prefWidth="724.0" text="Alberto Rossi: alberto.rossi12@studio.unibo.it" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Bauhaus 93" size="30.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label contentDisplay="TOP" prefHeight="36.0" prefWidth="724.0" text="Enrico Baroni: enrico.baroni4@studio.unibo.it" textAlignment="CENTER">
+               <font>
+                  <Font name="Bauhaus 93" size="30.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label contentDisplay="TOP" prefHeight="36.0" prefWidth="724.0" text="Michele Pasi: michele.pasi@studio.unibo.it " textAlignment="CENTER">
+               <font>
+                  <Font name="Bauhaus 93" size="30.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label contentDisplay="TOP" prefHeight="36.0" prefWidth="724.0" text="Riccardo Azzali: riccardo.azzali@studio.unibo.it" textAlignment="CENTER">
+               <font>
+                  <Font name="Bauhaus 93" size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <Button fx:id="BackButtonC" layoutX="337.0" layoutY="425.0" mnemonicParsing="false" onAction="#backC" prefHeight="25.0" prefWidth="181.0" text="Back">
+         <font>
+            <Font name="Bauhaus 93" size="22.0" />
+         </font>
+      </Button>
+   </children>
+</Pane>
