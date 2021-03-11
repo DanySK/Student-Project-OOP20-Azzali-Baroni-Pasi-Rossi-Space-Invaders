@@ -5,22 +5,39 @@ package model;
 public class PlayerImpl implements Player{
 
 	private final static int DIMENSION_SHIP_PLAYER = 60;
+	
+	private static final int WIDTH_PLAYER=45;
+	private static final int HEIGHT_PLAYER=32;
 	private final static int LIFE_INITIAL=3;
 	private final static double SPEED = 0.5;
 	private final static int DAMAGE_PLAYER = 1;
+	
+	private double posX;
+    private double posY;
+    private final String playerImagePath;
 	
 	private int life_player,damage_player;
 	private double speed_player;
 	//player_img
 	
 	
-	public PlayerImpl() {	
+	public PlayerImpl() {
+		this.posX = 50;
+		this.posY = 0;
+		playerImagePath = "Player.png";
 	}
 	
 	/**
 	 * method to set the initial and the new position of the player 
 	 */
 	public void setPosition() {}
+	
+	public double getPosY() {
+		return posY;
+	}
+	public double getPosX() {
+		return posX;
+	}
 	
 	/**
 	 * method for set initial life of player
@@ -102,6 +119,24 @@ public class PlayerImpl implements Player{
 		this.damage_player += BonusDamage;
 		//bonus del danno come sopra ma non in percentiali ma in interi
 		//per esempio + 1 2 3 
+	}
+
+	@Override
+	public int getWidthPlayer() {
+		// TODO Auto-generated method stub
+		return WIDTH_PLAYER;
+	}
+
+	@Override
+	public int getHeightBird() {
+		// TODO Auto-generated method stub
+		return HEIGHT_PLAYER;
+	}
+
+	@Override
+	public String getPlayerImagePath() {
+		// TODO Auto-generated method stub
+		return playerImagePath;
 	}
 	
 }

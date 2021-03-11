@@ -2,7 +2,6 @@ package view;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.net.URL;
 
 
 import javafx.scene.Scene;
@@ -12,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -21,6 +21,8 @@ public class SpaceInvadersViewImpl implements SpaceInvadersView{
 	private static final double HEIGHT = 480;
 	private static final double WIDTH = 854;
 	private static final double FONT_SIZE = 18;
+	//private static PlayerView player;
+	//private static Rectangle p;
 	private final Label score = new Label();
 	private Stage secondaryStage;
 	private final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -30,6 +32,7 @@ public class SpaceInvadersViewImpl implements SpaceInvadersView{
 	
 	public SpaceInvadersViewImpl(final Stage secondaryStage) {
 		this.secondaryStage = secondaryStage;
+		//p = player.getPlayer();
 	}
 
 	@Override
@@ -39,6 +42,9 @@ public class SpaceInvadersViewImpl implements SpaceInvadersView{
 		this.secondaryStage.centerOnScreen();
 		//settare sfondo di gioco
 		this.setBackgroundGame(screenSize);
+		//root.getChildren().add(p);
+	
+		
 	
 	}
 	
@@ -56,7 +62,7 @@ public class SpaceInvadersViewImpl implements SpaceInvadersView{
 		background.fitWidthProperty().bind(root.widthProperty());
 		background.fitHeightProperty().bind(root.heightProperty());
 		
-		//this.start();
+		
 		
 		secondaryStage.setScene(scene);
 	   
