@@ -3,7 +3,9 @@ package view;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
-
+import controller.SpaceInvadersController;
+import controller.SpaceInvadersControllerImpl;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -27,11 +29,13 @@ public class SpaceInvadersViewImpl implements SpaceInvadersView{
 	private Stage secondaryStage;
 	private final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	private Pane root;
+	private final SpaceInvadersController spaceinvadercontroller;
 	//URL url = getClass().getClassLoader().getResource("BackgroundMenu.jpg");
 	
 	
 	public SpaceInvadersViewImpl(final Stage secondaryStage) {
 		this.secondaryStage = secondaryStage;
+		this.spaceinvadercontroller = new SpaceInvadersControllerImpl(secondaryStage);
 		//p = player.getPlayer();
 	}
 
@@ -62,6 +66,8 @@ public class SpaceInvadersViewImpl implements SpaceInvadersView{
 		background.fitWidthProperty().bind(root.widthProperty());
 		background.fitHeightProperty().bind(root.heightProperty());
 		
+		//this.spaceinvadercontroller.startGame();
+		
 		
 		
 		secondaryStage.setScene(scene);
@@ -71,6 +77,13 @@ public class SpaceInvadersViewImpl implements SpaceInvadersView{
 	@Override
 	public void setScore(final int score) {
 	  this.score.setText("Score: "+ score);
+		
+	}
+
+	@Override
+	public void addChildren(Node n) {
+		// TODO Auto-generated method stub
+		this.root.getChildren().add(n);
 		
 	}
 	

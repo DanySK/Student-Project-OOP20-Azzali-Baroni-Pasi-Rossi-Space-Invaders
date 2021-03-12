@@ -1,6 +1,5 @@
-package controller.view;
+package controller;
 
-import controller.PlayerController;
 import model.Player;
 import model.PlayerImpl;
 import view.PlayerView;
