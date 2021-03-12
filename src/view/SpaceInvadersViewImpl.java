@@ -29,13 +29,13 @@ public class SpaceInvadersViewImpl implements SpaceInvadersView{
 	private Stage secondaryStage;
 	private final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	private Pane root;
-	private final SpaceInvadersController spaceinvadercontroller;
+	//private final SpaceInvadersController spaceinvadercontroller;
 	//URL url = getClass().getClassLoader().getResource("BackgroundMenu.jpg");
 	
 	
 	public SpaceInvadersViewImpl(final Stage secondaryStage) {
 		this.secondaryStage = secondaryStage;
-		this.spaceinvadercontroller = new SpaceInvadersControllerImpl(secondaryStage);
+		//this.spaceinvadercontroller = new SpaceInvadersController();
 		//p = player.getPlayer();
 	}
 
