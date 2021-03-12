@@ -23,20 +23,20 @@ public class SpaceInvadersViewImpl implements SpaceInvadersView{
 	private static final double HEIGHT = 480;
 	private static final double WIDTH = 854;
 	private static final double FONT_SIZE = 18;
-	//private static PlayerView player;
-	//private static Rectangle p;
 	private final Label score = new Label();
+	private final SpaceInvadersObserver observer;
 	private Stage secondaryStage;
 	private final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	private Pane root;
-	//private final SpaceInvadersController spaceinvadercontroller;
+	
 	//URL url = getClass().getClassLoader().getResource("BackgroundMenu.jpg");
 	
 	
-	public SpaceInvadersViewImpl(final Stage secondaryStage) {
+	public SpaceInvadersViewImpl(final Stage secondaryStage, final SpaceInvadersObserver observer) {
 		this.secondaryStage = secondaryStage;
-		//this.spaceinvadercontroller = new SpaceInvadersController();
-		//p = player.getPlayer();
+		this.observer = observer;
+		
+
 	}
 
 	@Override
@@ -67,7 +67,7 @@ public class SpaceInvadersViewImpl implements SpaceInvadersView{
 		background.fitHeightProperty().bind(root.heightProperty());
 		
 		//this.spaceinvadercontroller.startGame();
-		
+		this.observer.startGame();
 		
 		
 		secondaryStage.setScene(scene);
