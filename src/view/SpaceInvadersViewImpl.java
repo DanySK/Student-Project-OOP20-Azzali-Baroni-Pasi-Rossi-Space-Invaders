@@ -21,8 +21,8 @@ public class SpaceInvadersViewImpl implements SpaceInvadersView{
 	private static final double HEIGHT = 480;
 	private static final double WIDTH = 854;
 	private static final double FONT_SIZE = 18;
-	//private static PlayerView player;
-	//private static Rectangle p;
+    private static PlayerView player;
+	private static Rectangle p;
 	private final Label score = new Label();
 	private Stage secondaryStage;
 	private final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -32,7 +32,8 @@ public class SpaceInvadersViewImpl implements SpaceInvadersView{
 	
 	public SpaceInvadersViewImpl(final Stage secondaryStage) {
 		this.secondaryStage = secondaryStage;
-		//p = player.getPlayer();
+        PlayerView player = new PlayerViewImpl();
+		p = player.getPlayer();
 	}
 
 	@Override
@@ -42,7 +43,7 @@ public class SpaceInvadersViewImpl implements SpaceInvadersView{
 		this.secondaryStage.centerOnScreen();
 		//settare sfondo di gioco
 		this.setBackgroundGame(screenSize);
-		//root.getChildren().add(p);
+		root.getChildren().add(p);
 	
 		
 	
