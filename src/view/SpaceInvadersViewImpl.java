@@ -3,7 +3,9 @@ package view;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
-
+import controller.SpaceInvadersController;
+import controller.SpaceInvadersControllerImpl;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -21,19 +23,20 @@ public class SpaceInvadersViewImpl implements SpaceInvadersView{
 	private static final double HEIGHT = 480;
 	private static final double WIDTH = 854;
 	private static final double FONT_SIZE = 18;
-    private static PlayerView player;
-	private static Rectangle p;
 	private final Label score = new Label();
+	private final SpaceInvadersObserver observer;
 	private Stage secondaryStage;
 	private final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	private Pane root;
+	
 	//URL url = getClass().getClassLoader().getResource("BackgroundMenu.jpg");
 	
 	
-	public SpaceInvadersViewImpl(final Stage secondaryStage) {
+	public SpaceInvadersViewImpl(final Stage secondaryStage, final SpaceInvadersObserver observer) {
 		this.secondaryStage = secondaryStage;
-        PlayerView player = new PlayerViewImpl();
-		p = player.getPlayer();
+		this.observer = observer;
+		
+
 	}
 
 	@Override
@@ -43,7 +46,7 @@ public class SpaceInvadersViewImpl implements SpaceInvadersView{
 		this.secondaryStage.centerOnScreen();
 		//settare sfondo di gioco
 		this.setBackgroundGame(screenSize);
-		root.getChildren().add(p);
+		//root.getChildren().add(p);
 	
 		
 	
@@ -63,6 +66,8 @@ public class SpaceInvadersViewImpl implements SpaceInvadersView{
 		background.fitWidthProperty().bind(root.widthProperty());
 		background.fitHeightProperty().bind(root.heightProperty());
 		
+		//this.spaceinvadercontroller.startGame();
+		this.observer.startGame();
 		
 		
 		secondaryStage.setScene(scene);
@@ -72,6 +77,13 @@ public class SpaceInvadersViewImpl implements SpaceInvadersView{
 	@Override
 	public void setScore(final int score) {
 	  this.score.setText("Score: "+ score);
+		
+	}
+
+	@Override
+	public void addChildren(Node n) {
+		// TODO Auto-generated method stub
+		this.root.getChildren().add(n);
 		
 	}
 	

@@ -6,8 +6,8 @@ public class PlayerImpl implements Player{
 
 	private final static int DIMENSION_SHIP_PLAYER = 60;
 	
-	private static final int WIDTH_PLAYER=45;
-	private static final int HEIGHT_PLAYER=32;
+	private static final int WIDTH_PLAYER=50;
+	private static final int HEIGHT_PLAYER=34;
 	private final static int LIFE_INITIAL=3;
 	private final static double SPEED = 0.5;
 	private final static int DAMAGE_PLAYER = 1;
@@ -22,9 +22,9 @@ public class PlayerImpl implements Player{
 	
 	
 	public PlayerImpl() {
-		this.posX = 50;
-		this.posY = 0;
-		playerImagePath = "Player.png";
+		this.posX = 400.0;
+		this.posY = 425.0;
+		playerImagePath = "player.png";
 	}
 	
 	/**
