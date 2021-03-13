@@ -47,6 +47,7 @@ public class SpaceInvadersViewImpl implements SpaceInvadersView{
 		//settare sfondo di gioco
 		this.setBackgroundGame(screenSize);
 		//root.getChildren().add(p);
+		
 	
 		
 	
@@ -71,6 +72,8 @@ public class SpaceInvadersViewImpl implements SpaceInvadersView{
 		
 		
 		secondaryStage.setScene(scene);
+		movementListener(scene);
+		
 	   
 	}
 
@@ -86,6 +89,29 @@ public class SpaceInvadersViewImpl implements SpaceInvadersView{
 		this.root.getChildren().add(n);
 		
 	}
+
+	@Override
+	public void movementListener(Scene scene) {
+		scene.setOnKeyPressed(e -> {
+			switch(e.getCode()) {
+			case A:
+				//player.moveleft();
+				this.observer.moveLeft();
+				break;
+			case D:
+				//player.moveRight();
+				this.observer.moveRight();
+				break;
+			case SPACE:
+				//Shoot();
+				break;
+			default:
+				break;
+			}
+		});
+		
+	}
+	
 	
 	
 

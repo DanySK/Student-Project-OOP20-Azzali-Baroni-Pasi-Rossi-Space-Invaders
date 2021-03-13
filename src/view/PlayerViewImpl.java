@@ -32,18 +32,19 @@ public class PlayerViewImpl implements PlayerView{
 		r.setFill(new ImagePattern(new Image(image)));
 	}
 
-	@Override
-	public void updatePosition(double x,double y) {
-		// TODO Auto-generated method stub
-		r.setX(x);
-		r.setY(y);
-		
-	}
+	
 
 	@Override
 	public Rectangle getPlayer() {
 		// TODO Auto-generated method stub
 		return this.r;
+	}
+
+	@Override
+	public void updatePosition(double x) {
+		// TODO Auto-generated method stub
+		r.setX(x);
+		
 	}
 	
 

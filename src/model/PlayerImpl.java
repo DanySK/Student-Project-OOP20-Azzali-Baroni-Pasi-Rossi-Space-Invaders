@@ -30,7 +30,9 @@ public class PlayerImpl implements Player{
 	/**
 	 * method to set the initial and the new position of the player 
 	 */
-	public void setPosition() {}
+	public void setPosition(Double PosX) {
+		posX = PosX;
+	}
 	
 	public double getPosY() {
 		return posY;
@@ -128,7 +130,7 @@ public class PlayerImpl implements Player{
 	}
 
 	@Override
-	public int getHeightBird() {
+	public int getHeightPlayer() {
 		// TODO Auto-generated method stub
 		return HEIGHT_PLAYER;
 	}
