@@ -21,6 +21,18 @@ public class SpaceInvadersControllerImpl implements SpaceInvadersController,Spac
 	public void startGame() {
 		this.view.addChildren(player.getPlayerView().getPlayer());
 	}
+
+	@Override
+	public void moveLeft() {
+		player.playerMovement(-5);
+		
+	}
+
+	@Override
+	public void moveRight() {
+		// TODO Auto-generated method stub
+		player.playerMovement(+5);
+	}
 	
 	
 		

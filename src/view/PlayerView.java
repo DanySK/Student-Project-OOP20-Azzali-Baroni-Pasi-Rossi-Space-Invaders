@@ -11,7 +11,7 @@ public interface PlayerView {
 	
 	void setImage(String image);
 	
-	void updatePosition(double x, double y);
+	void updatePosition(double x);
 	
 	Rectangle getPlayer();
 }
