@@ -2,7 +2,7 @@ package model;
 
 
 
-public class PlayerImpl implements Player{
+public class PlayerImpl implements Entity{
 
 	private final static int DIMENSION_SHIP_PLAYER = 60;
 	
@@ -34,11 +34,12 @@ public class PlayerImpl implements Player{
 		posX = PosX;
 	}
 	
-	public double getPosY() {
-		return posY;
-	}
 	public double getPosX() {
 		return posX;
+	}
+	
+	public double getPosY() {
+		return posY;
 	}
 	
 	/**
@@ -123,20 +124,21 @@ public class PlayerImpl implements Player{
 		//per esempio + 1 2 3 
 	}
 
+
 	@Override
-	public int getWidthPlayer() {
+	public int getWidth() {
 		// TODO Auto-generated method stub
 		return WIDTH_PLAYER;
 	}
 
 	@Override
-	public int getHeightPlayer() {
+	public int getHeight() {
 		// TODO Auto-generated method stub
 		return HEIGHT_PLAYER;
 	}
 
 	@Override
-	public String getPlayerImagePath() {
+	public String getImagePath() {
 		// TODO Auto-generated method stub
 		return playerImagePath;
 	}

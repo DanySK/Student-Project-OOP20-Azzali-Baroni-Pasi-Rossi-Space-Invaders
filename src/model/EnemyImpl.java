@@ -1,6 +1,6 @@
 package model;
 
-public class EnemyImpl implements Enemy{
+public class EnemyImpl implements Entity{
 	
 	private static final int WIDTH_ENEMY=20;
 	private static final int HEIGHT_ENEMY=30;
@@ -26,6 +26,17 @@ public class EnemyImpl implements Enemy{
 		//ogni nemico ha una propria foto 
 		
 	}
+	
+	@Override
+	public double getPosX() {
+		// TODO Auto-generated method stub
+		return this.posX;
+	}
+	
+	public void setPosX(double posX) {
+		this.posX = posX;
+	}
+	
 	@Override
 	public double getPosY() {
 		// TODO Auto-generated method stub
@@ -37,29 +48,17 @@ public class EnemyImpl implements Enemy{
 	}
 
 	@Override
-	public double getPosX() {
-		// TODO Auto-generated method stub
-		return this.posX;
-	}
-	
-	public void setPosX(double posX) {
-		this.posX = posX;
-	}
-
-	@Override
-	public int getWidthEnemy() {
+	public int getWidth() {
 		// TODO Auto-generated method stub
 		return this.WIDTH_ENEMY;
 	}
-
 	@Override
-	public int getHeightEnemy() {
+	public int getHeight() {
 		// TODO Auto-generated method stub
-		return this.DAMAGE_ENEMY;
+		return this.HEIGHT_ENEMY;
 	}
-
 	@Override
-	public String getEnemyImagePath() {
+	public String getImagePath() {
 		// TODO Auto-generated method stub
 		return this.EnemyImagePath;
 	}

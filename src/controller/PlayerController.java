@@ -1,6 +1,6 @@
 package controller;
 
-import model.Player;
+import model.Entity;
 import view.PlayerView;
 
 public interface PlayerController {
@@ -14,7 +14,7 @@ public interface PlayerController {
 	
 	PlayerView getPlayerView();
 	
-	Player getPlayerModel();
+	Entity getPlayerModel();
 	
 	double screenCheck(double x);
 }
