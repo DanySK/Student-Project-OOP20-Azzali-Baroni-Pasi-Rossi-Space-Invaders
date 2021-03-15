@@ -7,7 +7,7 @@ import view.PlayerViewImpl;
 
 public class PlayerControllerImpl implements PlayerController{
 
-	public static final int SCREEN_HEIGHT = 335;
+	public static final int SCREEN_WIDTH = 810;
 	
 	private double newPosition;
 	private final Player player;
@@ -31,10 +31,10 @@ public class PlayerControllerImpl implements PlayerController{
 	@Override
 	public void playerMovement(double n) {
 		// TODO Auto-generated method stub
-		newPosition = player.getPosX()+n;
+		//newPosition = player.getPosX()+n;
 		
-		player.setPosition(newPosition);
-		playerView.updatePosition(newPosition);
+		player.setPosition(screenCheck(n));
+		playerView.updatePosition(screenCheck(n));
 	}
 
 	@Override
@@ -46,4 +46,14 @@ public class PlayerControllerImpl implements PlayerController{
 	public Player getPlayerModel() {
 		return this.player;
 	}
+
+	@Override
+	public double screenCheck(double x) {
+		newPosition = player.getPosX()+x;
+		if((newPosition >0)&&(newPosition <SCREEN_WIDTH)){
+			return (player.getPosX()+x);
+		}else
+		return player.getPosX();
+	}
+	
 }

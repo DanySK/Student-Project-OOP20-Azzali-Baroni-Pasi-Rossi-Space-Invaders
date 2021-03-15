@@ -111,6 +111,13 @@ public class SpaceInvadersViewImpl implements SpaceInvadersView{
 		});
 		
 	}
+
+	@Override
+	public double getWidth() {
+		return screenSize.getWidth();
+	}
+
+	
 	
 	
 	

@@ -15,4 +15,6 @@ public interface PlayerController {
 	PlayerView getPlayerView();
 	
 	Player getPlayerModel();
+	
+	double screenCheck(double x);
 }

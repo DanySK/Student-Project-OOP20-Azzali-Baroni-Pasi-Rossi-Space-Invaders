@@ -12,4 +12,6 @@ public interface SpaceInvadersView {
 	void addChildren(Node n);
 	
 	public void movementListener(Scene scene);
+	
+	double getWidth();
 }
