@@ -1,6 +1,6 @@
 package model;
 
-public class EnemyImpl implements Entity{
+public class EnemyImpl implements Enemy{
 	
 	private static final int WIDTH_ENEMY=20;
 	private static final int HEIGHT_ENEMY=30;

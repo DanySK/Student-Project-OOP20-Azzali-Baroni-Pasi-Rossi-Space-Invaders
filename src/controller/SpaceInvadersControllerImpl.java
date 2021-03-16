@@ -9,10 +9,12 @@ public class SpaceInvadersControllerImpl implements SpaceInvadersController,Spac
 
 	private final SpaceInvadersView view;
 	private final PlayerController player;
+	private final EnemyController enemy;
 
 	
 	public SpaceInvadersControllerImpl(final Stage secondaryStage) {
 
+		enemy = new EnemyControllerImpl();
 		player = new PlayerControllerImpl();
 		view = new SpaceInvadersViewImpl(secondaryStage, this);
 		view.start();
@@ -21,6 +23,7 @@ public class SpaceInvadersControllerImpl implements SpaceInvadersController,Spac
 	@Override
 	public void startGame() {
 		this.view.addChildren(player.getPlayerView().getPlayer());
+		this.view.addChildren(enemy.getEnemyView().getEnemy());
 	}
 
 	@Override
