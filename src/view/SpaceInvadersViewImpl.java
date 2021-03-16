@@ -47,10 +47,6 @@ public class SpaceInvadersViewImpl implements SpaceInvadersView{
 		//settare sfondo di gioco
 		this.setBackgroundGame(screenSize);
 		//root.getChildren().add(p);
-		
-	
-		
-	
 	}
 	
 	private void setBackgroundGame(final Dimension screensize) {

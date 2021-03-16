@@ -1,6 +1,6 @@
 package controller;
 
-import model.Entity;
+import model.Player;
 import model.PlayerImpl;
 import view.PlayerView;
 import view.PlayerViewImpl;
@@ -19,13 +19,13 @@ public class PlayerControllerImpl implements PlayerController{
 		playerView = new PlayerViewImpl();
 		this.initPlayerView();
 	}
+	
 
 	@Override
 	public void initPlayerView() {
 		playerView.setPosition(player.getPosX(), player.getPosY());
-        playerView.setWidthHeight(player.getHeight(), player.getWidth());
-        playerView.setImage(player.getImagePath());
-		
+		playerView.setWidthHeight(player.getHeight(), player.getWidth());
+		playerView.setImage(player.getImagePath());
 	}
 
 	@Override
@@ -43,7 +43,7 @@ public class PlayerControllerImpl implements PlayerController{
 	}
 
 	@Override
-	public Entity getPlayerModel() {
+	public Player getPlayerModel() {
 		return this.player;
 	}
 

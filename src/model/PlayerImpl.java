@@ -2,13 +2,13 @@ package model;
 
 
 
-public class PlayerImpl implements Entity{
+public class PlayerImpl implements Player{
 
 	private final static int DIMENSION_SHIP_PLAYER = 60;
 	
-	private static final int WIDTH_PLAYER=50;
-	private static final int HEIGHT_PLAYER=34;
-	private final static int LIFE_INITIAL=3;
+	private static final int WIDTH_PLAYER = 50;
+	private static final int HEIGHT_PLAYER = 34;
+	private final static int LIFE_INITIAL = 3;
 	private final static double SPEED = 0.5;
 	private final static int DAMAGE_PLAYER = 1;
 	
@@ -30,7 +30,9 @@ public class PlayerImpl implements Entity{
 	/**
 	 * method to set the initial and the new position of the player 
 	 */
-	public void setPosition(Double PosX) {
+
+	@Override
+	public void setPosition(double PosX) {
 		posX = PosX;
 	}
 	
@@ -142,5 +144,6 @@ public class PlayerImpl implements Entity{
 		// TODO Auto-generated method stub
 		return playerImagePath;
 	}
+
 	
 }

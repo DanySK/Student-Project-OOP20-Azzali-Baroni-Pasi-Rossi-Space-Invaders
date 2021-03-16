@@ -9,6 +9,7 @@ public class SpaceInvadersControllerImpl implements SpaceInvadersController,Spac
 
 	private final SpaceInvadersView view;
 	private final PlayerController player;
+
 	
 	public SpaceInvadersControllerImpl(final Stage secondaryStage) {
 
