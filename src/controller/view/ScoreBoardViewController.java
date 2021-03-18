@@ -11,15 +11,15 @@ import javafx.scene.layout.Pane;
 public class ScoreBoardViewController {
 	
     @FXML
-    private Pane RootPane;
+    private Pane scorePane;
 
     @FXML
-    private Button BackButton;
+    private Button backButton;
 
     @FXML
     void back(ActionEvent event) throws IOException {
     	Pane MenuPane = FXMLLoader.load(getClass().getResource("/menu.fxml"));
-    	RootPane.getChildren().setAll(MenuPane);
+    	scorePane.getChildren().setAll(MenuPane);
 
     }
 

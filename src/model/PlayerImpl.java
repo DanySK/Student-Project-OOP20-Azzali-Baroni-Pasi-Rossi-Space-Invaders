@@ -1,149 +1,132 @@
 package model;
 
+import javafx.geometry.Point2D;
+import javafx.scene.image.Image;
 
+public class PlayerImpl implements Entity{
+	
+	Point2D position;
+    float scale = 1;
+    double width;
+    double height;
+    Image playerImage;
+    
+    
+    public PlayerImpl(Image playerImage) {
+        this.playerImage = playerImage;
+        this.width = playerImage.getWidth();
+        this.height = playerImage.getHeight();
+    }
+    
+     /* **********************************************************
+     *                           POSITION                                     *
+     ************************************************************ */
+    
+    @Override
+	public Point2D getDrawPosition() {
+        return position;
+    }
+    
+    @Override
+	public void move(Point2D vector) {
+        this.position = this.position.add(vector);
+    }
 
-public class PlayerImpl implements Player{
+    @Override
+	public void setDrawPosition(float x, float y) {
+        this.position = new Point2D(x, y);
+    }
 
-	private final static int DIMENSION_SHIP_PLAYER = 60;
-	
-	private static final int WIDTH_PLAYER = 50;
-	private static final int HEIGHT_PLAYER = 34;
-	private final static int LIFE_INITIAL = 3;
-	private final static double SPEED = 0.5;
-	private final static int DAMAGE_PLAYER = 1;
-	
-	private double posX;
-    private double posY;
-    private final String playerImagePath;
-	
-	private int life_player,damage_player;
-	private double speed_player;
-	//player_img
-	
-	
-	public PlayerImpl() {
-		this.posX = 400.0;
-		this.posY = 425.0;
-		playerImagePath = "player.png";
-	}
-	
-	/**
-	 * method to set the initial and the new position of the player 
-	 */
+    @Override
+	public float getScale() {
+        return scale;
+    }
+    
+    @Override
+	public Point2D getCenter() {
+        Point2D pos = getDrawPosition();
+        return new Point2D(pos.getX() + width / 2, pos.getY() + height / 2);
+    }
+    
+     /* **********************************************************
+     *                           IMAGE                                          *
+     ************************************************************ */
+    
+    @Override
+	public Image getImage() {
+        return playerImage;
+    }
+    
+    @Override
+	public void setScale(float scale) {
+        this.scale = scale;
+    }
+    
+    @Override
+	public double getWidth() {
+        return this.width * getScale();
+    }
+    
+    @Override
+	public double getHeight() {
+        return this.height * getScale();
+    }
+    
+    /* *************************************************************
+     *                           MOVEMENT                                                 *
+     ************************************************************ */
+    private float MAX_SPEED = 5f;
+    private Point2D currentThrustVector = new Point2D(0, 0);
+    private float currentTorqueForce = 0;
+    
+    
+    public void addThrust(double scalar) {
+        addThrust(scalar, 0);
+    }
+    
+    private void addThrust(double scalar, double angle) {
+        Point2D thrustVector = calculateNewThrustVector(scalar);
+        currentThrustVector = currentThrustVector.add(thrustVector);
+        currentThrustVector = clampToMaxSpeed(currentThrustVector);
+    }
+    
+    private Point2D calculateNewThrustVector(double scalar) {
+        return new Point2D((float) (scalar), 0);
+    }
+    
+    private Point2D clampToMaxSpeed(Point2D thrustVector) {
+        if (thrustVector.magnitude() > MAX_SPEED) {
+            return currentThrustVector = thrustVector.normalize().multiply(MAX_SPEED);
+        } else {
+            return currentThrustVector = thrustVector;
+        }
+    }
+    
+    private void applyDrag() {
+        float movementDrag = currentThrustVector.magnitude() < 0.5 ? 0.01f : 0.07f;
+        currentThrustVector = new Point2D(
+                reduceTowardsZero((float) currentThrustVector.getX(), movementDrag),
+                reduceTowardsZero((float) currentThrustVector.getY(), movementDrag));
+        currentTorqueForce = reduceTowardsZero(currentTorqueForce, 0);
+    }
+    
+    private float reduceTowardsZero(float value, float modifier) {
+        float newValue = 0;
+        if (value > modifier) {
+            newValue = value - modifier;
+        } else if (value < -modifier) {
+            newValue = value + modifier;
+        }
+        return newValue;
+    }
+    
+    @Override
+	public void update() {
+        applyDrag();
+        move(currentThrustVector);
+    }
 
-	@Override
-	public void setPosition(double PosX) {
-		posX = PosX;
+	public void shoot() {
 	}
-	
-	public double getPosX() {
-		return posX;
-	}
-	
-	public double getPosY() {
-		return posY;
-	}
-	
-	/**
-	 * method for set initial life of player
-	 */
-	public void setInitialLife() {
-		this.life_player = LIFE_INITIAL;
-	}
-	
-	/**
-	 * method to get the life of Player
-	 * @return remaining life of the player
-	 */
-	public int getLivePlayer() {
-		return this.life_player;
-	}
-	
-	/**
-	 * method to get the speed of Player
-	 * @return remaining speed of the player
-	 */
-	public double getSpeedPlayer() {
-		return this.speed_player;
-	}
-	
-	/**
-	 * method to get the damage of Player
-	 * @return remaining damage of the player
-	 */
-	public int getDamagePlayer() {
-		return this.damage_player;
-	}
-	
-	/**
-	 * set the initial speed of the player
-	 */
-	public void setInitialSpeed() {
-		this.speed_player = SPEED;
-		
-		//aggiungere un metodo per gestire il ritorno alla velocita normale del player
-	}
-	
-	/**
-	 * 
-	 */
-	public void setInitialDamage() {
-		this.damage_player = DAMAGE_PLAYER;
-	}
-	
-	/**
-	 * set the life of the player after take damage
-	 *  
-	 */
-	public void setDecrementLife() {
-		this.life_player -= 1;	
-	}
-	
-	/**
-	 * set the new speed of the player after take the bonus of speed
-	 * @param bonusSpeed
-	 */
-	public void setIncrementSpeed(double bonusSpeed) {
-		this.speed_player *= bonusSpeed;
-		//avevo pensato che ci potevano essere piu tipologie di bonus velocita
-		//con varie "percentuali" di velocita per esempio 0.1 0.2 0.3
-	}
-	/**
-	 * set the new life of the player after take the bonus of life
-	 * 
-	 */
-	public void setIncrementLife() {
-		this.speed_player += 1;
-	}
-	
-	/**
-	 * set the new life of the player after take the bonus of life
-	 * 
-	 */
-	public void setIncrementDamege(int BonusDamage) {
-		this.damage_player += BonusDamage;
-		//bonus del danno come sopra ma non in percentiali ma in interi
-		//per esempio + 1 2 3 
-	}
-
-
-	@Override
-	public int getWidth() {
-		// TODO Auto-generated method stub
-		return WIDTH_PLAYER;
-	}
-
-	@Override
-	public int getHeight() {
-		// TODO Auto-generated method stub
-		return HEIGHT_PLAYER;
-	}
-
-	@Override
-	public String getImagePath() {
-		// TODO Auto-generated method stub
-		return playerImagePath;
-	}
-
 	
 }

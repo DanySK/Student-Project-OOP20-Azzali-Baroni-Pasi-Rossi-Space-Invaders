@@ -11,15 +11,15 @@ import javafx.scene.layout.Pane;
 public class ContactsViewController {
 	
 	 @FXML
-	 private Pane RootPane;
+	 private Pane contactsPane;
 
 	 @FXML
-	 private Button BackButtonC;
+	 private Button backButton;
 	  
 	@FXML
 	void backC(ActionEvent event) throws IOException {
 		Pane menuPane = FXMLLoader.load(getClass().getResource("/menu.fxml"));
-        RootPane.getChildren().setAll(menuPane);
+		contactsPane.getChildren().setAll(menuPane);
 
     }
 

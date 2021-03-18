@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="RootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="854.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.view.ContactsViewController">
+<Pane fx:id="contactsPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="854.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.view.ContactsViewController">
    <children>
       <ImageView fitHeight="488.0" fitWidth="861.0" layoutX="-3.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -49,7 +49,7 @@
             </Label>
          </children>
       </VBox>
-      <Button fx:id="BackButtonC" layoutX="337.0" layoutY="425.0" mnemonicParsing="false" onAction="#backC" prefHeight="25.0" prefWidth="181.0" text="Back">
+      <Button fx:id="backButton" layoutX="337.0" layoutY="425.0" mnemonicParsing="false" onAction="#backC" prefHeight="25.0" prefWidth="181.0" text="Back">
          <font>
             <Font name="Bauhaus 93" size="22.0" />
          </font>

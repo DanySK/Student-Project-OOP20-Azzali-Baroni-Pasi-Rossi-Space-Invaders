@@ -1,66 +1,76 @@
 package model;
 
-public class EnemyImpl implements Enemy{
+import javafx.geometry.Point2D;
+import javafx.scene.image.Image;
+
+public class EnemyImpl implements Entity{
 	
-	private static final int WIDTH_ENEMY=20;
-	private static final int HEIGHT_ENEMY=30;
-	private final static int LIFE_ENEMY=1;
-	private final static double SPEED = 0.2;
-	private final static int DAMAGE_ENEMY = 1;
+	Point2D position;
+    float scale = 1;
+    double width;
+    double height;
+    Image enemyImage;
+    
+    private Point2D movement = new Point2D(0, 0.2);
+    
+    
+    public EnemyImpl(Image enemyImage) {
+        this.enemyImage = enemyImage;
+        this.width = enemyImage.getWidth();
+        this.height = enemyImage.getHeight();
+    }
 	
-	private double posX;
-    private double posY;
-    private final String EnemyImagePath;
+	@Override
+	public Point2D getDrawPosition() {
+		return position;
+	}
 	
-	private int life_Enemy,damage_Enemy;
-	private double speed_Enemy;
+	@Override
+	public void move(Point2D vector) {
+		this.position = this.position.add(vector);
+	}
 	
-	public EnemyImpl(double posX, double posY, int life_Enemy, double speed_Enemy) {
-		// TODO Auto-generated constructor stub
-		this.posX = posX;
-		this.posY = posY;
-		this.life_Enemy = life_Enemy;
-		this.speed_Enemy = speed_Enemy;
-		this.EnemyImagePath = "Enemy1.png";
-		//pensavo di mettere tre possibili nemici differenziati dal codice intero della vita(life_ENEMY)
-		//ogni nemico ha una propria foto 
+	@Override
+	public void setDrawPosition(float x, float y) {
+		this.position = new Point2D(x, y);
 		
-	}
-	
-	@Override
-	public double getPosX() {
-		// TODO Auto-generated method stub
-		return this.posX;
-	}
-	
-	public void setPosX(double posX) {
-		this.posX = posX;
-	}
-	
-	@Override
-	public double getPosY() {
-		// TODO Auto-generated method stub
-		return this.posY;
-	}
-	
-	public void setPosY(double posY) {
-		this.posY = posY;
 	}
 
 	@Override
-	public int getWidth() {
-		// TODO Auto-generated method stub
-		return this.WIDTH_ENEMY;
+	public float getScale() {
+		return scale;
 	}
+
 	@Override
-	public int getHeight() {
-		// TODO Auto-generated method stub
-		return this.HEIGHT_ENEMY;
+	public Point2D getCenter() {
+        Point2D pos = getDrawPosition();
+        return new Point2D(pos.getX() + width / 2, pos.getY() + height / 2);
 	}
+
 	@Override
-	public String getImagePath() {
-		// TODO Auto-generated method stub
-		return this.EnemyImagePath;
+	public Image getImage() {
+		 return enemyImage;
+	}
+
+	@Override
+	public void setScale(float scale) {
+		this.scale = scale;
+	}
+
+    @Override
+	public double getWidth() {
+        return this.width * getScale();
+    }
+    
+    @Override
+	public double getHeight() {
+        return this.height * getScale();
+    }
+    
+
+	@Override
+	public void update() {
+		move(movement);
 	}
 
 }

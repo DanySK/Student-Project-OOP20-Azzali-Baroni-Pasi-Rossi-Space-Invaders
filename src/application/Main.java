@@ -1,5 +1,6 @@
 package application;
 	
+import controller.KeyPolling;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -25,6 +26,8 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
         primaryStage.setResizable(false);
+        
+        KeyPolling.getInstance().pollScene(scene);
 	}
 	
 	public static void main(String[] args) {
