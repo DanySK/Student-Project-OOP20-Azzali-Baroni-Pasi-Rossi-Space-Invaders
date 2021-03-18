@@ -19,8 +19,8 @@ import view.Renderer;
 
 public class ArenaViewController implements Initializable{
 	
-	public static final int ARENA_LIMIT_LEFT   = 258;
-    public static final int ARENA_LIMIT_RIGHT = 1054;
+	public static final int ARENA_LIMIT_LEFT   = 260;
+    public static final int ARENA_LIMIT_RIGHT = 1055;
     public static final int PLAYER_DEFAULT_SPEED = 20;
     public static final int PLAYER_CENTER_X = 415;
     public static final int PLAYER_CENTER_Y = 420;
@@ -46,6 +46,9 @@ public class ArenaViewController implements Initializable{
 
         initialiseCanvas();
         
+        player.setDrawPosition(PLAYER_CENTER_X, PLAYER_CENTER_Y);
+        player.setScale(PLAYER__DEFAULT_SCALE);
+        
         for(int i = 0; i <= 10; i ++) {
         	enemies.add(new EnemyImpl(new Image(getClass().getResourceAsStream("/Enemy1.png"))));
         }
@@ -56,8 +59,6 @@ public class ArenaViewController implements Initializable{
         	spacing += 50;
         }
 
-        player.setDrawPosition(PLAYER_CENTER_X, PLAYER_CENTER_Y);
-        player.setScale(PLAYER__DEFAULT_SCALE);
         
         Renderer renderer = new Renderer(this.gameCanvas);
         renderer.addEntity(player);
@@ -65,6 +66,7 @@ public class ArenaViewController implements Initializable{
         for(int i = 0; i <= 10; i ++) {
         	renderer.addEntity(enemies.get(i));
         }
+        
         
         
 
@@ -80,6 +82,7 @@ public class ArenaViewController implements Initializable{
                 for(int i = 0; i <= 10; i ++) {
                 	enemies.get(i).update();
                 }
+                
                 renderer.render();
             }
         };
@@ -109,7 +112,7 @@ public class ArenaViewController implements Initializable{
                 player.addThrust(-PLAYER_DEFAULT_SPEED * frameDuration);
         	}
         } else if(keys.isDown(KeyCode.SPACE)) {
-        	
+
         } else if(keys.isDown(KeyCode.ESCAPE)) {
         	
         }

@@ -15,10 +15,8 @@ public class BulletImpl implements Entity{
     private Point2D movement = new Point2D(0, -1);
     
     
-    public BulletImpl(Image bulletImage, Point2D position, float scale) {
+    public BulletImpl(Image bulletImage) {
         this.bulletImage = bulletImage;
-        this.position = position;
-        this.scale = scale;
         this.width = bulletImage.getWidth();
         this.height = bulletImage.getHeight();
     }
