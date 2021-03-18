@@ -8,6 +8,7 @@ import controller.GameLoop;
 import controller.KeyPolling;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
@@ -19,9 +20,9 @@ import view.Renderer;
 
 public class ArenaViewController implements Initializable{
 	
-	public static final int ARENA_LIMIT_LEFT   = 260;
-    public static final int ARENA_LIMIT_RIGHT = 1055;
-    public static final int PLAYER_DEFAULT_SPEED = 20;
+	public static final int ARENA_LIMIT_LEFT   = 258;
+    public static final int ARENA_LIMIT_RIGHT = 1056;
+    public static final int PLAYER_DEFAULT_SPEED = 5;
     public static final int PLAYER_CENTER_X = 415;
     public static final int PLAYER_CENTER_Y = 420;
     public static final float PLAYER__DEFAULT_SCALE = 0.1f;
@@ -37,6 +38,7 @@ public class ArenaViewController implements Initializable{
 
     private PlayerImpl player = new PlayerImpl(new Image(getClass().getResourceAsStream("/Player.png")));
     LinkedList<EnemyImpl> enemies = new LinkedList<EnemyImpl>();
+
     int spacing = 0;
     
 
@@ -99,24 +101,23 @@ public class ArenaViewController implements Initializable{
     private void updatePlayerMovement(float frameDuration) {
         if (keys.isDown(KeyCode.RIGHT)) {
         	if(player.getCenter().getX() > ARENA_LIMIT_RIGHT) {
-        		player.stop();
         	}
         	else {
-                player.addThrust(PLAYER_DEFAULT_SPEED * frameDuration);
+                player.move(new Point2D(PLAYER_DEFAULT_SPEED, 0));
         	}
-        } else if (keys.isDown(KeyCode.LEFT)) {
+        }else if (keys.isDown(KeyCode.LEFT)) {
         	if(player.getCenter().getX() < ARENA_LIMIT_LEFT) {
-        		player.stop();
         	}
         	else {
-                player.addThrust(-PLAYER_DEFAULT_SPEED * frameDuration);
+               player.move(new Point2D(-PLAYER_DEFAULT_SPEED, 0));
         	}
         } else if(keys.isDown(KeyCode.SPACE)) {
-
+        	player.shoot();
         } else if(keys.isDown(KeyCode.ESCAPE)) {
         	
         }
-        player.update();
+        
+        //player.update();
     }
     
 }

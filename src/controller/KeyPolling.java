@@ -47,6 +47,7 @@ public class KeyPolling {
     public boolean isDown(KeyCode keyCode) {
         return keysCurrentlyDown.contains(keyCode);
     }
+    
 
     @Override
     public String toString() {
