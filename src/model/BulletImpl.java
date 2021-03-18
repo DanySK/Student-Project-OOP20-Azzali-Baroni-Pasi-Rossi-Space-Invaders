@@ -12,7 +12,7 @@ public class BulletImpl implements Entity{
     double height;
     Image bulletImage;
     
-    private Point2D movement = new Point2D(0, 1);
+    private Point2D movement = new Point2D(0, -1);
     
     
     public BulletImpl(Image bulletImage, Point2D position, float scale) {

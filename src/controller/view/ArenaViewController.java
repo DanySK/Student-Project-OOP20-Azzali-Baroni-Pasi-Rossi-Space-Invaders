@@ -1,6 +1,7 @@
 package controller.view;
 
 import java.net.URL;
+import java.util.LinkedList;
 import java.util.ResourceBundle;
 
 import controller.GameLoop;
@@ -15,7 +16,16 @@ import model.EnemyImpl;
 import model.PlayerImpl;
 import view.Renderer;
 
+
 public class ArenaViewController implements Initializable{
+	
+	public static final int ARENA_LIMIT_LEFT   = 258;
+    public static final int ARENA_LIMIT_RIGHT = 1054;
+    public static final int PLAYER_DEFAULT_SPEED = 20;
+    public static final int PLAYER_CENTER_X = 415;
+    public static final int PLAYER_CENTER_Y = 420;
+    public static final float PLAYER__DEFAULT_SCALE = 0.1f;
+
 	
     @FXML
     private AnchorPane arenaPane;
@@ -26,36 +36,36 @@ public class ArenaViewController implements Initializable{
     KeyPolling keys = KeyPolling.getInstance();
 
     private PlayerImpl player = new PlayerImpl(new Image(getClass().getResourceAsStream("/Player.png")));
-    private EnemyImpl enemy1 = new EnemyImpl(new Image(getClass().getResourceAsStream("/Enemy1.png")));
-    private EnemyImpl enemy2 = new EnemyImpl(new Image(getClass().getResourceAsStream("/Enemy1.png")));
-    private EnemyImpl enemy3 = new EnemyImpl(new Image(getClass().getResourceAsStream("/Enemy1.png")));
-    private EnemyImpl enemy4 = new EnemyImpl(new Image(getClass().getResourceAsStream("/Enemy1.png")));
-
+    LinkedList<EnemyImpl> enemies = new LinkedList<EnemyImpl>();
+    int spacing = 0;
+    
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         initialiseCanvas();
-
-        player.setDrawPosition(415, 420);
-        player.setScale(0.1f);
         
-        enemy1.setDrawPosition(0, 0);
-        enemy1.setScale(0.4f);
-        enemy2.setDrawPosition(50, 0);
-        enemy2.setScale(0.4f);
-        enemy3.setDrawPosition(100, 0);
-        enemy3.setScale(0.4f);
-        enemy4.setDrawPosition(150, 0);
-        enemy4.setScale(0.4f);
+        for(int i = 0; i <= 10; i ++) {
+        	enemies.add(new EnemyImpl(new Image(getClass().getResourceAsStream("/Enemy1.png"))));
+        }
+        
+        for(int i = 0; i <= 10; i ++) {
+        	enemies.get(i).setDrawPosition(spacing, 0);
+        	enemies.get(i).setScale(0.5f);
+        	spacing += 50;
+        }
+
+        player.setDrawPosition(PLAYER_CENTER_X, PLAYER_CENTER_Y);
+        player.setScale(PLAYER__DEFAULT_SCALE);
         
         Renderer renderer = new Renderer(this.gameCanvas);
         renderer.addEntity(player);
-        renderer.addEntity(enemy1);
-        renderer.addEntity(enemy2);
-        renderer.addEntity(enemy3);
-        renderer.addEntity(enemy4);
+        
+        for(int i = 0; i <= 10; i ++) {
+        	renderer.addEntity(enemies.get(i));
+        }
+        
         
 
         renderer.setBackground(new Image(getClass().getResourceAsStream("/backgroundGame.png")));
@@ -66,11 +76,10 @@ public class ArenaViewController implements Initializable{
                 renderer.prepare();
 
                 updatePlayerMovement(secondsSinceLastFrame);
-                enemy1.update();
-                enemy2.update();
-                enemy3.update();
-                enemy4.update();
-
+                
+                for(int i = 0; i <= 10; i ++) {
+                	enemies.get(i).update();
+                }
                 renderer.render();
             }
         };
@@ -86,11 +95,21 @@ public class ArenaViewController implements Initializable{
 
     private void updatePlayerMovement(float frameDuration) {
         if (keys.isDown(KeyCode.RIGHT)) {
-            player.addThrust(20 * frameDuration);
+        	if(player.getCenter().getX() > ARENA_LIMIT_RIGHT) {
+        		player.stop();
+        	}
+        	else {
+                player.addThrust(PLAYER_DEFAULT_SPEED * frameDuration);
+        	}
         } else if (keys.isDown(KeyCode.LEFT)) {
-            player.addThrust(-20 * frameDuration);
+        	if(player.getCenter().getX() < ARENA_LIMIT_LEFT) {
+        		player.stop();
+        	}
+        	else {
+                player.addThrust(-PLAYER_DEFAULT_SPEED * frameDuration);
+        	}
         } else if(keys.isDown(KeyCode.SPACE)) {
-        	player.shoot();
+        	
         } else if(keys.isDown(KeyCode.ESCAPE)) {
         	
         }

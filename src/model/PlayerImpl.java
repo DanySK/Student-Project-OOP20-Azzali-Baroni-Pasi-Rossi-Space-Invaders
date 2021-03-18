@@ -27,6 +27,7 @@ public class PlayerImpl implements Entity{
         return position;
     }
     
+    
     @Override
 	public void move(Point2D vector) {
         this.position = this.position.add(vector);
@@ -77,14 +78,13 @@ public class PlayerImpl implements Entity{
      ************************************************************ */
     private float MAX_SPEED = 5f;
     private Point2D currentThrustVector = new Point2D(0, 0);
-    private float currentTorqueForce = 0;
     
     
     public void addThrust(double scalar) {
-        addThrust(scalar, 0);
+        calculateThrust(scalar);
     }
     
-    private void addThrust(double scalar, double angle) {
+    private void calculateThrust(double scalar) {
         Point2D thrustVector = calculateNewThrustVector(scalar);
         currentThrustVector = currentThrustVector.add(thrustVector);
         currentThrustVector = clampToMaxSpeed(currentThrustVector);
@@ -104,10 +104,7 @@ public class PlayerImpl implements Entity{
     
     private void applyDrag() {
         float movementDrag = currentThrustVector.magnitude() < 0.5 ? 0.01f : 0.07f;
-        currentThrustVector = new Point2D(
-                reduceTowardsZero((float) currentThrustVector.getX(), movementDrag),
-                reduceTowardsZero((float) currentThrustVector.getY(), movementDrag));
-        currentTorqueForce = reduceTowardsZero(currentTorqueForce, 0);
+        currentThrustVector = new Point2D(reduceTowardsZero((float) currentThrustVector.getX(), movementDrag), reduceTowardsZero((float) currentThrustVector.getY(), movementDrag));
     }
     
     private float reduceTowardsZero(float value, float modifier) {
@@ -120,13 +117,14 @@ public class PlayerImpl implements Entity{
         return newValue;
     }
     
+    public void stop() {
+    	currentThrustVector = new Point2D(0, 0);
+    }
+	 
     @Override
 	public void update() {
         applyDrag();
         move(currentThrustVector);
     }
 
-	public void shoot() {
-	}
-	
 }

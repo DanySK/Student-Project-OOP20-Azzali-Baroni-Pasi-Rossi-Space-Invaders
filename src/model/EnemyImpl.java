@@ -11,7 +11,7 @@ public class EnemyImpl implements Entity{
     double height;
     Image enemyImage;
     
-    private Point2D movement = new Point2D(0, 0.2);
+    private Point2D movement = new Point2D(0.5, 0);
     
     
     public EnemyImpl(Image enemyImage) {
