@@ -1,29 +1,32 @@
 package model;
 
+import controller.KeyPolling;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
 
 public class PlayerImpl implements Entity{
 	
-	public static final int ARENA_LIMIT_LEFT   = 260;
-    public static final int ARENA_LIMIT_RIGHT = 1055;
+	public static final int ARENA_LIMIT_LEFT   = 50;
+    public static final int ARENA_LIMIT_RIGHT = 854;
+    public static final int PLAYER_DEFAULT_SPEED = 5;
+
 	
 	Point2D position;
     float scale = 1;
     double width;
     double height;
     Image playerImage;
-    
+
+	private boolean shooting = false;
+	
+    KeyPolling keys = KeyPolling.getInstance();
     
     public PlayerImpl(Image playerImage) {
         this.playerImage = playerImage;
         this.width = playerImage.getWidth();
         this.height = playerImage.getHeight();
     }
-    
-     /* **********************************************************
-     *                           POSITION                                     *
-     ************************************************************ */
     
     @Override
 	public Point2D getDrawPosition() {
@@ -75,8 +78,39 @@ public class PlayerImpl implements Entity{
 	public void update() {
     }
     
+    
     public void shoot() {
-    	System.out.println("SPARA");
+    	setShooting(true);
+    }
+
+	public boolean isShooting() {
+		return shooting;
+	}
+
+	public void setShooting(boolean shooting) {
+		this.shooting = shooting;
+	}
+	
+    public void updatePlayerMovement(float frameDuration) {
+        if (keys.isDown(KeyCode.RIGHT)) {
+        	if(getCenter().getX() > ARENA_LIMIT_RIGHT) {
+        	}
+        	else {
+                move(new Point2D(PLAYER_DEFAULT_SPEED, 0));
+        	}
+        }else if (keys.isDown(KeyCode.LEFT)) {
+        	if(getCenter().getX() < ARENA_LIMIT_LEFT) {
+        	}
+        	else {
+               move(new Point2D(-PLAYER_DEFAULT_SPEED, 0));
+        	}
+        } else if(keys.isDown(KeyCode.SPACE)) {
+        	shoot();
+        } else if(keys.isDown(KeyCode.ESCAPE)) {
+        	
+        }
+        
+        //player.update();
     }
 
 }

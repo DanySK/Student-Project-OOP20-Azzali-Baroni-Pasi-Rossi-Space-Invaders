@@ -10,6 +10,7 @@ public class EnemyImpl implements Entity{
     double width;
     double height;
     Image enemyImage;
+    int space = 25;
     
     private Point2D movement = new Point2D(0.5, 0);
     
@@ -33,7 +34,10 @@ public class EnemyImpl implements Entity{
 	@Override
 	public void setDrawPosition(float x, float y) {
 		this.position = new Point2D(x, y);
-		
+	}
+	
+	public void setLevelPosition(float y) {
+		this.position = new Point2D(0, y);
 	}
 
 	@Override
@@ -70,7 +74,13 @@ public class EnemyImpl implements Entity{
 
 	@Override
 	public void update() {
-		move(movement);
+		if(getCenter().getX() < 900) {
+			move(movement);
+		}
+		else {
+			setLevelPosition(space);
+			space += space;
+		}
 	}
 
 }
