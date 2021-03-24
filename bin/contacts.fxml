@@ -49,7 +49,7 @@
             </Label>
          </children>
       </VBox>
-      <Button fx:id="backButton" layoutX="337.0" layoutY="425.0" mnemonicParsing="false" onAction="#backC" prefHeight="25.0" prefWidth="181.0" text="Back">
+      <Button fx:id="backButton" layoutX="337.0" layoutY="415.0" mnemonicParsing="false" onAction="#backC" prefHeight="25.0" prefWidth="181.0" text="Back">
          <font>
             <Font name="Bauhaus 93" size="22.0" />
          </font>

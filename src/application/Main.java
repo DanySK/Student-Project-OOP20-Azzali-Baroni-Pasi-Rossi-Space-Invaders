@@ -20,7 +20,9 @@ public class Main extends Application {
 	public void start(final Stage primaryStage) throws Exception{
 		final Parent root = FXMLLoader.load(getClass().getResource(MENU));
         final Scene scene = new Scene(root, SCENE_WIDTH, SCENE_HEIGHT);
-
+        //scene.getStylesheets().add("menuStyle.css");
+        root.getStylesheets().add(getClass().getResource("/menuStyle.css").toExternalForm());
+        
         // Stage configuration
         primaryStage.setTitle(TITLE);
         primaryStage.setScene(scene);
