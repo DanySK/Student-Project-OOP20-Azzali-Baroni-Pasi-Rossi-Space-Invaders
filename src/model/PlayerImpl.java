@@ -1,5 +1,6 @@
 package model;
 
+import controller.GameLoop;
 import controller.KeyPolling;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
@@ -107,6 +108,16 @@ public class PlayerImpl implements Entity{
         } else if(keys.isDown(KeyCode.SPACE)) {
         	shoot();
         } else if(keys.isDown(KeyCode.ESCAPE)) {
+        	GameLoop timer = new GameLoop() {
+
+				@Override
+				public void tick(float secondsSinceLastFrame) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+        	};
+        	timer.pause();
         	
         }
         

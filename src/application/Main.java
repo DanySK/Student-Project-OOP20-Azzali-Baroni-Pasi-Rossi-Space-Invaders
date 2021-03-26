@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 
 
@@ -23,6 +24,7 @@ public class Main extends Application {
         //scene.getStylesheets().add("menuStyle.css");
         root.getStylesheets().add(getClass().getResource("/menuStyle.css").toExternalForm());
         
+        primaryStage.initStyle(StageStyle.UNDECORATED);
         // Stage configuration
         primaryStage.setTitle(TITLE);
         primaryStage.setScene(scene);

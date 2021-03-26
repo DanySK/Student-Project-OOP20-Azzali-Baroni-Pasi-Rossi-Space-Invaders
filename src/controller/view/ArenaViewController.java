@@ -79,11 +79,15 @@ public class ArenaViewController implements Initializable{
                 for(int i = 0; i <= ENEMIES_NUMBER; i ++) {
                 	enemies.get(i).update();
                 }
-
+                
                 renderer.render();
             }
         };
+        if(timer.isPaused() == false) {
+        	
+        }
         timer.start();
+        
     }
     
     
