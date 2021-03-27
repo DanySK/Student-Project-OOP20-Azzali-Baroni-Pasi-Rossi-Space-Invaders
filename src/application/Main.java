@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -16,6 +17,7 @@ public class Main extends Application {
     private static final int SCENE_HEIGHT = 480;
     private static final String MENU = "/menu.fxml";
     private static final String TITLE = "Space Invaders";
+    private static final String ICON ="/icon.png";
     
 	@Override
 	public void start(final Stage primaryStage) throws Exception{
@@ -25,6 +27,7 @@ public class Main extends Application {
         root.getStylesheets().add(getClass().getResource("/menuStyle.css").toExternalForm());
         
         primaryStage.initStyle(StageStyle.UNDECORATED);
+        primaryStage.getIcons().add(new Image(ICON));
         // Stage configuration
         primaryStage.setTitle(TITLE);
         primaryStage.setScene(scene);

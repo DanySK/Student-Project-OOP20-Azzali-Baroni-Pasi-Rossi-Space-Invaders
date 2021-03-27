@@ -34,6 +34,7 @@ public class ArenaViewController implements Initializable{
 
     private PlayerImpl player = new PlayerImpl(new Image(getClass().getResourceAsStream("/Player.png")));
     LinkedList<EnemyImpl> enemies = new LinkedList<EnemyImpl>();
+    boolean pause = false;
 
     int spacing = 0;
     
@@ -75,17 +76,16 @@ public class ArenaViewController implements Initializable{
                 renderer.prepare();
 
                 player.updatePlayerMovement(secondsSinceLastFrame);
+                if(pause == false) {
                 
                 for(int i = 0; i <= ENEMIES_NUMBER; i ++) {
                 	enemies.get(i).update();
                 }
                 
                 renderer.render();
+                }
             }
         };
-       //if(timer.isPaused() == false) {
-        	
-        //}
         timer.start();
         
     }
