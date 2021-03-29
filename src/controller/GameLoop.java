@@ -9,7 +9,7 @@ public abstract class GameLoop extends AnimationTimer{
 	long pauseStart;
     long animationStart;
     DoubleProperty animationDuration = new SimpleDoubleProperty(0L);
-    
+    private SpawnMeteors spawnmeteors;
 
     long lastFrameTimeNanos;
 
@@ -89,6 +89,10 @@ public abstract class GameLoop extends AnimationTimer{
             float secondsSinceLastFrame = (float) ((now - lastFrameTimeNanos) / 1e9);
             lastFrameTimeNanos = now;
             tick(secondsSinceLastFrame);
+            
+            this.spawnmeteors= new SpawnMeteors(this);
+            this.spawnmeteors.start();
+            
         }
     }
 
