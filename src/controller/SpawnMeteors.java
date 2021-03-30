@@ -1,3 +1,4 @@
+
 package controller;
 
 
@@ -7,10 +8,12 @@ public class SpawnMeteors extends Thread{
 	private static final int LIMIT = 18000;
 	private static final int SLEEP_TIME = 2000;
 	private double MeteorsSpawn;
+	private double BonusSpawn;
 	private GameLoop gameloop;
 	
 	public SpawnMeteors(final GameLoop gameloop) {
 		this.MeteorsSpawn = (Math.random() * LIMIT) + TIME;
+		this.BonusSpawn = (Math.random()*LIMIT)+ TIME;
 		this.gameloop = gameloop;
 		
 	}
@@ -24,6 +27,11 @@ public class SpawnMeteors extends Thread{
 		while(this.gameloop.isActive()) {
 			
 			try {
+				this.BonusSpawn -=TIME;
+				if(this.BonusSpawn < 0) {
+					System.out.println("ecco qua un bonus");
+                    this.BonusSpawn = (Math.random() * LIMIT) + TIME;
+				}
 				this.MeteorsSpawn -= TIME;
 				if(this.MeteorsSpawn < 0) {
 					System.out.println("ecco qua una meteoraaaa");
