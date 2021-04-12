@@ -2,6 +2,9 @@
 package controller;
 
 
+import javafx.scene.image.Image;
+import model.MeteorImpl;
+
 public class SpawnMeteors extends Thread{
 
 	private static final int TIME = 2;
@@ -10,6 +13,8 @@ public class SpawnMeteors extends Thread{
 	private double MeteorsSpawn;
 	private double BonusSpawn;
 	private GameLoop gameloop;
+	private MeteorController meteorController = new MeteorController();
+	private Image m= new Image(getClass().getResourceAsStream("/meteorBrown_big1.png"));
 	
 	public SpawnMeteors(final GameLoop gameloop) {
 		this.MeteorsSpawn = (Math.random() * LIMIT) + TIME;
@@ -34,7 +39,7 @@ public class SpawnMeteors extends Thread{
 				}
 				this.MeteorsSpawn -= TIME;
 				if(this.MeteorsSpawn < 0) {
-					System.out.println("ecco qua una meteoraaaa");
+					meteorController.addMeteor(new MeteorImpl(this.m));
 					this.MeteorsSpawn = (Math.random() * LIMIT) + TIME;
 				}
 				Thread.sleep(SLEEP_TIME);

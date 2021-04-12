@@ -15,6 +15,8 @@ public class MeteorImpl implements Meteor{
 	double height;
 	Image MeteorImage;
 	
+	private Point2D movement= new Point2D(0, 1);
+	
 	public MeteorImpl(Image meteorImage) {
 		this.MeteorImage = meteorImage;
 		this.width = meteorImage.getWidth();
@@ -82,6 +84,9 @@ public class MeteorImpl implements Meteor{
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
+		if(getCenter().getX() < 900) {
+			move(movement);
+		}
 		
 	}
 

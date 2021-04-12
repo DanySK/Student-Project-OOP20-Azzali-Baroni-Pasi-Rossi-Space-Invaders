@@ -6,12 +6,14 @@ import java.util.ResourceBundle;
 
 import controller.GameLoop;
 import controller.KeyPolling;
+import controller.MeteorController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import model.EnemyImpl;
+import model.MeteorImpl;
 import model.PlayerImpl;
 import view.Renderer;
 
@@ -33,7 +35,7 @@ public class ArenaViewController implements Initializable{
     KeyPolling keys = KeyPolling.getInstance();
 
     private PlayerImpl player = new PlayerImpl(new Image(getClass().getResourceAsStream("/Player.png")));
-    LinkedList<EnemyImpl> enemies = new LinkedList<EnemyImpl>();
+    LinkedList<EnemyImpl> enemies = new LinkedList<EnemyImpl>(); 
     boolean pause = false;
 
     int spacing = 0;
@@ -44,10 +46,11 @@ public class ArenaViewController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
 
         initialiseCanvas();
+        Renderer renderer = new Renderer(this.gameCanvas);
         
         player.setDrawPosition(PLAYER_CENTER_X, PLAYER_CENTER_Y);
         player.setScale(PLAYER__DEFAULT_SCALE);
-        
+
         for(int i = 0; i <= ENEMIES_NUMBER; i ++) {
         	enemies.add(new EnemyImpl(new Image(getClass().getResourceAsStream("/Enemy1.png"))));
         }
@@ -59,7 +62,7 @@ public class ArenaViewController implements Initializable{
         	spacing += 25;
         }
         
-        Renderer renderer = new Renderer(this.gameCanvas);
+        
         
         renderer.addEntity(player);
         
@@ -68,6 +71,7 @@ public class ArenaViewController implements Initializable{
         }
 
 
+        
         renderer.setBackground(new Image(getClass().getResourceAsStream("/backgroundGame.png")));
 
         GameLoop timer = new GameLoop() {
@@ -83,6 +87,7 @@ public class ArenaViewController implements Initializable{
                 }
                 
                 }
+
                 renderer.render();
                 
             }
