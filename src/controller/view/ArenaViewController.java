@@ -4,18 +4,12 @@ import java.net.URL;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
 import controller.GameLoop;
-<<<<<<< HEAD
-import controller.KeyPolling;
-import controller.MeteorController;
-=======
->>>>>>> 456f447758455b84704311acb7bee7a4af2864c2
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import model.EnemyImpl;
-import model.MeteorImpl;
 import model.PlayerImpl;
 import view.Renderer;
 
@@ -35,7 +29,7 @@ public class ArenaViewController implements Initializable{
     private Canvas gameCanvas;
 
     private PlayerImpl player = new PlayerImpl(new Image(getClass().getResourceAsStream("/Player.png")));
-    LinkedList<EnemyImpl> enemies = new LinkedList<EnemyImpl>(); 
+    LinkedList<EnemyImpl> enemies = new LinkedList<EnemyImpl>();
     boolean pause = false;
 
     int spacing = 0;
@@ -45,11 +39,10 @@ public class ArenaViewController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
 
         initialiseCanvas();
-        Renderer renderer = new Renderer(this.gameCanvas);
         
         player.setDrawPosition(PLAYER_CENTER_X, PLAYER_CENTER_Y);
         player.setScale(PLAYER__DEFAULT_SCALE);
-
+        
         for(int i = 0; i <= ENEMIES_NUMBER; i ++) {
         	enemies.add(new EnemyImpl(new Image(getClass().getResourceAsStream("/Enemy1.png"))));
         }
@@ -59,13 +52,8 @@ public class ArenaViewController implements Initializable{
         	enemies.get(i).setDrawPosition((float) Math.random() * 900, 100);
         	enemies.get(i).setScale(0.2f);
         }
-<<<<<<< HEAD
-        
-        
-=======
 
         Renderer renderer = new Renderer(this.gameCanvas);
->>>>>>> 456f447758455b84704311acb7bee7a4af2864c2
         
         renderer.addEntity(player);
         
@@ -74,7 +62,6 @@ public class ArenaViewController implements Initializable{
         }
         
 
-        
         renderer.setBackground(new Image(getClass().getResourceAsStream("/backgroundGame.png")));
 
         GameLoop timer = new GameLoop() {
@@ -94,17 +81,16 @@ public class ArenaViewController implements Initializable{
                 }
                 
                 }
-<<<<<<< HEAD
-
-=======
                 
->>>>>>> 456f447758455b84704311acb7bee7a4af2864c2
                 renderer.render();
                 
             }
         };
         timer.start();
-        
+        if (pause==false) {
+     	   timer.pause();
+     	  
+        }
     }
     
     
