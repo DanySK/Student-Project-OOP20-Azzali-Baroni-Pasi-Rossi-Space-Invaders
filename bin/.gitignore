@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /model/
 <<<<<<< HEAD
 /view/
@@ -8,3 +9,24 @@
 /controller/
 >>>>>>> 456f447758455b84704311acb7bee7a4af2864c2
 /application/
+=======
+/BackgroundMenu.jpg
+/BlueBullet.png
+/Enemy1.png
+/Enemy2.png
+/Enemy3.png
+/Player.png
+/Player1.png
+/application/
+/arena.fxml
+/backgroundGame.png
+/contacts.fxml
+/controller/
+/icon.png
+/menu.fxml
+/menuStyle.css
+/model/
+/pill_blue.png
+/scoreBoard.fxml
+/view/
+>>>>>>> abfa72e8a1bf0141f7c0451847f2867b98e3b7f9

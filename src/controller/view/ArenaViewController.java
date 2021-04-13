@@ -60,7 +60,6 @@ public class ArenaViewController implements Initializable{
         for(int i = 0; i <= ENEMIES_NUMBER; i ++) {
         	renderer.addEntity(enemies.get(i));
         }
-        
 
         renderer.setBackground(new Image(getClass().getResourceAsStream("/backgroundGame.png")));
 
