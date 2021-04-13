@@ -1,7 +1,9 @@
-/application/
-/controller/
 /model/
+<<<<<<< HEAD
 /view/
 /pill_blue.png
 /icon.png
 /meteorBrown_big1.png
+=======
+/controller/
+>>>>>>> 456f447758455b84704311acb7bee7a4af2864c2

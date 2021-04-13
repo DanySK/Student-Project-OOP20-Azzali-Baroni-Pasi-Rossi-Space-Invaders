@@ -1,6 +1,7 @@
 package model;
 
-import controller.GameLoop;
+import java.util.LinkedList;
+
 import controller.KeyPolling;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
@@ -11,6 +12,8 @@ public class PlayerImpl implements Entity{
 	public static final int ARENA_LIMIT_LEFT   = 50;
     public static final int ARENA_LIMIT_RIGHT = 854;
     public static final int PLAYER_DEFAULT_SPEED = 5;
+    public static final int BULLETS_NUMBER = 15;
+
 
 	
 	Point2D position;
@@ -18,10 +21,13 @@ public class PlayerImpl implements Entity{
     double width;
     double height;
     Image playerImage;
+    
+    LinkedList<BulletImpl> bullets = new LinkedList<BulletImpl>();
 
-	private boolean shooting = false;
+
 	
     KeyPolling keys = KeyPolling.getInstance();
+    
     
     public PlayerImpl(Image playerImage) {
         this.playerImage = playerImage;
@@ -81,16 +87,18 @@ public class PlayerImpl implements Entity{
     
     
     public void shoot() {
-    	setShooting(true);
+        for(int i = 0; i <= BULLETS_NUMBER; i ++) {
+        	bullets.add(new BulletImpl(new Image(getClass().getResourceAsStream("/BlueBullet.png"))));
+        }
+        
+        for(int i = 0; i <= BULLETS_NUMBER; i ++) {
+        	bullets.get(i).setDrawPosition(((float) getCenter().getX()), (float) getCenter().getY());
+        	bullets.get(i).setScale(0.2f);
+        }
+        
+        
     }
 
-	public boolean isShooting() {
-		return shooting;
-	}
-
-	public void setShooting(boolean shooting) {
-		this.shooting = shooting;
-	}
 	
     public void updatePlayerMovement(float frameDuration) {
         if (keys.isDown(KeyCode.RIGHT)) {

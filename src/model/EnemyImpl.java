@@ -12,8 +12,11 @@ public class EnemyImpl implements Entity{
     Image enemyImage;
     int space = 25;
     
-    private Point2D movement = new Point2D(0.5, 0);
+    private Point2D movement = new Point2D(0, 0.3);
     
+    boolean destra = true;
+    boolean sinistra = false;
+    boolean verso = destra;
     
     public EnemyImpl(Image enemyImage) {
         this.enemyImage = enemyImage;
@@ -26,11 +29,15 @@ public class EnemyImpl implements Entity{
 		return position;
 	}
 	
+	public void setPosition(Point2D position) {
+		this.position = position;
+	}
+
 	@Override
 	public void move(Point2D vector) {
 		this.position = this.position.add(vector);
-	}
-	
+	}	
+
 	@Override
 	public void setDrawPosition(float x, float y) {
 		this.position = new Point2D(x, y);
@@ -39,7 +46,7 @@ public class EnemyImpl implements Entity{
 	public void setLevelPosition(float y) {
 		this.position = new Point2D(0, y);
 	}
-
+	
 	@Override
 	public float getScale() {
 		return scale;
@@ -74,13 +81,7 @@ public class EnemyImpl implements Entity{
 
 	@Override
 	public void update() {
-		if(getCenter().getX() < 900) {
-			move(movement);
-		}
-		else {
-			setLevelPosition(space);
-			space += space;
-		}
+		move(movement);
 	}
 
 }
