@@ -23,8 +23,7 @@ public class PlayerImpl implements Entity{
     Image playerImage;
     
     LinkedList<BulletImpl> bullets = new LinkedList<BulletImpl>();
-
-
+    BulletImpl bullet = new BulletImpl(new Image(getClass().getResourceAsStream("/Player.png")));
 	
     KeyPolling keys = KeyPolling.getInstance();
     
@@ -80,23 +79,18 @@ public class PlayerImpl implements Entity{
 	public double getHeight() {
         return this.height * getScale();
     }
+    
 	 
-    @Override
+    public LinkedList<BulletImpl> getBullets() {
+		return bullets;
+	}
+
+	@Override
 	public void update() {
     }
     
     
     public void shoot() {
-        for(int i = 0; i <= BULLETS_NUMBER; i ++) {
-        	bullets.add(new BulletImpl(new Image(getClass().getResourceAsStream("/BlueBullet.png"))));
-        }
-        
-        for(int i = 0; i <= BULLETS_NUMBER; i ++) {
-        	bullets.get(i).setDrawPosition(((float) getCenter().getX()), (float) getCenter().getY());
-        	bullets.get(i).setScale(0.2f);
-        }
-        
-        
     }
 
 	

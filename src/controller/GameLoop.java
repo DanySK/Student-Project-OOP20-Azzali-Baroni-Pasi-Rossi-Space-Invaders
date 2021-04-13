@@ -1,100 +1,135 @@
 package controller;
 
-import javafx.animation.AnimationTimer;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
+import java.lang.reflect.InvocationTargetException;
 
-public abstract class GameLoop extends AnimationTimer{
+import javax.swing.SwingUtilities;
 
-	long pauseStart;
-    long animationStart;
-    DoubleProperty animationDuration = new SimpleDoubleProperty(0L);
-    private SpawnMeteors spawnmeteors;
+import game.Game;
+import game.GameMode;
+import game.GameStatus;
+import view.EndScreen;
+import view.MenuPanel;
+import view.View;
+import view.MenuPanel.MenuType;
 
-    long lastFrameTimeNanos;
-
-    boolean isPaused;
-    boolean isActive;
-
-    boolean pauseScheduled;
-    boolean playScheduled;
-    boolean restartScheduled;
-
-    public boolean isPaused() {
-        return isPaused;
+public final class GameLoop implements Runnable{
+	
+	public static final int FPS = 60;
+	private static final double NANOSECONDS_FRAME = 1000000000 / FPS;
+	private static final int NANO_MILLISECONDS = 1000000;
+	
+	private volatile GameStatus gameStatus;
+    //private final Game game;
+    //private final View view;
+    //private final HighscoreManager highscore;
+    private final KeyInput input;
+    //private final MenuPanel pauseMenu;
+	
+    
+    public GameLoop(final Game game, final View view, final HighscoreManager highscore, final KeyInput input) {
+        this.game = game;
+        //this.view = view;
+        //this.highscore = highscore;
+        this.input = input;
+        this.state = GameStatus.READY;
+        //this.pauseMenu = new MenuPanel(view, MenuType.Pause);
     }
-
-    public boolean isActive() {
-        return isActive;
-    }
-
-    public DoubleProperty animationDurationProperty() {
-        return animationDuration;
-    }
-
-    public void pause() {
-        if (!isPaused) {
-            pauseScheduled = true;
+	
+	
+	
+	public synchronized void start() {
+		final Thread thread;
+		thread = new Thread(this);
+        if (this.gameStatus.equals(GameStatus.READY)) {
+            thread.start();
+            this.gameStatus = GameStatus.RUNNING;
         }
-    }
+	}
+	
+	public synchronized void stop() {
+		this.gameStatus = GameStatus.PAUSED;
+	}
+	
+	@Override
+	public void run() {
+		long lastTime = System.nanoTime();
+        double delta = 0;
+        long timer = System.currentTimeMillis();
+        int frames = 0;
 
-    public void play() {
-        if (isPaused) {
-            playScheduled = true;
-        }
-    }
-
-    @Override
-    public void start() {
-        super.start();
-        isActive = true;
-        restartScheduled = true;
-    }
-
-    @Override
-    public void stop() {
-        super.stop();
-        pauseStart = 0;
-        isPaused = false;
-        isActive = false;
-        pauseScheduled = false;
-        playScheduled = false;
-        animationDuration.set(0);
-    }
-
-    @Override
-    public void handle(long now) {
-        if (pauseScheduled) {
-            pauseStart = now;
-            isPaused = true;
-            pauseScheduled = false;
-        }
-
-        if (playScheduled) {
-            animationStart += (now - pauseStart);
-            isPaused = false;
-            playScheduled = false;
-        }
-
-        if (restartScheduled) {
-            isPaused = false;
-            animationStart = now;
-            restartScheduled = false;
-        }
-
-        if (!isPaused) {
-            long animDuration = now - animationStart;
-            animationDuration.set(animDuration / 1e9);
-
-            float secondsSinceLastFrame = (float) ((now - lastFrameTimeNanos) / 1e9);
-            lastFrameTimeNanos = now;
-            tick(secondsSinceLastFrame);
+        while (!this.gameStatus.equals(GameStatus.ENDED)) {
+            if (this.gameStatus.equals(GameStatus.PAUSED)) {
+                //this.view.switchWindow(this.pauseMenu, MenuPanel.TITLE_PAUSE);
+            }
+            while (this.gameStatus.equals(GameStatus.PAUSED)) {
+                try {
+                    Thread.sleep((long) (NANOSECONDS_FRAME / NANO_MILLISECONDS));
+                } catch (InterruptedException e) {
+                    System.out.println(e.getMessage());
+                }
+                lastTime = System.nanoTime();
+            }
+            final long now = System.nanoTime();
+            delta += (now - lastTime) / NANOSECONDS_FRAME;
+            lastTime = now;
+            while (delta >= 1) {
+                this.input.update();
+                this.game.update();
+                this.game.checkCollisions();
+                delta -= 1;
+            }
+            try {
+                SwingUtilities.invokeAndWait(new Runnable() {
+                    public void run() {
+                        //GameLoop.this.view.draw(GameLoop.this.game.getEntities(), GameLoop.this.game.getScore(), GameLoop.this.game.getLevel());
+                    }
+                });
+            } catch (InvocationTargetException | InterruptedException e1) {
+                e1.printStackTrace();
+            }
             
-            this.spawnmeteors= new SpawnMeteors(this);
-            this.spawnmeteors.start();
-            
+            if (!this.game.getState().equals(GameStatus.RUNNING)) {
+                this.gameStatus = GameStatus.ENDED;
+            }
+            frames++;
+            if (lastTime - System.nanoTime() + NANOSECONDS_FRAME > 0) {
+                try {
+                    Thread.sleep((long) (lastTime - System.nanoTime() + NANOSECONDS_FRAME) / NANO_MILLISECONDS);
+                } catch (Exception e) {
+                    this.gameStatus = GameStatus.ENDED;
+                }
+            }
+            if (System.currentTimeMillis() - timer > 1000) {
+                timer += 1000;
+                //System.out.println("FPS:" + frames);
+                frames = 0;
+            }
         }
+            //this.highscore.checkHighscores(game.getScore());
+        try {
+            SwingUtilities.invokeAndWait(new Runnable() {
+                public void run() {
+                    //GameLoop.this.view.switchWindow(new EndScreen(GameLoop.this.game.getMode(), 
+                            //GameLoop.this.game.getPlayer(), GameLoop.this.game.getScore(), GameLoop.this.view), EndScreen.TITLE);
+                }
+            });
+        } catch (InvocationTargetException | InterruptedException e) {
+            e.printStackTrace();
+        }
+	}
+	
+	 /**
+     * Aborts the gameLoop.
+     */
+    public void abort() {
+        this.gameStatus = GameStatus.ENDED;
     }
 
-    public abstract void tick(float secondsSinceLastFrame);
+    /**
+     * Resumes the gameLoop.
+     */
+    public void resume() {
+        this.gameStatus = GameStatus.RUNNING;
+    }
+	
 }
