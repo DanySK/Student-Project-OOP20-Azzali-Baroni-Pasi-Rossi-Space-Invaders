@@ -1,7 +1,8 @@
 package model;
 
+import java.util.LinkedList;
+
 import controller.KeyPolling;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
@@ -11,6 +12,8 @@ public class PlayerImpl implements Entity{
 	public static final int ARENA_LIMIT_LEFT   = 50;
     public static final int ARENA_LIMIT_RIGHT = 854;
     public static final int PLAYER_DEFAULT_SPEED = 5;
+    public static final int BULLETS_NUMBER = 15;
+
 
 	
 	Point2D position;
@@ -18,11 +21,13 @@ public class PlayerImpl implements Entity{
     double width;
     double height;
     Image playerImage;
+    
+    LinkedList<BulletImpl> bullets = new LinkedList<BulletImpl>();
+
 
 	
     KeyPolling keys = KeyPolling.getInstance();
     
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("arena.fxml"));
     
     public PlayerImpl(Image playerImage) {
         this.playerImage = playerImage;
@@ -82,7 +87,16 @@ public class PlayerImpl implements Entity{
     
     
     public void shoot() {
-    	
+        for(int i = 0; i <= BULLETS_NUMBER; i ++) {
+        	bullets.add(new BulletImpl(new Image(getClass().getResourceAsStream("/BlueBullet.png"))));
+        }
+        
+        for(int i = 0; i <= BULLETS_NUMBER; i ++) {
+        	bullets.get(i).setDrawPosition(((float) getCenter().getX()), (float) getCenter().getY());
+        	bullets.get(i).setScale(0.2f);
+        }
+        
+        
     }
 
 	
