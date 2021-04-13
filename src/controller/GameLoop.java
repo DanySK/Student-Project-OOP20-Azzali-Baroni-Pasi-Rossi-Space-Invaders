@@ -22,7 +22,7 @@ public final class GameLoop implements Runnable{
     //private final Game game;
     //private final View view;
     //private final HighscoreManager highscore;
-    private final KeyInput input;
+    //private final KeyInput input;
     //private final MenuPanel pauseMenu;
 	
     
