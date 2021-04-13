@@ -1,6 +1,7 @@
 package model;
 
 import javafx.geometry.Point2D;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 
 public class BulletImpl implements Entity{
@@ -71,6 +72,10 @@ public class BulletImpl implements Entity{
 	@Override
 	public void update() {
 		move(movement);
+	}
+	
+	public void drawBullet(Canvas c, Point2D pos) {
+		c.getGraphicsContext2D().drawImage(bulletImage, pos.getX(), pos.getY());
 	}
 
 }

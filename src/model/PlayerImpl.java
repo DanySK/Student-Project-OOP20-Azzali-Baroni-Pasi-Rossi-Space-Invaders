@@ -1,7 +1,7 @@
 package model;
 
-import controller.GameLoop;
 import controller.KeyPolling;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
@@ -19,9 +19,10 @@ public class PlayerImpl implements Entity{
     double height;
     Image playerImage;
 
-	private boolean shooting = false;
 	
     KeyPolling keys = KeyPolling.getInstance();
+    
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("arena.fxml"));
     
     public PlayerImpl(Image playerImage) {
         this.playerImage = playerImage;
@@ -81,16 +82,9 @@ public class PlayerImpl implements Entity{
     
     
     public void shoot() {
-    	setShooting(true);
+    	
     }
 
-	public boolean isShooting() {
-		return shooting;
-	}
-
-	public void setShooting(boolean shooting) {
-		this.shooting = shooting;
-	}
 	
     public void updatePlayerMovement(float frameDuration) {
         if (keys.isDown(KeyCode.RIGHT)) {
