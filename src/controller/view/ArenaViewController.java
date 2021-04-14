@@ -86,7 +86,10 @@ public class ArenaViewController implements Initializable{
             }
         };
         timer.start();
-        
+        if (pause==false) {
+     	   timer.pause();
+     	  
+        }
     }
     
     
