@@ -11,11 +11,17 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import controller.view.ViewObserver;
+import model.Entity;
 import view.MenuP.MenuState;
 
 public class ViewImpl extends JFrame implements View{
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public static final int SCREEN_WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width / 6*5;
 	
 	public static final int SCREEN_HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height /6*5;

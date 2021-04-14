@@ -1,8 +1,11 @@
 package view;
 
+import java.util.List;
+
 import javax.swing.JPanel;
 
 import controller.view.ViewObserver;
+import model.Entity;
 
 public interface View {
 
