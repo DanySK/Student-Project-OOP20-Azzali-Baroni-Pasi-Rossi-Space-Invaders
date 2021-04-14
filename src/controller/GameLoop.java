@@ -6,7 +6,7 @@ import javax.swing.SwingUtilities;
 
 import game.Game;
 import game.GameMode;
-import game.GameStatus;
+import controller.GameStatus;
 import view.EndScreen;
 import view.MenuPanel;
 import view.View;
