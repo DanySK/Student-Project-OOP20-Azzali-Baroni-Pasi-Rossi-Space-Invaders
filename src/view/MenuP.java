@@ -13,8 +13,8 @@ public class MenuP extends GameP{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private final GameP PlayerView;
-	private final GameP ScoreView;
+	//private final GameP PlayerView;
+	//private final GameP ScoreView;
 	private final MenuState menuState;
 	
 	public static final String PAUSE_T="Pause";
@@ -52,11 +52,11 @@ public class MenuP extends GameP{
 			if(this.menuState == MenuState.Pause) {
 				this.getView().getObserver().update(this, StateV.ABORT);
 			}else {
-				this.PlayerView.display();
+				//this.PlayerView.display();
 			}
 		});
 		this.prepareButton("Score",this).addActionListener(e ->{
-			this.ScoreView.display();
+			//this.ScoreView.display();
 		});		
 		
 		this.prepareButton("Help", this).addActionListener(e ->{
