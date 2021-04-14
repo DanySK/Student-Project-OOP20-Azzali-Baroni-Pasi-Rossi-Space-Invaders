@@ -38,7 +38,7 @@ public interface Entity {
   
   // Setta l'Hitbox dell'oggetto//
   
-  void serHitbox(Rectangle hitbox);
+  void setHitbox(Rectangle hitbox);
   
   // Setta un oggetto come morto//
   
