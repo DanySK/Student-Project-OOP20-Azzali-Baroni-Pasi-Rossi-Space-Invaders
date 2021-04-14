@@ -6,7 +6,7 @@ import javax.swing.SwingUtilities;
 
 import game.Game;
 import game.GameMode;
-import game.GameStatus;
+import controller.GameStatus;
 import view.EndScreen;
 import view.MenuPanel;
 import view.View;
@@ -22,7 +22,7 @@ public final class GameLoop implements Runnable{
     //private final Game game;
     //private final View view;
     //private final HighscoreManager highscore;
-    //private final KeyInput input;
+    private final KeyInput input;
     //private final MenuPanel pauseMenu;
 	
     

@@ -1,5 +1,8 @@
 package application;
 	
+import javax.swing.SwingUtilities;
+
+import controller.Controller;
 import controller.KeyPolling;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -8,12 +11,13 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import view.View;
 
 
 
-public class Main extends Application {
+public class Main {
 	
-    private static final int SCENE_WIDTH = 854;
+    /*private static final int SCENE_WIDTH = 854;
     private static final int SCENE_HEIGHT = 480;
     private static final String MENU = "/menu.fxml";
     private static final String TITLE = "Space Invaders";
@@ -39,5 +43,25 @@ public class Main extends Application {
 	
 	public static void main(String[] args) {
 		launch(args);
+	}*/
+	
+	public void main(final String[] args) {
+		//ImageLoader.getLoader().findImages();
+		//FontLoader.loadFont();
+		final Controller controller = new ControllerImpl();
+		final View view = new ViewImpl();
+		view.attach(controller);
+		SwingUtilities.invokeLater(new Runnable() {
+
+			@Override
+			public void run() {
+				view.start();
+				
+			}
+			
+		});
+		
 	}
+
+	
 }
