@@ -1,119 +1,104 @@
 package model;
 
-import java.util.LinkedList;
+import java.awt.Rectangle;
 
-import controller.KeyPolling;
-import javafx.geometry.Point2D;
-import javafx.scene.image.Image;
-import javafx.scene.input.KeyCode;
-
-public class PlayerImpl implements Entity{
-	
-	public static final int ARENA_LIMIT_LEFT   = 50;
-    public static final int ARENA_LIMIT_RIGHT = 854;
-    public static final int PLAYER_DEFAULT_SPEED = 5;
-    public static final int BULLETS_NUMBER = 15;
+import utility.Clamp;
+import utility.Pair;
 
 
-	
-	Point2D position;
-    float scale = 1;
-    double width;
-    double height;
-    Image playerImage;
+public final class PlayerImpl extends EntityImpl implements Player{
+
+	private static final int DAMAGE_MULTIPLIER = 2;
+    private static final int WIDTH = GameImpl.ARENA_WIDTH / 20;
+    private static final int HEIGHT = WIDTH + WIDTH / 100;
+    private static final int DEFINITLY_NOT_SHOT_COOLDOWN = 20;
+    private int health = 100;
+    private int shootCD = DEFINITLY_NOT_SHOT_COOLDOWN;
+    private int shotReady;
+    private int shield;
     
-    LinkedList<BulletImpl> bullets = new LinkedList<BulletImpl>();
-    BulletImpl bullet = new BulletImpl(new Image(getClass().getResourceAsStream("/Player.png")));
-	
-    KeyPolling keys = KeyPolling.getInstance();
+    private final GameImpl gameImpl;
     
-    
-    public PlayerImpl(Image playerImage) {
-        this.playerImage = playerImage;
-        this.width = playerImage.getWidth();
-        this.height = playerImage.getHeight();
-    }
-    
-    @Override
-	public Point2D getDrawPosition() {
-        return position;
-    }
-    
-    @Override
-	public void move(Point2D movement) {
-        this.position = this.position.add(movement);
+    public PlayerImpl(final ID id, final GameImpl gameImpl) {
+    	super(new Pair<Integer, Integer>(GameImpl.ARENA_WIDTH / 2, GameImpl.ARENA_HEIGHT / 4 * 3), 0, 0, id);
+    	this.gameImpl = gameImpl;
     }
 
-    @Override
-	public void setDrawPosition(float x, float y) {
-        this.position = new Point2D(x, y);
-    }
+	@Override
+	public int getHealth() {
+		// TODO Auto-generated method stub
+		return this.health;
+	}
 
-    @Override
-	public float getScale() {
-        return scale;
-    }
-    
-    @Override
-	public Point2D getCenter() {
-        Point2D pos = getDrawPosition();
-        return new Point2D(pos.getX() + width / 2, pos.getY() + height / 2);
-    }
-    
-    @Override
-	public Image getImage() {
-        return playerImage;
-    }
-    
-    @Override
-	public void setScale(float scale) {
-        this.scale = scale;
-    }
-    
-    @Override
-	public double getWidth() {
-        return this.width * getScale();
-    }
-    
-    @Override
-	public double getHeight() {
-        return this.height * getScale();
-    }
-    
-	 
-    public LinkedList<BulletImpl> getBullets() {
-		return bullets;
+	@Override
+	public void setHealth(int lifePoints) {
+		this.health = lifePoints;
+	}
+
+	@Override
+	public int getCoolDown() {
+		// TODO Auto-generated method stub
+		return this.shootCD;
+	}
+
+	@Override
+	public void setCoolDown(int coolDown) {
+		this.shootCD = coolDown;
+	}
+
+	@Override
+	public int getShield() {
+		// TODO Auto-generated method stub
+		return this.shield;
+	}
+
+	@Override
+	public void setSHield(int shieldLife) {
+		this.shield = shieldLife;		
+	}
+
+	@Override
+	public int getShotReady() {
+		// TODO Auto-generated method stub
+		return this.shotReady;
+	}
+
+	@Override
+	public void setShotready(int time) {
+		this.shotReady = time;
+	}
+
+	@Override
+	public void resetPosition() {
+		this.setPosition(new Pair<Integer, Integer>(GameImpl.ARENA_WIDTH / 2, GameImpl.ARENA_HEIGHT / 2));
 	}
 
 	@Override
 	public void update() {
-    }
-    
-    
-    public void shoot() {
-    }
+		this.getPosition().setX(this.getPosition().getX() + this.getSpeed().getX());
+		this.getPosition().setY(this.getPosition().getY() + this.getSpeed().getY());
+		
+		this.getPosition().setX(Clamp.clamp(this.getPosition().getX(), WIDTH / 2, GameImpl.ARENA_WIDTH - WIDTH / 2));
+        this.getPosition().setY(Clamp.clamp(this.getPosition().getY(), HEIGHT / 2, GameImpl.ARENA_HEIGHT - HEIGHT / 2));
 
-	
-    public void updatePlayerMovement(float frameDuration) {
-        if (keys.isDown(KeyCode.RIGHT)) {
-        	if(getCenter().getX() > ARENA_LIMIT_RIGHT) {
-        	}
-        	else {
-                move(new Point2D(PLAYER_DEFAULT_SPEED, 0));
-        	}
-        }else if (keys.isDown(KeyCode.LEFT)) {
-        	if(getCenter().getX() < ARENA_LIMIT_LEFT) {
-        	}
-        	else {
-               move(new Point2D(-PLAYER_DEFAULT_SPEED, 0));
-        	}
-        } else if(keys.isDown(KeyCode.SPACE)) {
-        	shoot();
-        } else if(keys.isDown(KeyCode.ESCAPE)) {
-        	
+    this.setHitbox(new Rectangle(this.getPosition().getX() - WIDTH / 2, this.getPosition().getY() - HEIGHT / 2, WIDTH, HEIGHT));
+	}
+
+	@Override
+	public void collide(Entity entity) {
+		if (this.shield == 0) {
+			this.health -= DAMAGE_MULTIPLIER * gameImpl.getLevel();
+		} else if (this.shield > 0 && this.shield < DAMAGE_MULTIPLIER * gameImpl.getLevel()) {
+            final int tempDamageOverShieldValue = DAMAGE_MULTIPLIER * gameImpl.getLevel() - this.shield;
+            this.health -= tempDamageOverShieldValue;
+            this.shield = 0;
+        } else {
+            this.shield -= DAMAGE_MULTIPLIER * gameImpl.getLevel();
         }
-        
-        //player.update();
-    }
-
+		
+		if (this.health <= 0) {
+        this.setDead();
+        }
+	}
+	
 }

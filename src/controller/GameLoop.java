@@ -4,13 +4,11 @@ import java.lang.reflect.InvocationTargetException;
 
 import javax.swing.SwingUtilities;
 
-import game.Game;
-import game.GameMode;
-import controller.GameStatus;
-import view.EndScreen;
-import view.MenuPanel;
+import model.Game;
+import model.GameStatus;
 import view.View;
-import view.MenuPanel.MenuType;
+
+
 
 public final class GameLoop implements Runnable{
 	
@@ -18,11 +16,11 @@ public final class GameLoop implements Runnable{
 	private static final double NANOSECONDS_FRAME = 1000000000 / FPS;
 	private static final int NANO_MILLISECONDS = 1000000;
 	
-	private volatile GameStatus gameStatus;
-    //private final Game game;
+	private volatile GameLoopStatus gameLoopStatus;
+    private final Game game;
     //private final View view;
     //private final HighscoreManager highscore;
-    private final KeyInput input;
+    //private final KeyInput input;
     //private final MenuPanel pauseMenu;
 	
     
@@ -30,8 +28,8 @@ public final class GameLoop implements Runnable{
         this.game = game;
         //this.view = view;
         //this.highscore = highscore;
-        this.input = input;
-        this.state = GameStatus.READY;
+        //this.input = input;
+        this.gameLoopStatus = GameLoopStatus.READY;
         //this.pauseMenu = new MenuPanel(view, MenuType.Pause);
     }
 	
@@ -40,14 +38,14 @@ public final class GameLoop implements Runnable{
 	public synchronized void start() {
 		final Thread thread;
 		thread = new Thread(this);
-        if (this.gameStatus.equals(GameStatus.READY)) {
+        if (this.gameLoopStatus.equals(GameLoopStatus.READY)) {
             thread.start();
-            this.gameStatus = GameStatus.RUNNING;
+            this.gameLoopStatus = GameLoopStatus.RUNNING;
         }
 	}
 	
 	public synchronized void stop() {
-		this.gameStatus = GameStatus.PAUSED;
+		this.gameLoopStatus = GameLoopStatus.PAUSED;
 	}
 	
 	@Override
@@ -57,11 +55,11 @@ public final class GameLoop implements Runnable{
         long timer = System.currentTimeMillis();
         int frames = 0;
 
-        while (!this.gameStatus.equals(GameStatus.ENDED)) {
-            if (this.gameStatus.equals(GameStatus.PAUSED)) {
+        while (!this.gameLoopStatus.equals(GameLoopStatus.ENDED)) {
+            if (this.gameLoopStatus.equals(GameLoopStatus.PAUSED)) {
                 //this.view.switchWindow(this.pauseMenu, MenuPanel.TITLE_PAUSE);
             }
-            while (this.gameStatus.equals(GameStatus.PAUSED)) {
+            while (this.gameLoopStatus.equals(GameLoopStatus.PAUSED)) {
                 try {
                     Thread.sleep((long) (NANOSECONDS_FRAME / NANO_MILLISECONDS));
                 } catch (InterruptedException e) {
@@ -73,9 +71,9 @@ public final class GameLoop implements Runnable{
             delta += (now - lastTime) / NANOSECONDS_FRAME;
             lastTime = now;
             while (delta >= 1) {
-                this.input.update();
+                //this.input.update();
                 this.game.update();
-                this.game.checkCollisions();
+                this.game.checkCollision();
                 delta -= 1;
             }
             try {
@@ -88,15 +86,15 @@ public final class GameLoop implements Runnable{
                 e1.printStackTrace();
             }
             
-            if (!this.game.getState().equals(GameStatus.RUNNING)) {
-                this.gameStatus = GameStatus.ENDED;
+            if (!this.game.getStatus().equals(GameStatus.RUNNING)) {
+                this.gameLoopStatus = GameLoopStatus.ENDED;
             }
             frames++;
             if (lastTime - System.nanoTime() + NANOSECONDS_FRAME > 0) {
                 try {
                     Thread.sleep((long) (lastTime - System.nanoTime() + NANOSECONDS_FRAME) / NANO_MILLISECONDS);
                 } catch (Exception e) {
-                    this.gameStatus = GameStatus.ENDED;
+                    this.gameLoopStatus = GameLoopStatus.ENDED;
                 }
             }
             if (System.currentTimeMillis() - timer > 1000) {
@@ -122,14 +120,14 @@ public final class GameLoop implements Runnable{
      * Aborts the gameLoop.
      */
     public void abort() {
-        this.gameStatus = GameStatus.ENDED;
+        this.gameLoopStatus = GameLoopStatus.ENDED;
     }
 
     /**
      * Resumes the gameLoop.
      */
     public void resume() {
-        this.gameStatus = GameStatus.RUNNING;
+        this.gameLoopStatus = GameLoopStatus.RUNNING;
     }
 	
 }
