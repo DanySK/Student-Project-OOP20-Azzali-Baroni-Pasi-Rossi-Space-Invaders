@@ -5,10 +5,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
-import game.InterfaceLevel;
-import game.Level;
-import game.enemy.Shot;
-
 public class GameImpl implements Game{
 
    public static final int ARENA_WIDTH = 1600;
@@ -20,8 +16,8 @@ public class GameImpl implements Game{
 	
 	private GameStatus gameStatus;
 	private final PlayerImpl player;
-	//private final Optional<List<Enemy>> enemies;
-	//private final Optional<List<Obstacles>> obstacles;
+//	private final Optional<List<EnemyImpl>> enemies;
+	private final Optional<List<AbstractMeteor>> meteors;
 	private final List<BulletImpl> bullets;
 	//private final List<Effect> effects;
 //    private final Optional<List<Shot>> shots;
@@ -33,11 +29,11 @@ public class GameImpl implements Game{
     
     public GameImpl() {
     	this.gameStatus = GameStatus.RUNNING;
-//    	this.player = new PlayerImpl(ID.PLAYER, this);
+    	this.player = new PlayerImpl(ID.PLAYER, this);
     	//this.enemies = Optional.of(new ArrayList<>());
-//        this.obstacles = Optional.of(new ArrayList<>());
+    	this.meteors = Optional.of(new ArrayList<>());
         this.bullets = new ArrayList<>();
-//        this.effects = new ArrayList<>();
+//      this.effects = new ArrayList<>();
 //      this.shots = Optional.of(new ArrayList<>());
 //      this.playerPowerUps = new ArrayList<>();
 //      this.globalPowerUp = Optional.empty();
@@ -49,8 +45,42 @@ public class GameImpl implements Game{
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
+//		this.playerPowerUps.forEach(ppu -> ppu.update());
+		this.player.update();
+		if(!this.freeze) {
+//			this.enemies.get().forEach(e -> e.update());
+			this.meteors.get().forEach(m -> m.update());
+//			this.shots.get().forEach(s -> s.update());
+		}
+//		this.bullets.get().forEach(b -> b.update());
+//		this.effects.get().forEach(eff -> eff.update());
 		
+//		if(this.globalPowerUp.isPresent()) {
+//			this.globalPowerUp.get().update();
+//		}
+	}
+	
+	public void nextLevel() {
+//        if (this.effects.isEmpty() && this.enemies.isPresent() && this.enemies.get().isEmpty()) {
+//            this.score += (LEVEL_CLEARED * this.level.getLevel() * this.player.getHealth() / 10);
+//            this.clearEntitiesLeft();
+//            this.level.nextLevelSingle();
+//        }
+	}
+	
+	private void clearEntitiesLeft() {
+        this.meteors.get().forEach(a -> a.setDead());
+        this.bullets.forEach(b -> b.setDead());
+//        this.shots.get().forEach(s -> s.setDead());
+//        this.enemies.get().forEach(e -> e.setDead());
+//        this.effects.forEach(e -> e.setDead());
+//        this.playerPowerUps.stream().filter(pu -> pu.isActivated()).forEach(pu -> pu.reset());
+//        this.playerPowerUps.forEach(pu -> pu.setDead());
+//        if (this.globalPowerUp.isPresent() && this.globalPowerUp.get().isActivated()) {
+//            this.globalPowerUp.get().reset();
+//            this.globalPowerUp.get().setDead();
+//        }
+//        this.removeDeadEntities();
 	}
 
 	@Override
@@ -68,12 +98,12 @@ public class GameImpl implements Game{
 //			temp.addAll(this.enemies.get(i));
 //		}
 //		
-//		if(this.obstacles.isPresent()) {
-//			temp.addAll(this.enemies.get(i));
+//		if(this.meteors.isPresent()) {
+//			temp.addAll(this.meteors.get(i));
 //		}
 //		
 //		if(this.shots.isPresent()) {
-//			temp.addAll(this.enemies.get(i));
+//			temp.addAll(this.shots.get(i));
 //		}
 //		
 //        if (this.globalPowerUp.isPresent()) {
@@ -84,25 +114,48 @@ public class GameImpl implements Game{
 
 	@Override
 	public GameStatus getStatus() {
-		// TODO Auto-generated method stub
 		return this.gameStatus;
 	}
 
 	@Override
 	public void checkCollision() {
-		// TODO Auto-generated method stub
 		
 	}
+	
+	private void checkForCollisions(final List<Entity> entities1, final List<Entity> entities2) {
+		
+	}
+	
+    private void removeDeadEntities() {
+    	
+    }
+    
+//    public Optional<List<AbstractEnemy>> getEnemies() {
+//        return this.enemies;
+//    }
+
+//    public List<Shot> getShots() {
+//    	return this.shots.get();
+//    }
+    
+//  public List<PlayerPowerUp> getPlayerPowerUps() {
+//  return this.playerPowerUps;
+//}
+//
+
+    
+//public void setGlobalPowerUp(final GlobalPowerUp globalPowerUp) {
+//  this.globalPowerUp = Optional.ofNullable(globalPowerUp);
+//}
 
 	@Override
 	public int getLevel() {
-		// TODO Auto-generated method stub
 //		return level.getLevel;
+		return 0;
 	}
 
 	@Override
 	public int getScore() {
-		// TODO Auto-generated method stub
 		return this.score;
 	}
 
@@ -113,8 +166,15 @@ public class GameImpl implements Game{
 
 	@Override
 	public List<BulletImpl> getBullets() {
-		// TODO Auto-generated method stub
 		return this.bullets;
 	}
+	
+    public List<AbstractMeteor> getObstacles() {
+        return this.meteors.get();
+    }
+    
+    public void setFreeze() {
+        this.freeze = !this.freeze;
+    }
 
 }
