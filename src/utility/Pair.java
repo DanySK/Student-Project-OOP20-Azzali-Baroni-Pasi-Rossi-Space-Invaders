@@ -16,7 +16,7 @@ public final class Pair <X, Y> {
 		return x; 
 	}
 	
-	public Y geyY() {
+	public Y getY() {
 		return y;
 	}
 	

@@ -3,6 +3,7 @@ package application;
 import javax.swing.SwingUtilities;
 
 import controller.Controller;
+import controller.ControllerImpl;
 import controller.KeyPolling;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import view.View;
+import view.ViewImpl;
 
 
 
