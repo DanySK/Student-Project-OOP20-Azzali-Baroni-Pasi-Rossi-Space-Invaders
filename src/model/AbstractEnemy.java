@@ -47,6 +47,8 @@ public abstract class AbstractEnemy extends EntityImpl implements EnemyBehaviour
 	}	
 	
 	
+	
+	
 			
 		
 		
