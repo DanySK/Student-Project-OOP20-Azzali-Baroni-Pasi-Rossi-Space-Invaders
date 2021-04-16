@@ -64,7 +64,7 @@ public final class PlayerImpl extends EntityImpl implements Player{
 	}
 
 	@Override
-	public void setShotready(int time) {
+	public void setShotReady(int time) {
 		this.shotReady = time;
 	}
 

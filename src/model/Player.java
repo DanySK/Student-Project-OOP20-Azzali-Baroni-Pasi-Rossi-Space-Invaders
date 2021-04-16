@@ -16,7 +16,7 @@ public interface Player {
 	
 	int getShotReady();
 	
-	void setShotready(int time);
+	void setShotReady(int time);
 	
 	void resetPosition();
 	
