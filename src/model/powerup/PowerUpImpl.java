@@ -3,18 +3,24 @@ package model.powerup;
 import java.awt.Rectangle;
 
 import controller.ChronometerEntity;
+import controller.GameLoop;
 import model.Entity;
 import model.ID;
+import model.Player;
 import utility.Pair;
 
 public abstract class PowerUpImpl extends ChronometerEntity implements PowerUp {
 	
+	
 	public static final int WIDTH = 60;
 	public static final int HEIGHT = 60;
+	
+	public static final int LIFE_T = GameLoop.FPS *5;
 
 
 	private final PowerUpT type;
 	private boolean isActiveted;
+	private Player player;
 
 	
 
@@ -22,7 +28,7 @@ public abstract class PowerUpImpl extends ChronometerEntity implements PowerUp {
 		super(position, veloX, veloY, id, type.getLifetime());
 		this.type = type;
 		this.isActiveted = false;
-		this.setHitbox(new Rectangle(this.getPosition().getX() - WIDTH / 2, this.getPosition().geyY() - HEIGHT / 2, WIDTH, HEIGHT));
+		this.setHitbox(new Rectangle(this.getPosition().getX() - WIDTH / 2, this.getPosition().getX() - HEIGHT / 2, WIDTH, HEIGHT));
 		
 	}
 
@@ -78,8 +84,12 @@ public abstract class PowerUpImpl extends ChronometerEntity implements PowerUp {
 
 	@Override
 	public void collide(final Entity entity) {
-		
-			//implementare
+		if(entity instanceof Player) {
+			this.player = (Player)entity;
+			this.InsertBuff();
+			this.setPosition(entity.getPosition());
+			this.setHitbox(entity.getHitbox());
+		}
 		
 	}
 

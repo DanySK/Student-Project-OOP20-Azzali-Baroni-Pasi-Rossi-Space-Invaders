@@ -2,11 +2,11 @@ package model.powerup;
 
 public enum PowerUpT {
 	
-	HEALTH;//(false,0);
+	HEALTH(false,0),
 	
-	//FIRE_BOOST(false,(int)(//PowerUpImpl.POWER_UP_LIFETIME * 1.5)),
+	FIRE_BOOST(false,(int) PowerUpImpl.LIFE_T),
 	
-	//FREEZE(false,//PowerUpImpl.POWER_UP_LIFETIME);
+	FREEZE(false,PowerUpImpl.LIFE_T);
 			
 	private final boolean requiringUpdate;
 	private final int lifetime;
