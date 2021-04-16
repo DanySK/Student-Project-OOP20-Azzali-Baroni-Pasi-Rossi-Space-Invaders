@@ -1,27 +1,24 @@
 package controller;
 
-import java.util.ArrayList;
-import java.util.List;
 
-import controller.view.ArenaViewController;
-import model.Meteor;
+import java.util.Random;
+import model.GameImpl;
+import model.ID;
 import model.MeteorImpl;
+import utility.Pair;
 
 public class MeteorController {
 
-	private List<Meteor> meteore;
+	private final Random random = new Random(100);
+	private static final int LENGTH = 50;
+	private static final int VELOCITY = 5;
 	
-	public MeteorController() {
-		this.meteore = new ArrayList<Meteor>();
+	private Pair<Integer,Integer> RandomSpawn(){
+		return new Pair<Integer,Integer>(this.random.nextInt(GameImpl.ARENA_WIDTH - 2 * LENGTH) + LENGTH, LENGTH);
+		//per ora va bene poi si vedra
 	}
 	
-	public void addMeteor(final MeteorImpl meteor) {
-		this.meteore.add(meteor);
-	}
-	
-	public MeteorImpl getMeteor() {
-		return (MeteorImpl) this.meteore.get(1);
-		
-		
+	public MeteorImpl createMeteor() {
+		return new MeteorImpl(this.RandomSpawn(), VELOCITY, VELOCITY, LENGTH, ID.OBSTACLE);
 	}
 }
