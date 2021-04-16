@@ -11,7 +11,7 @@ import javafx.scene.paint.Color;
 import model.Entity;
 
 
-public class Renderer {
+public class Renderer {/*
     Canvas canvas;
     GraphicsContext context;
     
@@ -55,6 +55,6 @@ public class Renderer {
     public void prepare(){
         context.setFill( new Color(0.68, 0.68, 0.68, 1.0) );
         context.fillRect(0,0, canvas.getWidth(),canvas.getHeight());
-    }
+    }*/
 
 }
