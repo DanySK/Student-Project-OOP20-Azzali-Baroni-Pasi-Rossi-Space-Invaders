@@ -1,4 +1,4 @@
-package view;
+/*package view;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,4 +57,4 @@ public class Renderer {
         context.fillRect(0,0, canvas.getWidth(),canvas.getHeight());
     }
 
-}
+}*/

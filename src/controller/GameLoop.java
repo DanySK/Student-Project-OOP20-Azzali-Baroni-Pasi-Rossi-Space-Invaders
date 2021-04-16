@@ -24,7 +24,7 @@ public final class GameLoop implements Runnable{
     //private final MenuPanel pauseMenu;
 	
     
-    public GameLoop(final Game game, final View view, final HighscoreManager highscore, final KeyInput input) {
+    public GameLoop(final Game game, final View view /*, final HighscoreManager highscore, final KeyInput input*/) {
         this.game = game;
         //this.view = view;
         //this.highscore = highscore;
