@@ -12,7 +12,7 @@ import view.ViewImpl;
 public class Main {
 	
 	
-	public void main(final String[] args) {
+	public static void main(final String[] args) {
 		//ImageLoader.getLoader().findImages();
 		//FontLoader.loadFont();
 		final Controller controller = new ControllerImpl();

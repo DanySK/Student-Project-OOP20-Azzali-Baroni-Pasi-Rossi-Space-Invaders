@@ -1,4 +1,4 @@
-package controller.view;
+/*package controller.view;
 
 import java.net.URL;
 import java.util.LinkedList;
@@ -28,7 +28,7 @@ public class ArenaViewController implements Initializable{
     @FXML
     private Canvas gameCanvas;
 
-    private PlayerImpl player = new PlayerImpl(new Image(getClass().getResourceAsStream("/Player.png")));
+    //private PlayerImpl player = new PlayerImpl(new Image(getClass().getResourceAsStream("/Player.png")));
     LinkedList<EnemyImpl> enemies = new LinkedList<EnemyImpl>();
     boolean pause = false;
 
@@ -40,8 +40,8 @@ public class ArenaViewController implements Initializable{
 
         initialiseCanvas();
         
-        player.setDrawPosition(PLAYER_CENTER_X, PLAYER_CENTER_Y);
-        player.setScale(PLAYER__DEFAULT_SCALE);
+        //player.setDrawPosition(PLAYER_CENTER_X, PLAYER_CENTER_Y);
+        //player.setScale(PLAYER__DEFAULT_SCALE);
         
         for(int i = 0; i <= ENEMIES_NUMBER; i ++) {
         	enemies.add(new EnemyImpl(new Image(getClass().getResourceAsStream("/Enemy1.png"))));
@@ -49,8 +49,8 @@ public class ArenaViewController implements Initializable{
         
         
         for(int i = 0; i <= ENEMIES_NUMBER; i ++) {
-        	enemies.get(i).setDrawPosition((float) Math.random() * 900, 100);
-        	enemies.get(i).setScale(0.2f);
+        	//enemies.get(i).setDrawPosition((float) Math.random() * 900, 100);
+        	//enemies.get(i).setScale(0.2f);
         }
 
         Renderer renderer = new Renderer(this.gameCanvas);
@@ -98,4 +98,4 @@ public class ArenaViewController implements Initializable{
         gameCanvas.heightProperty().bind(arenaPane.heightProperty());
     }
     
-}
+}*/
