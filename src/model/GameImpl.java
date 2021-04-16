@@ -16,7 +16,7 @@ public class GameImpl implements Game{
 	
 	private GameStatus gameStatus;
 	private final PlayerImpl player;
-	private final Optional<List<EnemyImpl>> enemies;
+	private final Optional<List<AbstractEnemy>> enemies;
 	private final Optional<List<AbstractMeteor>> meteors;
 	private final List<BulletImpl> bullets;
 	//private final List<Effect> effects;
@@ -71,8 +71,8 @@ public class GameImpl implements Game{
 	private void clearEntitiesLeft() {
         this.meteors.get().forEach(a -> a.setDead());
         this.bullets.forEach(b -> b.setDead());
-//        this.shots.get().forEach(s -> s.setDead());
-//        this.enemies.get().forEach(e -> e.setDead());
+        this.shots.get().forEach(s -> s.setDead());
+        this.enemies.get().forEach(e -> e.setDead());
 //        this.effects.forEach(e -> e.setDead());
 //        this.playerPowerUps.stream().filter(pu -> pu.isActivated()).forEach(pu -> pu.reset());
 //        this.playerPowerUps.forEach(pu -> pu.setDead());
@@ -94,17 +94,17 @@ public class GameImpl implements Game{
 //        
 //        temp.addAll(this.effects);
 //		
-//		if(this.enemies.isPresent()) {
-//			temp.addAll(this.enemies.get(i));
-//		}
+		if(this.enemies.isPresent()) {
+			temp.addAll(this.enemies.get(i));
+		}
 //		
 //		if(this.meteors.isPresent()) {
 //			temp.addAll(this.meteors.get(i));
 //		}
 //		
-//		if(this.shots.isPresent()) {
-//			temp.addAll(this.shots.get(i));
-//		}
+		if(this.shots.isPresent()) {
+			temp.addAll(this.shots.get(i));
+		}
 //		
 //        if (this.globalPowerUp.isPresent()) {
 //            temp.add(globalPowerUp.get());

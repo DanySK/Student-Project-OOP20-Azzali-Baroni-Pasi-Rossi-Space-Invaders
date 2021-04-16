@@ -22,7 +22,7 @@ public abstract class AbstractEnemy extends EntityImpl implements EnemyBehaviour
 		model = new EnemyImpl(hit);
 	}
 	
-	protected AbstractEnemy createEnememy() {
+	protected AbstractEnemy createEnemy() {
 		double number;
 		do {
 			number = ThreadLocalRandom.current().nextDouble(0, WIDTH_X);
