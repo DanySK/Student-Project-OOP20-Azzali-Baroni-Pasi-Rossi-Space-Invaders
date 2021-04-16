@@ -2,7 +2,6 @@ package model;
 
 import java.awt.Rectangle;
 import java.util.concurrent.ThreadLocalRandom;
-import model.EnemyImpl;
 import model.GameImpl;
 import model.ID;
 import utility.Pair;
@@ -29,7 +28,11 @@ public abstract class AbstractEnemy extends EntityImpl implements EnemyBehaviour
 			number = ThreadLocalRandom.current().nextDouble(0, WIDTH_X);
 		} while ((number > WIDTH_X / 3 && number < (WIDTH_X * 2) / 3) || model.tiedupX((int) number));
 		model.addNumber(true, (int) number);
-		this.getPosition().setY((int) number);
+		this.getPosition().setX((int) number);
+		do {
+			number = ThreadLocalRandom.current().nextDouble(0, HEIGHT_Y);
+		} while ((number > HEIGHT_Y / 4 && number < (HEIGHT_Y * 3) / 4) || model.tiedupY((int) number));
+	
 		done = false;
 		return this;
 	}
@@ -46,12 +49,66 @@ public abstract class AbstractEnemy extends EntityImpl implements EnemyBehaviour
 		
 	}	
 	
-	
-	
-	
+	protected void enemyShot(final DirEnemy dir, final GameImpl game, final ID id) {
+		if (id == ID.BOSS_ENEMY) {
+			switch (dir) {
+			case DOWN: game.getShot().add(new ShotEnemyImpl(this.getPosition().getX(), this.getPosition().getY() - spd, dir));
+			game.getShot().add(new ShotEnemyImpl(this.getPosition().getX() + spd, this.getPosition().getY() - spd, DirEnemy.D_R));
+			game.getShot().add(new ShotEnemyImpl(this.getPosition().getX() - spd, this.getPosition().getY() - spd, DirEnemy.D_L));
+			break;
+			case D_R: game.getShot().add(new ShotEnemyImpl(this.getPosition().getX() + spd, this.getPosition().getY() - spd, dir));
+			game.getShot().add(new ShotEnemyImpl(this.getPosition().getX(), this.getPosition().getY() - spd, DirEnemy.DOWN));
+			game.getShot().add(new ShotEnemyImpl(this.getPosition().getX() - spd, this.getPosition().getY(), DirEnemy.RIGHT));
+			break;
+			case D_L: game.getShot().add(new ShotEnemyImpl(this.getPosition().getX() - spd, this.getPosition().getY() - spd, dir));
+			game.getShot().add(new ShotEnemyImpl(this.getPosition().getX(), this.getPosition().getY() - spd, DirEnemy.DOWN));
+			game.getShot().add(new ShotEnemyImpl(this.getPosition().getX() - spd, this.getPosition().getY(), DirEnemy.LEFT));
+			break;
+			default:
+				break;
 			
-		
-		
+			}
+		}
+			
+			else {
+				switch (dir) {
+				case DOWN: game.getShot().add(new ShotEnemyImpl(this.getPosition().getX(), this.getPosition().getY() - spd, dir));
+				break;
+				default:
+					break;
+				}
+				
+			}
+		}
+	protected boolean checkShotgun(final int shotgun, final int timeShot) {
+		return shotgun == timeShot ? true : false;
 	}
+	protected void move(final DirEnemy dir) {
+		switch (dir) {
+		case DOWN: this.getPosition().setY(this.getPosition().getY() - this.getSpeed().getY());
+		break;
+		case LEFT: this.getPosition().setX(this.getPosition().getX() - this.getSpeed().getX());
+		break;
+		case RIGHT: this.getPosition().setX(this.getPosition().getX() + this.getSpeed().getX());
+		
+		default:
+			break;
+		}
+		setHitbox();
+	}
+	
+	protected DirEnemy checkPosition(final DirEnemy dir) {
+		if (this.getPosition().getX() - hit <= 0) {
+			return DirEnemy.RIGHT;
+		} else if (this.getPosition().getX() + hit <= GameImpl.ARENA_WIDTH) {
+			return DirEnemy.LEFT;
+		} else if (this.getPosition().getY() + hit >= GameImpl.ARENA_HEIGHT) {
+			return DirEnemy.DOWN;
+		}
+		setHitbox();
+		return dir;
 
+	}
+	
+	}
 

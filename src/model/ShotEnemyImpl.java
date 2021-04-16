@@ -9,7 +9,7 @@ import utility.Pair;
 
 public class ShotEnemyImpl extends EntityImpl implements ShotEnemy {
 	
-	private static final ID MYID = ID.SHOOT;
+	private static final ID MYID = ID.ENEMY_BULLET;
 	private static final int STDSPD = 3;
 	private static final int HIT = GameImpl.ARENA_HEIGHT / 25;
 	private final Pair<Integer, Integer> spd;

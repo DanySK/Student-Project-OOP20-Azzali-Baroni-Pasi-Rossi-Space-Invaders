@@ -16,11 +16,11 @@ public class GameImpl implements Game{
 	
 	private GameStatus gameStatus;
 	private final PlayerImpl player;
-//	private final Optional<List<EnemyImpl>> enemies;
+	private final Optional<List<EnemyImpl>> enemies;
 	private final Optional<List<AbstractMeteor>> meteors;
 	private final List<BulletImpl> bullets;
 	//private final List<Effect> effects;
-//    private final Optional<List<Shot>> shots;
+    private final Optional<List<ShotEnemyImpl>> shots;
     //private final List<PlayerPowerUp> playerPowerUps;
     //private Optional<GlobalPowerUp> globalPowerUp;
 //    private final InterfaceLevel level;
@@ -30,11 +30,11 @@ public class GameImpl implements Game{
     public GameImpl() {
     	this.gameStatus = GameStatus.RUNNING;
     	this.player = new PlayerImpl(ID.PLAYER, this);
-    	//this.enemies = Optional.of(new ArrayList<>());
+    	this.enemies = Optional.of(new ArrayList<>());
     	this.meteors = Optional.of(new ArrayList<>());
         this.bullets = new ArrayList<>();
 //      this.effects = new ArrayList<>();
-//      this.shots = Optional.of(new ArrayList<>());
+      this.shots = Optional.of(new ArrayList<>());
 //      this.playerPowerUps = new ArrayList<>();
 //      this.globalPowerUp = Optional.empty();
 //        this.level = new Level(this);
@@ -50,7 +50,7 @@ public class GameImpl implements Game{
 		if(!this.freeze) {
 //			this.enemies.get().forEach(e -> e.update());
 			this.meteors.get().forEach(m -> m.update());
-//			this.shots.get().forEach(s -> s.update());
+			this.shots.get().forEach(s -> s.update());
 		}
 //		this.bullets.get().forEach(b -> b.update());
 //		this.effects.get().forEach(eff -> eff.update());
@@ -134,9 +134,9 @@ public class GameImpl implements Game{
 //        return this.enemies;
 //    }
 
-//    public List<Shot> getShots() {
-//    	return this.shots.get();
-//    }
+    public List<ShotEnemyImpl> getShot() {
+    	return this.shots.get();
+    }
     
 //  public List<PlayerPowerUp> getPlayerPowerUps() {
 //  return this.playerPowerUps;
