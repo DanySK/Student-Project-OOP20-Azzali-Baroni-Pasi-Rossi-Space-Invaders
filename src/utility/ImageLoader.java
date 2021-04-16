@@ -2,6 +2,7 @@ package utility;
 
 import java.awt.Image;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -23,12 +24,11 @@ public class ImageLoader {
 	private ImageLoader() {}
 	
 	public void findImages() {
-		URL imgURL = ImageLoader.class.getResource("BackgroundGame.jpg");
+		URL imgURL = ImageLoader.class.getResource("/BackgroundMenu.jpg");
 		this.backgroundImages.put(MenuP.TITLE, loadImage(imgURL));
 		
-		imgURL = ImageLoader.class.getResource("backgroundGame.png");
+		imgURL = ImageLoader.class.getResource("/backgroundGame.png");
 		this.backgroundImages.put(ArenaView.TITLE,loadImage(imgURL));
-		
 		
 	}
 	

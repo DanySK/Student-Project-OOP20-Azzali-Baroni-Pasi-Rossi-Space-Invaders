@@ -4,9 +4,9 @@ public enum PowerUpT {
 
     HEALTH(false,0),
 
-    FIRE_BOOST(false,1/*,(int) PowerUpImpl.LIFE_T*/),
+    FIRE_BOOST(false,(int) PowerUpImpl.LIFETIME_P),
 
-    FREEZE(false,1/*,PowerUpImpl.LIFE_T*/);
+    FREEZE(false,PowerUpImpl.LIFETIME_P);
 
     private final boolean requiringUpdate;
     private final int lifetime;

@@ -51,7 +51,6 @@ public class GameP extends JPanel {
 	}
 	@Override
 	protected void paintComponent(final Graphics g) {
-		// TODO Auto-generated method stub
-		//g.drawImage(this.background, WIDTH, SOMEBITS, PROPERTIES, HEIGHT, FRAMEBITS, ERROR, ALLBITS, ABORT, getFocusCycleRootAncestor())
+		g.drawImage(this.background.loadImage(),0 ,0,this.getWidth(),this.getHeight(),this);
 	}
 }

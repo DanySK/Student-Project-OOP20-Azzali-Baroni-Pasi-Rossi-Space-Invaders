@@ -2,7 +2,7 @@ package model.powerup;
 
 public interface PowerUp {
 	
-	void InsertBuff();
+	void InsertStrategy();
 	
 	void reset();
 	

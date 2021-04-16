@@ -3,8 +3,10 @@ package model.powerup;
 import java.awt.Rectangle;
 
 import controller.ChronometerEntity;
+import controller.GameLoop;
 import model.Entity;
 import model.ID;
+import model.Player;
 import utility.Pair;
 
 public abstract class PowerUpImpl extends ChronometerEntity implements PowerUp {
@@ -12,9 +14,11 @@ public abstract class PowerUpImpl extends ChronometerEntity implements PowerUp {
 	public static final int WIDTH = 60;
 	public static final int HEIGHT = 60;
 
+	public static final int LIFETIME_P = GameLoop.FPS * 5;
 
 	private final PowerUpT type;
 	private boolean isActiveted;
+	private Player player;
 
 	
 
@@ -26,10 +30,8 @@ public abstract class PowerUpImpl extends ChronometerEntity implements PowerUp {
 		
 	}
 
-
-
 	@Override
-	public void InsertBuff() {
+	public void InsertStrategy() {
 		if(this.isActiveted == false || this.getType().isRequiringUpdate()) {
 			this.InsertEffect();
 			this.isActiveted = true;
@@ -62,7 +64,7 @@ public abstract class PowerUpImpl extends ChronometerEntity implements PowerUp {
 			this.setS();
 			if(this.isEnded() == false) {
 				this.tick();
-				this.InsertBuff();
+				this.InsertStrategy();
 			}else {
 				this.reset();
 				this.setDead();
@@ -78,9 +80,18 @@ public abstract class PowerUpImpl extends ChronometerEntity implements PowerUp {
 
 	@Override
 	public void collide(final Entity entity) {
-		
-			//implementare
+		if(entity instanceof Player) {
+			this.player = (Player)entity;
+			this.InsertStrategy();
+			this.setPosition(entity.getPosition());
+			this.setHitbox(entity.getHitbox());
+		}
+			
 		
 	}
+	public final Player getEntityStrategy() {
+		return this.player;
+	}
+
 
 }
