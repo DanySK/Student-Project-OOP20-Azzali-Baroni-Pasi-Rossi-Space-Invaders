@@ -2,7 +2,7 @@ package model;
 
 public interface EnemyBehaviour {
 	
-	AbstractEnemy createEnemy();
+	AbstractEnemy createThisEnemy();
 	
 	DirEnemy casualMovs();
 	
