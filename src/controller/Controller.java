@@ -1,6 +1,7 @@
 package controller;
 
 import controller.view.ViewObserver;
+import model.GameStatus;
 import view.View;
 
 public interface Controller extends ViewObserver{

@@ -1,13 +1,10 @@
 package model;
 
-import javafx.geometry.Point2D;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.image.Image;
 
-public class BulletImpl {
 
-	
-	/*Point2D position;
+public class BulletImpl /*implements Entity*/{
+/*
+	Point2D position;
     float scale = 1;
     double width;
     double height;
@@ -76,6 +73,6 @@ public class BulletImpl {
 	
 	public void drawBullet(Canvas c, Point2D pos) {
 		c.getGraphicsContext2D().drawImage(bulletImage, pos.getX(), pos.getY());
-	}*/
-
+	}
+*/
 }

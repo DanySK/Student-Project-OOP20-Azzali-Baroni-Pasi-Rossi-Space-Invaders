@@ -14,9 +14,9 @@ import model.PlayerImpl;
 import view.Renderer;
 
 
-public class ArenaViewController {
+public class ArenaViewController implements Initializable{
 	
-   /* public static final int PLAYER_CENTER_X = 415;
+    public static final int PLAYER_CENTER_X = 415;
     public static final int PLAYER_CENTER_Y = 440;
     public static final float PLAYER__DEFAULT_SCALE = 0.5f;
     
@@ -96,6 +96,6 @@ public class ArenaViewController {
     private void initialiseCanvas() {
         gameCanvas.widthProperty().bind(arenaPane.widthProperty());
         gameCanvas.heightProperty().bind(arenaPane.heightProperty());
-    }*/
+    }
     
 }

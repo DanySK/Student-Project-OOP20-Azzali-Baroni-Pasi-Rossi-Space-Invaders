@@ -18,7 +18,7 @@ public class GameImpl implements Game{
 	private final PlayerImpl player;
 	private final Optional<List<AbstractEnemy>> enemies;
 	private final Optional<List<AbstractMeteor>> meteors;
-	private final List<BulletImpl> bullets;
+	//private final List<BulletImpl> bullets;
 	//private final List<Effect> effects;
     private final Optional<List<ShotEnemyImpl>> shots;
     //private final List<PlayerPowerUp> playerPowerUps;
@@ -32,7 +32,7 @@ public class GameImpl implements Game{
     	this.player = new PlayerImpl(ID.PLAYER, this);
     	this.enemies = Optional.of(new ArrayList<>());
     	this.meteors = Optional.of(new ArrayList<>());
-        this.bullets = new ArrayList<>();
+        //this.bullets = new ArrayList<>();
 //      this.effects = new ArrayList<>();
       this.shots = Optional.of(new ArrayList<>());
 //      this.playerPowerUps = new ArrayList<>();
@@ -70,7 +70,7 @@ public class GameImpl implements Game{
 	
 	private void clearEntitiesLeft() {
         this.meteors.get().forEach(a -> a.setDead());
-        this.bullets.forEach(b -> b.setDead());
+        //this.bullets.forEach(b -> b.setDead());
         this.shots.get().forEach(s -> s.setDead());
         this.enemies.get().forEach(e -> e.setDead());
 //        this.effects.forEach(e -> e.setDead());
@@ -88,14 +88,14 @@ public class GameImpl implements Game{
 		final List<Entity> temp = new LinkedList<>();
 		temp.add(player);
 		
-		temp.addAll(this.bullets);
+		//temp.addAll(this.bullets);
 		
 //        temp.addAll(this.playerPowerUps);
 //        
 //        temp.addAll(this.effects);
 //		
 		if(this.enemies.isPresent()) {
-			temp.addAll(this.enemies.get(i));
+			temp.addAll(this.enemies.get());
 		}
 //		
 //		if(this.meteors.isPresent()) {
@@ -103,7 +103,7 @@ public class GameImpl implements Game{
 //		}
 //		
 		if(this.shots.isPresent()) {
-			temp.addAll(this.shots.get(i));
+			temp.addAll(this.shots.get());
 		}
 //		
 //        if (this.globalPowerUp.isPresent()) {
@@ -166,7 +166,8 @@ public class GameImpl implements Game{
 
 	@Override
 	public List<BulletImpl> getBullets() {
-		return this.bullets;
+		//return this.bullets;
+		return null;
 	}
 	
     public List<AbstractMeteor> getObstacles() {
