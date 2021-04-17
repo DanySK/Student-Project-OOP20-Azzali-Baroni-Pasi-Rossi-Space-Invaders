@@ -30,6 +30,8 @@ public class ImageLoader {
 		imgURL = ImageLoader.class.getResource("/backgroundGame.png");
 		this.backgroundImages.put(ArenaView.TITLE,loadImage(imgURL));
 		
+		
+		
 	}
 	
 	public static ImageLoader getImageLoader() {
