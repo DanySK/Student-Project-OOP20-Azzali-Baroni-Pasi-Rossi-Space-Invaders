@@ -39,7 +39,7 @@ public class ViewImpl extends JFrame implements View{
 		this.main= new JPanel(card);
 		this.main.setPreferredSize(new Dimension(SCREEN_WIDTH,SCREEN_HEIGHT));
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setResizable(false);
+		this.setResizable(true);
 		this.add(main);
 		this.switchWindow(new MenuP(this, MenuState.Start), MenuP.TITLE);
 		this.pack();
@@ -65,11 +65,11 @@ public class ViewImpl extends JFrame implements View{
 	}
 
 	@Override
-	public void switchWindow(JPanel windows, String Title) {
+	public void switchWindow(final JPanel windows, String Title) {
 		if(this.Cards.contains(Title) == false) {
 			this.Cards.add(Title);
 			this.card.addLayoutComponent(windows, Title);
-			this.main.add(this.main,Title);
+			this.main.add(windows,Title);
 		}
 		this.card.show(this.main, Title);
 	}
