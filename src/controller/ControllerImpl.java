@@ -27,8 +27,8 @@ public class ControllerImpl implements Controller{
         }
         this.game = new GameImpl(/*mode*/);//mode 
         //final KeyInput input = new KeyInput(game, this);
-        //this.gameLoop = new GameLoop(this.game, this.view, this.highscore, input);
-        //this.view.switchWindow(new GameWindow(mode, input), GameWindow.TITLE);
+        this.gameLoop = new GameLoop(this.game, this.view); //this.highscore, input);
+        this.view.switchWindow(new ArenaView(/*input*/), ArenaView.TITLE);
         this.gameLoop.start();
     }
     

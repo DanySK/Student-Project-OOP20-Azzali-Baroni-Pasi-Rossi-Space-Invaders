@@ -53,7 +53,7 @@ public class MenuP extends GameP{
 			if(this.menuState == MenuState.Pause) {
 				this.getView().getObserver().update(this, StateV.ABORT);
 			}else {
-				//this.PlayerView.display();
+				this.getView().getObserver().update(this, StateV.START);
 			}
 		});
 		this.prepareButton("Score",this).addActionListener(e ->{

@@ -29,7 +29,7 @@ public class ArenaView extends JPanel {
 	private double widthProportion;
 	private double heightProportion;
 	
-	public ArenaView(final GameStatus status/*,final Keyinput input*/){
+	public ArenaView(/*,final Keyinput input*/){
 		super();
 		this.setLayout(new BorderLayout());
 		//settare le entita
