@@ -1,5 +1,6 @@
 package application;
 	
+import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
 
 import controller.Controller;
@@ -14,7 +15,7 @@ public class Main {
 	
 	public static void main(final String[] args) {
 		ImageLoader.getImageLoader().findImages();
-		//FontLoader.loadFont();
+		//FontLoader.FontLoad();
 		final Controller controller = new ControllerImpl();
 		final View view = new ViewImpl();
 		view.attach(controller);

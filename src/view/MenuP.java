@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -14,7 +15,7 @@ public class MenuP extends GameP{
 	 */
 	private static final long serialVersionUID = 1L;
 	//private final GameP PlayerView;
-	//private final GameP ScoreView;
+	private final GameP ScoreView;
 	private final MenuState menuState;
 	
 	public static final String PAUSE_T="Pause";
@@ -28,8 +29,7 @@ public class MenuP extends GameP{
 	public MenuP(View view, final MenuState menuState) {
 		super(view, menuState == MenuState.Start ? MenuP.TITLE : MenuP.PAUSE_T );
 		this.menuState = menuState;
-		//this.ScoreScreen = new HighScorePanel(view);
-		
+		this.ScoreView = new HighScoreP(view);
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		
 		this.add(Box.createVerticalGlue());
@@ -38,7 +38,8 @@ public class MenuP extends GameP{
 		title.setForeground(Color.WHITE);
 		title.setAlignmentX(CENTER_ALIGNMENT);
 		//set font da fare
-		this.add(title);
+		
+		//this.add(title);
 		this.add(Box.createVerticalGlue());
 		
 		if(this.menuState == MenuState.Pause) {
@@ -56,7 +57,7 @@ public class MenuP extends GameP{
 			}
 		});
 		this.prepareButton("Score",this).addActionListener(e ->{
-			//this.ScoreView.display();
+			this.ScoreView.display();
 		});		
 		
 		this.prepareButton("Help", this).addActionListener(e ->{
