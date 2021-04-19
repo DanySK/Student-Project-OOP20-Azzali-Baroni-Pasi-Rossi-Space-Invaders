@@ -8,6 +8,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.swing.JPanel;
 
@@ -15,6 +16,9 @@ import controller.Input;
 import model.Entity;
 import model.GameImpl;
 import model.GameStatus;
+import model.ID;
+import model.Player;
+import model.PlayerImpl;
 import utility.Pair;
 
 public class ArenaView extends JPanel {
@@ -29,7 +33,7 @@ public class ArenaView extends JPanel {
 	
 	private final headUpDisplay playerview;
 	private final Background back;
-   // private final EntityAnimator entAnimator;
+   private final EntityView entityview;
 	private final List<Pair<Entity, Image>> EntityGame;
 	private double widthProportion;
 	private double heightProportion;
@@ -38,11 +42,9 @@ public class ArenaView extends JPanel {
 		super();
 		this.setLayout(new BorderLayout());
 		//settare le entita
-	    //this.EntityAnimator = new AnimatorEntity();
-		
+	    this.entityview = new EntityView();
 		this.back = new Background(TITLE);
 		this.EntityGame = Collections.synchronizedList(new LinkedList<>());
-		
 		this.setFocusable(true);
 		this.setDoubleBuffered(true);
 		this.playerview = new playerView();
@@ -71,11 +73,12 @@ public class ArenaView extends JPanel {
 		this.EntityGame.clear();
 		widthProportion = (double) this.getWidth() /(double) GameImpl.ARENA_WIDTH;
 		heightProportion = (double) this.getHeight() /(double) GameImpl.ARENA_HEIGHT;
-	    /*gameEntity.stream().filter(e -> e.getHitbox() != null).map(e -> new Pair<>(e, /*EntityAnimator.loadImage(e)))
-	         .forEach(p -> this.EntityGame.add(p));*/
+	    gameEntity.stream().filter(e -> e.getHitbox() != null).map(e -> new Pair<>(e, entityview.loadImage(e)))
+	         .forEach(p -> this.EntityGame.add(p));
 		this.repaint();
-		//this.playerview.render(gameEntity.stream().filter(e->e.getID.equals(ID.PLAYER)))
-		      //.map(e->(Player) e).collect(Collectors-toList()), score, level);
+		//da controllare
+		final PlayerImpl player = (PlayerImpl) gameEntity.get(0);
+		playerview.render(player, score, level);
 	         
 	}
 	
