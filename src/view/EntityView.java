@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 import controller.GameLoop;
 import model.Entity;
+import model.Bullet;
 import model.BulletImpl;
 import controller.ChronometerImpl;
 import model.powerup.PowerUpImpl;
@@ -35,7 +36,70 @@ public class EntityView {
 		
 	}
 	
-
+	public Image loadImage(final Entity e) {
+		if (tick > GameLoop.FPS * 10) {
+			this.removeUselessEntities();
+			this.tick = 0;
+			
+		}
+		switch (e.getID()) {
+		case PLAYER_BULLET :
+			return loader.getBulletImages().get(new Pair<>(e.getID(), ((Bullet) e).getOwner())).get(0);
+		case EFFECT :
+			addIfNotPresent(e);
+			return getRightImage(e);
+		case POWER_UP :
+			if(!((PowerUpImpl) e).isActivated()) {
+				return loader.getPowerUpImages().get(new Pair <>(e.getID(), ((PowerUpImpl) e).getType())).get(0);
+				} else {
+					if (((PowerUpImpl) e).getType() != PowerUpT.HEALTH && ((PowerUpImpl) e).getType() != PowerUpT.FIRE_BOOST && ((PowerUpImpl) e).getType() != PowerUpT.FREEZE) {
+						addIfNotPresent (e);
+						return getRightImage(e);
+					}
+					return null;
+					
+				}
+			default : 
+				return loader.getEntityImages().get(e.getID()).get(0);
+			
+			
+		}
 	}
+	
+	private void removeUselessEntities() {
+		final List<Entity> uselessEntities = this.currentImage.keySet().stream().filter(e -> e.isDead()).collect(Collectors.toList());
+		uselessEntities.forEach(e -> {
+			this.currentImage.remove(e);
+			this.TimeLastImage.remove(e);
+		});
+		
+	}
+	
+	
+//	//private Image getRightImage(final Entity entity) {
+//		final ChronometerImpl CEntity = (ChronometerImpl) entity;
+//		final int oTime = TimeLastImage.get(CEntity);
+//		final int cTime = CEntity.getTimeLeft();
+//		final List<Image> images = new ArrayList<>();
+//		switch (entity.getID()) {
+//		case POWER_UP :
+//			images.addAll(loader.get)
+//		}
+	
+	private void addIfNotPresent(final Entity entity) {
+		if (!this.currentImage.containsKey(entity)) {
+			switch (entity.getID()) {
+			case POWER_UP :
+				this.TimeLastImage.put(entity, ((PowerUpImpl) entity).getTimeLeft());
+				break;
+			case EFFECT :
+				this.TimeLastImage.put(entity, ((SpecialEffect) entity).getTimeLeft());
+				break;
+			default : System.out.println("Error in addIfNotPresent");
+			}
+			this.currentImage.put(entity, 0);
+		}
+	}
+}
 
 
