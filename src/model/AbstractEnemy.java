@@ -91,7 +91,7 @@ public abstract class AbstractEnemy extends EntityImpl implements EnemyBehaviour
 		case LEFT: this.getPosition().setX(this.getPosition().getX() - this.getSpeed().getX());
 		break;
 		case RIGHT: this.getPosition().setX(this.getPosition().getX() + this.getSpeed().getX());
-		
+		break;
 		default:
 			break;
 		}

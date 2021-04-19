@@ -26,7 +26,7 @@ public class GameImpl implements Game{
 	private final Optional<List<AbstractEnemy>> enemies;
 	private final Optional<List<AbstractMeteor>> meteors;
 	private final List<BulletImpl> bullets;
-	//private final List<Effect> effects;
+	private final List<SpecialEffect> effects;
     private final Optional<List<ShotEnemyImpl>> shots;
     private final List<PPowerUp> playerPowerUps;
     private Optional<GPowerUp> globalPowerUp;
@@ -40,7 +40,7 @@ public class GameImpl implements Game{
     	this.enemies = Optional.of(new ArrayList<>());
     	this.meteors = Optional.of(new ArrayList<>());
         this.bullets = new ArrayList<>();
-//      this.effects = new ArrayList<>();
+       this.effects = new ArrayList<>();
       this.shots = Optional.of(new ArrayList<>());
       this.playerPowerUps = new ArrayList<>();
       this.globalPowerUp = Optional.empty();
@@ -60,7 +60,7 @@ public class GameImpl implements Game{
 			this.shots.get().forEach(s -> s.update());
 		}
 		this.bullets.forEach(b -> b.update());
-//		this.effects.get().forEach(eff -> eff.update());
+		this.effects.forEach(eff -> eff.update());
 		
 		if(this.globalPowerUp.isPresent()) {
 			this.globalPowerUp.get().update();
@@ -68,7 +68,7 @@ public class GameImpl implements Game{
 	}
 	
 	public void nextLevel() {
-        if (//this.effects.isEmpty() && 
+        if (this.effects.isEmpty() && 
         		this.enemies.isPresent() && this.enemies.get().isEmpty()) {
             this.score += (LEVEL_CLEARED * this.level.getLevel() * this.player.getHealth() / 10);
             this.clearEntitiesLeft();
@@ -81,7 +81,7 @@ public class GameImpl implements Game{
         this.bullets.forEach(b -> b.setDead());
         this.shots.get().forEach(s -> s.setDead());
         this.enemies.get().forEach(e -> e.setDead());
-//        this.effects.forEach(e -> e.setDead());
+        this.effects.forEach(e -> e.setDead());
         this.playerPowerUps.stream().filter(pu -> pu.isActivated()).forEach(pu -> pu.reset());
         this.playerPowerUps.forEach(pu -> pu.setDead());
         if (this.globalPowerUp.isPresent() && this.globalPowerUp.get().isActivated()) {
@@ -100,7 +100,7 @@ public class GameImpl implements Game{
 		
         temp.addAll(this.playerPowerUps);
 //        
-//        temp.addAll(this.effects);
+        temp.addAll(this.effects);
 //		
 		if(this.enemies.isPresent()) {
 			temp.addAll(this.enemies.get());

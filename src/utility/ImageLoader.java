@@ -69,8 +69,8 @@ public class ImageLoader {
         imgURL = ImageLoader.class.getResource("/powerupRed_shield.png");
         this.powerUpImages.put(new Pair<>(ID.POWER_UP, PowerUpT.HEALTH), loadImage(imgURL));
         
-        imgURL = ImageLoader.class.getResource("/Speed.png");
-        this.AnimationsPowerUp.put(new Pair<>(ID.POWER_UP, PowerUpT.FIRE_BOOST), loadEffect(imgURL));
+        /*imgURL = ImageLoader.class.getResource("/Speed.png");
+        this.AnimationsPowerUp.put(new Pair<>(ID.POWER_UP, PowerUpT.FIRE_BOOST), loadEffect(imgURL));*/
         
         imgURL = ImageLoader.class.getResource("/Explosion.png");
         this.AnimationsEffect.put(new Pair<>(ID.EFFECT, SpecialEffectT.EXPLOSION), loadEffect(imgURL));
@@ -90,14 +90,14 @@ public class ImageLoader {
         if (url.toString().endsWith("Explosion.png")) {
             width = 100;
             height = 100;
-            rows = 8;
-            cols = 8;
-        } else {
+            rows = 3;
+            cols = 4;
+        } else  {
             width = DIMENSION_SPRITE;
             height = DIMENSION_SPRITE;
-            rows = 1;
-            cols = 4;
-        } 
+            rows = 10;
+            cols = 10;
+        }
         try {
             final BufferedImage img = ImageIO.read(url);
             IntStream.rangeClosed(0, rows).forEach(i -> IntStream.rangeClosed(0, cols).forEach(j -> {

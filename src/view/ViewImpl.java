@@ -65,7 +65,6 @@ public class ViewImpl extends JFrame implements View{
 
 	@Override
 	public ViewObserver getObserver() {
-		// TODO Auto-generated method stub
 		return this.observer;
 	}
 
