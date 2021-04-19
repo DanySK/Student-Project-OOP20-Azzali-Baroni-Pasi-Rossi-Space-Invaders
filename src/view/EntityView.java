@@ -9,8 +9,10 @@ import java.util.stream.Collectors;
 
 import controller.GameLoop;
 import model.Entity;
+import model.SpecialEffect;
 import model.Bullet;
 import model.BulletImpl;
+import controller.ChronometerEntity;
 import controller.ChronometerImpl;
 import model.powerup.PowerUpImpl;
 import model.powerup.PowerUpT;
@@ -74,17 +76,29 @@ public class EntityView {
 		});
 		
 	}
+
 	
 	
-//	//private Image getRightImage(final Entity entity) {
-//		final ChronometerImpl CEntity = (ChronometerImpl) entity;
-//		final int oTime = TimeLastImage.get(CEntity);
-//		final int cTime = CEntity.getTimeLeft();
-//		final List<Image> images = new ArrayList<>();
-//		switch (entity.getID()) {
-//		case POWER_UP :
-//			images.addAll(loader.get)
-//		}
+private Image getRightImage(final Entity entity) {		
+	final ChronometerEntity CEntity = (ChronometerEntity) entity;
+	final int oTime = TimeLastImage.get(CEntity);
+		final int cTime = CEntity.getTimeLeft();
+		final List<Image> images = new ArrayList<>();
+	switch (entity.getID()) {
+		case POWER_UP :
+			images.addAll(loader.getPowerUpAnimation().get(new Pair<>(entity.getID(), ((PowerUpImpl) entity).getType())));
+			break;
+		case EFFECT :
+			images.addAll(loader.getSpecialEffectsAnimation().get(new Pair<>(entity.getID(), ((SpecialEffect) entity).getType())));
+			break;
+			default: System.out.println("Error in getting the right image");
+		}
+	if (oTime - cTime > FRAME_IMAGE) {
+		TimeLastImage.put(CEntity, oTime - FRAME_IMAGE);
+		currentImage.put(CEntity, (currentImage.get(CEntity) + 1) % images.size());
+	}
+	return images.get(currentImage.get(entity));
+}
 	
 	private void addIfNotPresent(final Entity entity) {
 		if (!this.currentImage.containsKey(entity)) {
