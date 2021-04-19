@@ -7,6 +7,7 @@ import controller.GameLoop;
 import model.Entity;
 import model.ID;
 import model.Player;
+import model.PlayerImpl;
 import utility.Pair;
 
 public abstract class PowerUpImpl extends ChronometerEntity implements PowerUp {
@@ -18,7 +19,7 @@ public abstract class PowerUpImpl extends ChronometerEntity implements PowerUp {
 
 	private final PowerUpT type;
 	private boolean isActiveted;
-	private Player player;
+	private PlayerImpl player;
 
 	
 
@@ -80,8 +81,8 @@ public abstract class PowerUpImpl extends ChronometerEntity implements PowerUp {
 
 	@Override
 	public void collide(final Entity entity) {
-		if(entity instanceof Player) {
-			this.player = (Player)entity;
+		if(entity instanceof PlayerImpl) {
+			this.player = (PlayerImpl)entity;
 			this.InsertStrategy();
 			this.setPosition(entity.getPosition());
 			this.setHitbox(entity.getHitbox());
@@ -89,7 +90,7 @@ public abstract class PowerUpImpl extends ChronometerEntity implements PowerUp {
 			
 		
 	}
-	public final Player getEntityStrategy() {
+	public final PlayerImpl getEntityStrategy() {
 		return this.player;
 	}
 

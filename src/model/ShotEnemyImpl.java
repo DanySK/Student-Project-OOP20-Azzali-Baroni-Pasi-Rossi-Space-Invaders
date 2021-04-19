@@ -1,10 +1,6 @@
 package model;
 
 import java.awt.Rectangle;
-import model.EntityImpl;
-import model.GameImpl;
-import model.Entity;
-import model.ID;
 import utility.Pair;
 
 public class ShotEnemyImpl extends EntityImpl implements ShotEnemy {
