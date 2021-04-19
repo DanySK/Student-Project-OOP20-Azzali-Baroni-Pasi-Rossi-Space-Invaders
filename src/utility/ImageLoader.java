@@ -50,14 +50,14 @@ public class ImageLoader {
         imgURL = ImageLoader.class.getResource("/BlueBullet.png");
         this.bulletImages.put(new Pair<>(ID.PLAYER_BULLET, ID.PLAYER), loadImage(imgURL));
         
-        this.powerUpImages.put(new Pair<>(ID.POWER_UP, PowerUpT.FIRE_BOOST), loadImage(imgURL));
         imgURL = ImageLoader.class.getResource("/powerupRed_star.png");
+        this.powerUpImages.put(new Pair<>(ID.POWER_UP, PowerUpT.FIRE_BOOST), loadImage(imgURL));
         
-        this.powerUpImages.put(new Pair<>(ID.POWER_UP, PowerUpT.FREEZE), loadImage(imgURL));
         imgURL = ImageLoader.class.getResource("/powerupRed_bolt.png");
+        this.powerUpImages.put(new Pair<>(ID.POWER_UP, PowerUpT.FREEZE), loadImage(imgURL)); 
         
-        this.powerUpImages.put(new Pair<>(ID.POWER_UP, PowerUpT.HEALTH), loadImage(imgURL));
         imgURL = ImageLoader.class.getResource("/powerupRed_shield.png");
+        this.powerUpImages.put(new Pair<>(ID.POWER_UP, PowerUpT.HEALTH), loadImage(imgURL));
     }
 
     public static ImageLoader getImageLoader() {
