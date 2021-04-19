@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
+import controller.Input;
 import model.Entity;
 import model.GameStatus;
 import utility.Pair;
@@ -29,7 +30,7 @@ public class ArenaView extends JPanel {
 	private double widthProportion;
 	private double heightProportion;
 	
-	public ArenaView(/*,final Keyinput input*/){
+	public ArenaView(final Input input){
 		super();
 		this.setLayout(new BorderLayout());
 		//settare le entita
@@ -39,6 +40,7 @@ public class ArenaView extends JPanel {
 		this.playerview = new playerView();
 		this.setPreferredSize(new Dimension(ViewImpl.SCREEN_WIDTH,ViewImpl.SCREEN_HEIGHT));
 		this.add(this.playerview,BorderLayout.NORTH);
+		this.addKeyListener(input);
 		//settare il key input
 		
 	}

@@ -20,15 +20,15 @@ public final class GameLoop implements Runnable{
     private final Game game;
     //private final View view;
     //private final HighscoreManager highscore;
-    //private final KeyInput input;
+    private final Input input;
     //private final MenuPanel pauseMenu;
 	
     
-    public GameLoop(final Game game, final View view /*, final HighscoreManager highscore, final KeyInput input*/) {
+    public GameLoop(final Game game, final View view /*, final HighscoreManager highscore*/, final Input input) {
         this.game = game;
         //this.view = view;
         //this.highscore = highscore;
-        //this.input = input;
+        this.input = input;
         this.gameLoopStatus = GameLoopStatus.READY;
         //this.pauseMenu = new MenuPanel(view, MenuType.Pause);
     }
@@ -71,7 +71,7 @@ public final class GameLoop implements Runnable{
             delta += (now - lastTime) / NANOSECONDS_FRAME;
             lastTime = now;
             while (delta >= 1) {
-                //this.input.update();
+                this.input.update();
                 this.game.update();
                 this.game.checkCollision();
                 delta -= 1;
