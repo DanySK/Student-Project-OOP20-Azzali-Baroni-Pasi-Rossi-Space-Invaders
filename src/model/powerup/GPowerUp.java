@@ -40,5 +40,9 @@ public class GPowerUp extends PowerUpImpl{
         }
 		
 	}
+	
+    public void setGame(final GameImpl game) {
+        this.game = game;
+    }
 
 }
