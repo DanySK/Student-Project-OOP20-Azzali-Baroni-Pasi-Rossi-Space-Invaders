@@ -8,12 +8,12 @@ import view.EntityView;
 
 public class SpecialEffect extends ChronometerEntity {
 	
-	public enum SpecialEffectType {
+	public enum SpecialEffectT {
 		
 		EXPLOSION (81 * EntityView.FRAME_IMAGE);
 		private final int lifetime;
 		
-		SpecialEffectType(final int lifetime){
+		SpecialEffectT(final int lifetime){
 			this.lifetime = lifetime;
 		}
 		
@@ -23,9 +23,9 @@ public class SpecialEffect extends ChronometerEntity {
 		
 	}
 	
-	private final SpecialEffectType type;
+	private final SpecialEffectT type;
 	
-	public SpecialEffect(final ID id, final Pair<Integer, Integer> position, final Rectangle hitbox, final SpecialEffectType type) {
+	public SpecialEffect(final ID id, final Pair<Integer, Integer> position, final Rectangle hitbox, final SpecialEffectT type) {
 		super (position, 0, 0, id, type.getLifetime());
 		this.setHitbox(hitbox);
 		this.type = type;
@@ -44,7 +44,7 @@ public class SpecialEffect extends ChronometerEntity {
 		
 	}
 	
-	public SpecialEffectType getType() {
+	public SpecialEffectT getType() {
 		return this.type;
 	}
 }

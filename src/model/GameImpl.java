@@ -55,7 +55,7 @@ public class GameImpl implements Game{
 		this.playerPowerUps.forEach(ppu -> ppu.update());
 		this.player.update();
 		if(!this.freeze) {
-			//this.enemies.get().forEach(e -> e.update());
+			this.enemies.get().forEach(e -> e.update());
 			this.meteors.get().forEach(m -> m.update());
 			this.shots.get().forEach(s -> s.update());
 		}

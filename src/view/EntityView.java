@@ -86,10 +86,10 @@ private Image getRightImage(final Entity entity) {
 		final List<Image> images = new ArrayList<>();
 	switch (entity.getID()) {
 		case POWER_UP :
-			images.addAll(loader.getPowerUpAnimation().get(new Pair<>(entity.getID(), ((PowerUpImpl) entity).getType())));
+			images.addAll(loader.getAnimationsPowerUp().get(new Pair<>(entity.getID(), ((PowerUpImpl) entity).getType())));
 			break;
 		case EFFECT :
-			images.addAll(loader.getSpecialEffectsAnimation().get(new Pair<>(entity.getID(), ((SpecialEffect) entity).getType())));
+			images.addAll(loader.getAnimationsEffect().get(new Pair<>(entity.getID(), ((SpecialEffect) entity).getType())));
 			break;
 			default: System.out.println("Error in getting the right image");
 		}
