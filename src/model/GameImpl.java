@@ -16,7 +16,6 @@ import model.powerup.PPowerUp;
 public class GameImpl implements Game{
 
    public static final int ARENA_WIDTH = 1600;
-
    public static final int ARENA_HEIGHT = 900;
 
    private static final int ENEMY_DEAD = 10;
@@ -56,7 +55,7 @@ public class GameImpl implements Game{
 		this.playerPowerUps.forEach(ppu -> ppu.update());
 		this.player.update();
 		if(!this.freeze) {
-			this.enemies.get().forEach(e -> e.update());
+			//this.enemies.get().forEach(e -> e.update());
 			this.meteors.get().forEach(m -> m.update());
 			this.shots.get().forEach(s -> s.update());
 		}
@@ -69,11 +68,12 @@ public class GameImpl implements Game{
 	}
 	
 	public void nextLevel() {
-//        if (this.effects.isEmpty() && this.enemies.isPresent() && this.enemies.get().isEmpty()) {
-//            this.score += (LEVEL_CLEARED * this.level.getLevel() * this.player.getHealth() / 10);
-//            this.clearEntitiesLeft();
-//            this.level.nextLevelSingle();
-//        }
+        if (//this.effects.isEmpty() && 
+        		this.enemies.isPresent() && this.enemies.get().isEmpty()) {
+            this.score += (LEVEL_CLEARED * this.level.getLevel() * this.player.getHealth() / 10);
+            this.clearEntitiesLeft();
+            this.level.nextLevel();
+        }
 	}
 	
 	private void clearEntitiesLeft() {
@@ -149,7 +149,7 @@ public class GameImpl implements Game{
         this.removeDeadEntities();
 	}
 	
-	private void checkForCollisions(final List<Entity> entities1, final List<Entity> entities2) {
+	private void checkForCollisions(final List<EntityImpl> entities1, final List<EntityImpl> entities2) {
         entities1.forEach(e1 -> entities2.stream()
                 .filter(e2 -> !e2.isDead())
                 .filter(e2 -> e2.getHitbox().intersects(e1.getHitbox()))
