@@ -72,7 +72,6 @@ public class LevelImpl implements Level{
 
 	@Override
 	public int getLevel() {
-		// TODO Auto-generated method stub
 		return this.currentLevel;
 	}
 
