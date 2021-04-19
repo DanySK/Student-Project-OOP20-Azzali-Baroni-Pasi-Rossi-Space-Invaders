@@ -128,7 +128,8 @@ public class GameImpl implements Game{
 
 	@Override
 	public void checkCollision() {
-        this.checkForCollisions(Arrays.asList(this.player), this.meteors.get().stream().collect(Collectors.toList()));
+		//scommentare dopo aver fatto le meteore
+        //this.checkForCollisions(Arrays.asList(this.player), this.meteors.get().stream().collect(Collectors.toList()));
 
         this.checkForCollisions(Arrays.asList(this.player), this.enemies.get().stream().collect(Collectors.toList()));
         this.checkForCollisions(this.enemies.get().stream().filter(e -> !e.isDead()).collect(Collectors.toList()), 
