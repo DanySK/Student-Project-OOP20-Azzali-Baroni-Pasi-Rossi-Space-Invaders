@@ -3,6 +3,7 @@ package view;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
@@ -11,6 +12,8 @@ import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
 import javax.swing.SwingConstants;
+
+import model.PlayerImpl;
 
 public class playerView extends headUpDisplay{
 
@@ -46,10 +49,7 @@ public class playerView extends headUpDisplay{
 		leveltxt.setForeground(Color.WHITE);
 		scoretxt.setHorizontalAlignment(SwingConstants.CENTER);
 		leveltxt.setHorizontalAlignment(SwingConstants.CENTER);
-		//prova di testo VA SCRITTO NEL RENDER IL TESTO
-		scoretxt.setText("score: 0");
-		leveltxt.setText("level: 0");
-		//fine prova
+		
 		this.score = scoretxt;
 		this.level = leveltxt;
 		g.setAutoCreateGaps(true);
@@ -80,5 +80,20 @@ public class playerView extends headUpDisplay{
 	    this.level.setFont(new Font("Bauhaus 93", 2, this.getParent().getHeight() / headUpDisplay.FONT_P));
 	}
 
-	//public abstract void render(){}
+	@Override
+	public void render(PlayerImpl player, int score,int level) {
+		// TODO Auto-generated method stub
+		this.level.setText("Level: "+ level);
+		this.score.setText("score: "+ score);
+		if(player.getShield() > 0) {
+			this.lifeBar.setValue(player.getShield());
+			this.lifeBar.setForeground(Color.ORANGE);
+		}else {
+			this.lifeBar.setValue(player.getHealth());
+			this.lifeBar.setForeground(new Color((headUpDisplay.MAX_RGB * (50 - this.lifeBar.getValue()))/50,headUpDisplay.MAX_RGB * this.lifeBar.getValue()/50,0));
+		}
+		
+	}
+
+	
 }
