@@ -22,7 +22,7 @@ public class ArenaView extends JPanel {
 
 	public static final String TITLE ="Game";
 	
-	//private final headUpDisplay hud;
+	private final headUpDisplay playerview;
 	private final Background back;
    // private final EntityAnimator entAnimator;
 	//private final List<Pair<Entity, Image>> entities;
@@ -36,9 +36,9 @@ public class ArenaView extends JPanel {
 		this.back = new Background(TITLE);
 		this.setFocusable(true);
 		this.setDoubleBuffered(true);
-		//this.hud = "single player";
+		this.playerview = new playerView();
 		this.setPreferredSize(new Dimension(ViewImpl.SCREEN_WIDTH,ViewImpl.SCREEN_HEIGHT));
-		//this.add(paintingChild);
+		this.add(this.playerview,BorderLayout.NORTH);
 		//settare il key input
 		
 	}
