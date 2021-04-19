@@ -28,7 +28,7 @@ public class PPowerUp extends PowerUpImpl{
 	public void reset() {
 		 final Player player = this.getEntityStrategy();
 	        if (this.getType().equals(PowerUpT.FIRE_BOOST)) {
-	            //player.setShotCD(player.getShotCD() + this.strategy.multiplyEffect(STANDARD_FIRE_RATE_BOOST));
+	            player.setCoolDown(player.getCoolDown() + this.strategy.multiplyEffect(STANDARD_FIRE_RATE_BOOST));
 	        
 	        }
 	}
@@ -44,10 +44,10 @@ public class PPowerUp extends PowerUpImpl{
 		if(this.getType().equals(PowerUpT.HEALTH)) {
 			player.setHealth(Clamp.clamp(player.getHealth() + this.strategy.multiplyEffect(STANDARD_HEALTH), 0, 100));
         } else if (this.getType().equals(PowerUpT.FIRE_BOOST)) {
-            //player.setShotCD(player.getShotCD() - this.strategy.multiplyEffect(STANDARD_FIRE_RATE_BOOST));
+            player.setCoolDown(player.getCoolDown() - this.strategy.multiplyEffect(STANDARD_FIRE_RATE_BOOST));
         } else {
             if (!this.isActivated()) {
-                //player.setShield(this.strategy.multiplyEffect(STANDARD_SHIELD));
+                player.setSHield(this.strategy.multiplyEffect(STANDARD_SHIELD));
             } else if (player.getShield() == 0) {
                 this.setDead();
             }
@@ -57,9 +57,8 @@ public class PPowerUp extends PowerUpImpl{
 
 	@Override
 	protected void setS() {
-		/*this.setPosition(this.getEntityStrategy());
-		this.setHitbox(this.getEntityStrategy());*/
-		
+		this.setPosition(this.getEntityStrategy().getPosition());
+		this.setHitbox(this.getEntityStrategy().getHitbox());
 	}
 
 	
