@@ -1,78 +1,45 @@
 package model;
 
+import java.awt.Rectangle;
 
+import utility.Pair;
 
-public class BulletImpl /*implements Entity*/{
-/*
-	Point2D position;
-    float scale = 1;
-    double width;
-    double height;
-    Image bulletImage;
-    
-    private Point2D movement = new Point2D(0, -1);
-    
-    
-    public BulletImpl(Image bulletImage) {
-        this.bulletImage = bulletImage;
-        this.width = bulletImage.getWidth();
-        this.height = bulletImage.getHeight();
-    }
+public class BulletImpl extends EntityImpl implements Bullet {
 	
-	@Override
-	public Point2D getDrawPosition() {
-		return position;
-	}
-	
-	@Override
-	public void move(Point2D vector) {
-		this.position = this.position.add(vector);
-	}
-	
-	@Override
-	public void setDrawPosition(float x, float y) {
-		this.position = new Point2D(x, y);
-	}
-
-	@Override
-	public float getScale() {
-		return scale;
-	}
-
-	@Override
-	public Point2D getCenter() {
-        Point2D pos = getDrawPosition();
-        return new Point2D(pos.getX() + width / 2, pos.getY() + height / 2);
-	}
-
-	@Override
-	public Image getImage() {
-		 return bulletImage;
-	}
-
-	@Override
-	public void setScale(float scale) {
-		this.scale = scale;
-	}
-
-    @Override
-	public double getWidth() {
-        return this.width * getScale();
-    }
+	private final ID owner;
+    private static final int BULLETSIZE = 20;
+    private static final int WIDTH = GameImpl.ARENA_WIDTH / 40;
+    private static final int HEIGHT = GameImpl.ARENA_HEIGHT / 22;
+    private static final int SPEED = GameImpl.ARENA_HEIGHT / 50;
     
-    @Override
-	public double getHeight() {
-        return this.height * getScale();
+    public BulletImpl(final Integer x, final Integer y, final ID owner) {
+        super(new Pair<Integer, Integer>(x, y), 0, SPEED, ID.PLAYER_BULLET);
+        if (owner == ID.PLAYER) {
+            setSpeed(getSpeed().getX(), getSpeed().getY() * -1);
+        }
+        this.owner = owner;
+        setHitbox(new Rectangle(this.getPosition().getX() - BULLETSIZE, this.getPosition().getY() - BULLETSIZE, WIDTH, HEIGHT));
     }
-    
+
+	@Override
+	public ID getOwner() {
+		// TODO Auto-generated method stub
+		return this.owner;
+	}
 
 	@Override
 	public void update() {
-		move(movement);
+        getPosition().setX(getPosition().getX() + getSpeed().getX());
+        getPosition().setY(getPosition().getY() + getSpeed().getY());
+        setHitbox(new Rectangle(this.getPosition().getX() - 10, this.getPosition().getY() - 10, BULLETSIZE, BULLETSIZE));
+        if (this.getPosition().getY() == GameImpl.ARENA_HEIGHT || this.getPosition().getY() < 0) {
+            this.setDead();
+        }
 	}
-	
-	public void drawBullet(Canvas c, Point2D pos) {
-		c.getGraphicsContext2D().drawImage(bulletImage, pos.getX(), pos.getY());
+
+	@Override
+	public void collide(Entity entity) {
+		this.setDead();
+		
 	}
-*/
 }

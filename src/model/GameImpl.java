@@ -5,6 +5,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
+import controller.Level;
+import controller.LevelImpl;
+import model.powerup.GPowerUp;
+import model.powerup.PPowerUp;
+
 public class GameImpl implements Game{
 
    public static final int ARENA_WIDTH = 1600;
@@ -21,9 +26,9 @@ public class GameImpl implements Game{
 	//private final List<BulletImpl> bullets;
 	//private final List<Effect> effects;
     private final Optional<List<ShotEnemyImpl>> shots;
-    //private final List<PlayerPowerUp> playerPowerUps;
-    //private Optional<GlobalPowerUp> globalPowerUp;
-//    private final InterfaceLevel level;
+    private final List<PPowerUp> playerPowerUps;
+    private Optional<GPowerUp> globalPowerUp;
+    private final Level level;
     private int score;
     private boolean freeze;
     
@@ -35,9 +40,9 @@ public class GameImpl implements Game{
         //this.bullets = new ArrayList<>();
 //      this.effects = new ArrayList<>();
       this.shots = Optional.of(new ArrayList<>());
-//      this.playerPowerUps = new ArrayList<>();
-//      this.globalPowerUp = Optional.empty();
-//        this.level = new Level(this);
+      this.playerPowerUps = new ArrayList<>();
+      this.globalPowerUp = Optional.empty();
+      this.level = new LevelImpl(this);
         this.score = 0;
         this.freeze = false;
     }
@@ -45,19 +50,19 @@ public class GameImpl implements Game{
 
 	@Override
 	public void update() {
-//		this.playerPowerUps.forEach(ppu -> ppu.update());
+		this.playerPowerUps.forEach(ppu -> ppu.update());
 		this.player.update();
 		if(!this.freeze) {
-//			this.enemies.get().forEach(e -> e.update());
+			this.enemies.get().forEach(e -> e.update());
 			this.meteors.get().forEach(m -> m.update());
 			this.shots.get().forEach(s -> s.update());
 		}
 //		this.bullets.get().forEach(b -> b.update());
 //		this.effects.get().forEach(eff -> eff.update());
 		
-//		if(this.globalPowerUp.isPresent()) {
-//			this.globalPowerUp.get().update();
-//		}
+		if(this.globalPowerUp.isPresent()) {
+			this.globalPowerUp.get().update();
+		}
 	}
 	
 	public void nextLevel() {
@@ -74,13 +79,13 @@ public class GameImpl implements Game{
         this.shots.get().forEach(s -> s.setDead());
         this.enemies.get().forEach(e -> e.setDead());
 //        this.effects.forEach(e -> e.setDead());
-//        this.playerPowerUps.stream().filter(pu -> pu.isActivated()).forEach(pu -> pu.reset());
-//        this.playerPowerUps.forEach(pu -> pu.setDead());
-//        if (this.globalPowerUp.isPresent() && this.globalPowerUp.get().isActivated()) {
-//            this.globalPowerUp.get().reset();
-//            this.globalPowerUp.get().setDead();
-//        }
-//        this.removeDeadEntities();
+        this.playerPowerUps.stream().filter(pu -> pu.isActivated()).forEach(pu -> pu.reset());
+        this.playerPowerUps.forEach(pu -> pu.setDead());
+        if (this.globalPowerUp.isPresent() && this.globalPowerUp.get().isActivated()) {
+            this.globalPowerUp.get().reset();
+            this.globalPowerUp.get().setDead();
+        }
+        this.removeDeadEntities();
 	}
 
 	@Override
@@ -90,18 +95,18 @@ public class GameImpl implements Game{
 		
 		//temp.addAll(this.bullets);
 		
-//        temp.addAll(this.playerPowerUps);
+        temp.addAll(this.playerPowerUps);
 //        
 //        temp.addAll(this.effects);
 //		
 		if(this.enemies.isPresent()) {
 			temp.addAll(this.enemies.get());
 		}
-//		
-//		if(this.meteors.isPresent()) {
-//			temp.addAll(this.meteors.get(i));
-//		}
-//		
+		
+		if(this.meteors.isPresent()) {
+			temp.addAll(this.meteors.get());
+		}
+		
 		if(this.shots.isPresent()) {
 			temp.addAll(this.shots.get());
 		}
@@ -130,28 +135,27 @@ public class GameImpl implements Game{
     	
     }
     
-//    public Optional<List<AbstractEnemy>> getEnemies() {
-//        return this.enemies;
-//    }
+    public Optional<List<AbstractEnemy>> getEnemies() {
+        return this.enemies;
+    }
 
     public List<ShotEnemyImpl> getShot() {
     	return this.shots.get();
     }
     
-//  public List<PlayerPowerUp> getPlayerPowerUps() {
-//  return this.playerPowerUps;
-//}
-//
+  public List<PPowerUp> getPlayerPowerUps() {
+  return this.playerPowerUps;
+}
+
 
     
-//public void setGlobalPowerUp(final GlobalPowerUp globalPowerUp) {
-//  this.globalPowerUp = Optional.ofNullable(globalPowerUp);
-//}
+  public void setGlobalPowerUp(final GPowerUp globalPowerUp) {
+	  this.globalPowerUp = Optional.ofNullable(globalPowerUp);
+  	}
 
 	@Override
 	public int getLevel() {
-//		return level.getLevel;
-		return 0;
+		return level.getLevel();
 	}
 
 	@Override
