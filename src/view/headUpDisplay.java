@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
+import model.PlayerImpl;
+
 public abstract class headUpDisplay extends JPanel {
 
 	/**
@@ -15,6 +17,6 @@ public abstract class headUpDisplay extends JPanel {
 	
 	public static final int FONT_P = 25;
 	
-	//public abstract void render(List<Player> list, int score, int level);
+	public abstract void render(PlayerImpl player, int score, int level);
 
 }

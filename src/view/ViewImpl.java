@@ -54,7 +54,12 @@ public class ViewImpl extends JFrame implements View{
 
 	@Override
 	public void draw(List<Entity> list, int score, int level) {
-		//final ArenaView
+		final ArenaView arena = (ArenaView) Arrays.stream(this.main.getComponents())
+				.filter(e-> e instanceof ArenaView)
+				.findFirst()
+				.get();
+		
+		arena.render(list,score, level);
 		
 	}
 
