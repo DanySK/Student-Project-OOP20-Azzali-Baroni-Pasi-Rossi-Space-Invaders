@@ -25,10 +25,10 @@ public class ControllerImpl implements Controller{
         if (this.view == null) {
             throw new IllegalStateException();
         }
-        this.game = new GameImpl(/*mode*/);//mode 
-        //final KeyInput input = new KeyInput(game, this);
-        this.gameLoop = new GameLoop(this.game, this.view); //this.highscore, input);
-        this.view.switchWindow(new ArenaView(/*input*/), ArenaView.TITLE);
+        this.game = new GameImpl();
+        final Input input = new Input(game, this);
+        this.gameLoop = new GameLoop(this.game, this.view,input); //this.highscore);
+        this.view.switchWindow(new ArenaView(input), ArenaView.TITLE);
         this.gameLoop.start();
     }
     
