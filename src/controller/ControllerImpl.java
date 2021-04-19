@@ -20,7 +20,7 @@ public class ControllerImpl implements Controller{
 	public ControllerImpl() {
 		//this.highscore = new HighscoreManager();
 	}
-//final GameMode mode
+	//final GameMode mode
     private void startGame() throws IllegalStateException {
         if (this.view == null) {
             throw new IllegalStateException();

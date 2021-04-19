@@ -2,8 +2,6 @@ package model;
 
 import java.awt.Rectangle;
 import java.util.concurrent.ThreadLocalRandom;
-import model.GameImpl;
-import model.ID;
 import utility.Pair;
 
 public abstract class AbstractEnemy extends EntityImpl implements EnemyBehaviour {
@@ -52,25 +50,26 @@ public abstract class AbstractEnemy extends EntityImpl implements EnemyBehaviour
 	protected void enemyShot(final DirEnemy dir, final GameImpl game, final ID id) {
 		if (id == ID.BOSS_ENEMY) {
 			switch (dir) {
-			case DOWN: game.getShot().add(new ShotEnemyImpl(this.getPosition().getX(), this.getPosition().getY() - spd, dir));
-			game.getShot().add(new ShotEnemyImpl(this.getPosition().getX() + spd, this.getPosition().getY() - spd, DirEnemy.D_R));
-			game.getShot().add(new ShotEnemyImpl(this.getPosition().getX() - spd, this.getPosition().getY() - spd, DirEnemy.D_L));
+			case DOWN: 
+				game.getShot().add(new ShotEnemyImpl(this.getPosition().getX(), this.getPosition().getY() - spd, dir));
+				game.getShot().add(new ShotEnemyImpl(this.getPosition().getX() + spd, this.getPosition().getY() - spd, DirEnemy.D_R));
+				game.getShot().add(new ShotEnemyImpl(this.getPosition().getX() - spd, this.getPosition().getY() - spd, DirEnemy.D_L));
 			break;
-			case D_R: game.getShot().add(new ShotEnemyImpl(this.getPosition().getX() + spd, this.getPosition().getY() - spd, dir));
-			game.getShot().add(new ShotEnemyImpl(this.getPosition().getX(), this.getPosition().getY() - spd, DirEnemy.DOWN));
-			game.getShot().add(new ShotEnemyImpl(this.getPosition().getX() - spd, this.getPosition().getY(), DirEnemy.RIGHT));
+			case D_R: 
+				game.getShot().add(new ShotEnemyImpl(this.getPosition().getX() + spd, this.getPosition().getY() - spd, dir));
+				game.getShot().add(new ShotEnemyImpl(this.getPosition().getX(), this.getPosition().getY() - spd, DirEnemy.DOWN));
+				game.getShot().add(new ShotEnemyImpl(this.getPosition().getX() - spd, this.getPosition().getY(), DirEnemy.RIGHT));
 			break;
-			case D_L: game.getShot().add(new ShotEnemyImpl(this.getPosition().getX() - spd, this.getPosition().getY() - spd, dir));
-			game.getShot().add(new ShotEnemyImpl(this.getPosition().getX(), this.getPosition().getY() - spd, DirEnemy.DOWN));
-			game.getShot().add(new ShotEnemyImpl(this.getPosition().getX() - spd, this.getPosition().getY(), DirEnemy.LEFT));
+			case D_L: 
+				game.getShot().add(new ShotEnemyImpl(this.getPosition().getX() - spd, this.getPosition().getY() - spd, dir));
+				game.getShot().add(new ShotEnemyImpl(this.getPosition().getX(), this.getPosition().getY() - spd, DirEnemy.DOWN));
+				game.getShot().add(new ShotEnemyImpl(this.getPosition().getX() - spd, this.getPosition().getY(), DirEnemy.LEFT));
 			break;
 			default:
 				break;
 			
 			}
-		}
-			
-			else {
+		} else {
 				switch (dir) {
 				case DOWN: game.getShot().add(new ShotEnemyImpl(this.getPosition().getX(), this.getPosition().getY() - spd, dir));
 				break;
@@ -80,9 +79,11 @@ public abstract class AbstractEnemy extends EntityImpl implements EnemyBehaviour
 				
 			}
 		}
+	
 	protected boolean checkShotgun(final int shotgun, final int timeShot) {
 		return shotgun == timeShot ? true : false;
 	}
+	
 	protected void move(final DirEnemy dir) {
 		switch (dir) {
 		case DOWN: this.getPosition().setY(this.getPosition().getY() - this.getSpeed().getY());
