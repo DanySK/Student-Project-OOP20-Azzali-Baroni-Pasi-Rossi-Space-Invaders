@@ -1,5 +1,6 @@
 package controller.PowerUp;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -17,7 +18,8 @@ import utility.Pair;
 public class SpawnerP {
 	
 	private static final int PROBABILITY_POWER_UP = 50;
-	
+	private static final int LEVEL_LIMIT_FOR_LOW = 10;
+    private static final int LEVEL_LIMIT_FOR_BASIC = 20;
 	
 	private final int spawnFrezee;
 
@@ -25,11 +27,28 @@ public class SpawnerP {
 	public SpawnerP() {
 		final Random random = new Random();
 		this.spawnFrezee = random.nextInt(PROBABILITY_POWER_UP);
+		
 	}
 	
 	public List<PPowerUp> SpawnPowerUpPlayer(final int level){
-		return null;
 		//implementare dopo aver fatto il livello
+		final List<PPowerUp>list = new ArrayList<>();
+		final Random random = new Random();
+		final Strategy strategy = level < LEVEL_LIMIT_FOR_LOW ? new LowStrategy() : level < LEVEL_LIMIT_FOR_BASIC ? new BasicStrategy(): new HighStrategy();
+		int Number;
+		PowerUpT type;
+		int numberofSpawn = random.nextInt(4) +1;
+		while(numberofSpawn > 0) {
+			Number = random.nextInt(2);
+			switch(Number) {
+			case 0 : type = PowerUpT.HEALTH;
+			break;
+			default : type =PowerUpT.FIRE_BOOST;
+			}
+			list.add(new PPowerUp(this.generatePosition(),this.generateVelocity(),this.generateVelocity(),ID.POWER_UP, type, strategy));
+			numberofSpawn--;
+		}
+		return list;
 	}
 	
 	private Pair<Integer,Integer> generatePosition(){
