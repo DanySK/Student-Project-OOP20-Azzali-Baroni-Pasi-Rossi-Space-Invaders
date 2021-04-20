@@ -83,15 +83,15 @@ public class playerView extends headUpDisplay{
 	@Override
 	public void render(PlayerImpl player, int score,int level) {
 		// TODO Auto-generated method stub
-		this.level.setText("Level: "+ level);
-		this.score.setText("score: "+ score);
-		if(player.getShield() > 0) {
-			this.lifeBar.setValue(player.getShield());
-			this.lifeBar.setForeground(Color.ORANGE);
-		}else {
+		this.level.setText("Level: "+ score);
+		this.score.setText("score: "+ level);
+//		if(player.getShield() > 0) {
+//			this.lifeBar.setValue(player.getShield());
+//			this.lifeBar.setForeground(Color.ORANGE);
+//		}else {
 			this.lifeBar.setValue(player.getHealth());
 			this.lifeBar.setForeground(new Color((headUpDisplay.MAX_RGB * (50 - this.lifeBar.getValue()))/50,headUpDisplay.MAX_RGB * this.lifeBar.getValue()/50,0));
-		}
+//		}
 		
 	}
 
