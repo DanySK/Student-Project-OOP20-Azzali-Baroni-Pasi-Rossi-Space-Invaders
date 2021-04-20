@@ -30,7 +30,7 @@ public abstract class AbstractEnemy extends EntityImpl implements EnemyBehaviour
 		do {
 			number = ThreadLocalRandom.current().nextDouble(0, HEIGHT_Y);
 		} while ((number > HEIGHT_Y / 4 && number < (HEIGHT_Y * 3) / 4) || model.tiedupY((int) number));
-	
+		this.getPosition().setY(0);
 		done = false;
 		return this;
 	}
@@ -86,7 +86,7 @@ public abstract class AbstractEnemy extends EntityImpl implements EnemyBehaviour
 	
 	protected void move(final DirEnemy dir) {
 		switch (dir) {
-		case DOWN: this.getPosition().setY(this.getPosition().getY() - this.getSpeed().getY());
+		case DOWN: this.getPosition().setY(this.getPosition().getY() + this.getSpeed().getY());
 		break;
 		case LEFT: this.getPosition().setX(this.getPosition().getX() - this.getSpeed().getX());
 		break;
@@ -101,7 +101,7 @@ public abstract class AbstractEnemy extends EntityImpl implements EnemyBehaviour
 	protected DirEnemy checkPosition(final DirEnemy dir) {
 		if (this.getPosition().getX() - hit <= 0) {
 			return DirEnemy.RIGHT;
-		} else if (this.getPosition().getX() + hit <= GameImpl.ARENA_WIDTH) {
+		} else if (this.getPosition().getX() + hit >= GameImpl.ARENA_WIDTH) {
 			return DirEnemy.LEFT;
 		} else if (this.getPosition().getY() + hit >= GameImpl.ARENA_HEIGHT) {
 			return DirEnemy.DOWN;
