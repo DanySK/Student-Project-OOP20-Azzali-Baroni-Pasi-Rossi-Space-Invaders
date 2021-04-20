@@ -44,9 +44,9 @@ public class LevelImpl implements Level{
         	gameImpl.getEnemies().get().add(bossEnemy.createThisEnemy());
         break;
         
-        case OBSTACLE: 
+        case METEOR: 
         	for (int i = 0; i < number; i++) {
-            gameImpl.getObstacles().add(meteors.createMeteor());
+            gameImpl.getMeteor().add(meteors.createMeteor());
         }
 
         default: 
@@ -59,11 +59,11 @@ public class LevelImpl implements Level{
     	switch (myLevel) {
         case 1: 
         	create(nEnemy, ID.BASIC_ENEMY);
-        	create(nMeteor, ID.OBSTACLE);
+        	create(nMeteor, ID.METEOR);
         break;
         case LEVEL_BOSS: 
         	create(1, ID.BOSS_ENEMY);
-        	create(nMeteor, ID.OBSTACLE);
+        	create(nMeteor, ID.METEOR);
         break;
         default:
             break;

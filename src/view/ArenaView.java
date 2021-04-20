@@ -54,7 +54,6 @@ public class ArenaView extends JPanel {
 		if (!this.hasFocus()) {
             this.requestFocusInWindow();
         }
-		//settare il key input
 		
 	}
 

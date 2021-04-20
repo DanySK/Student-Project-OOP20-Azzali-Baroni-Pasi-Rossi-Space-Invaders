@@ -18,7 +18,7 @@ public enum ID {
 	ENEMY_BULLET,
 	
 	//Ostacolo
-	OBSTACLE,
+	METEOR,
 	
 	//Effetto
 	EFFECT,
