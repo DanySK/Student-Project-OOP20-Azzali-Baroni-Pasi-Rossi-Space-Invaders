@@ -44,8 +44,8 @@ public class Input extends KeyAdapter{
         break;
         case KeyEvent.VK_RIGHT : keyDown[1] = true;
         break;
-//        case KeyEvent.VK_SPACE : keyDown[2] = true;
-//        break;
+        case KeyEvent.VK_SPACE : keyDown[2] = true;
+        break;
         case KeyEvent.VK_P : 
             this.observer.update(null, StateV.PAUSE);
             break;
@@ -77,16 +77,6 @@ public class Input extends KeyAdapter{
      */
     public void update() {
         final PlayerImpl player = game.getPlayer();
-<<<<<<< HEAD
-        /*if ((this.keyDown[0] && this.keyDown[1]) || (!this.keyDown[0] && !this.keyDown[1])) {
-            player.setSpeed(0, 0);
-        } else if (this.keyDown[1]) {
-            player.setSpeed(0, speed);
-        } else {
-            player.setSpeed(0, -speed);
-        }*/
-=======
->>>>>>> 5539630329f48800c9acb9192d386e2eb49e5319
         if ((this.keyDown[0] && this.keyDown[1]) || (!this.keyDown[0] && !this.keyDown[1])) {
             player.setSpeed(0, player.getSpeed().getY());
         } else if (this.keyDown[1]) {

@@ -6,6 +6,8 @@ import javax.swing.SwingUtilities;
 
 import model.Game;
 import model.GameStatus;
+import view.MenuP;
+import view.MenuP.MenuState;
 import view.View;
 
 
@@ -21,7 +23,7 @@ public final class GameLoop implements Runnable{
     private final View view;
     //private final HighscoreManager highscore;
     private final Input input;
-    //private final MenuPanel pauseMenu;
+    private final MenuP pauseMenu;
 	
     
     public GameLoop(final Game game, final View view /*, final HighscoreManager highscore*/, final Input input) {
@@ -30,7 +32,7 @@ public final class GameLoop implements Runnable{
         //this.highscore = highscore;
         this.input = input;
         this.gameLoopStatus = GameLoopStatus.READY;
-        //this.pauseMenu = new MenuPanel(view, MenuType.Pause);
+        this.pauseMenu = new MenuP(view, MenuState.Pause);
     }
 	
 	
@@ -57,7 +59,7 @@ public final class GameLoop implements Runnable{
 
         while (!this.gameLoopStatus.equals(GameLoopStatus.ENDED)) {
             if (this.gameLoopStatus.equals(GameLoopStatus.PAUSED)) {
-                //this.view.switchWindow(this.pauseMenu, MenuPanel.TITLE_PAUSE);
+                this.view.switchWindow(this.pauseMenu, MenuP.PAUSE_T);
             }
             while (this.gameLoopStatus.equals(GameLoopStatus.PAUSED)) {
                 try {
