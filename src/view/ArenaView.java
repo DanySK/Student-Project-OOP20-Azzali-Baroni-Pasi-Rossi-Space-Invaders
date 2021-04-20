@@ -52,11 +52,11 @@ public class ArenaView extends JPanel {
 		this.add(this.playerview,BorderLayout.NORTH);
 		this.addKeyListener(input);
 		if (!this.hasFocus()) {
-            this.requestFocusInWindow();
-        }
+      this.requestFocusInWindow();
+      }
 		//settare il key input
 		
-	}
+	 }
 
 	@Override
 	protected void paintComponent(Graphics g) {

@@ -7,7 +7,6 @@ import controller.view.ViewObserver;
 import model.BulletImpl;
 import model.Game;
 import model.GameImpl;
-import model.ID;
 import model.PlayerImpl;
 import view.StateV;
 
@@ -45,8 +44,8 @@ public class Input extends KeyAdapter{
         break;
         case KeyEvent.VK_RIGHT : keyDown[1] = true;
         break;
-        case KeyEvent.VK_SPACE : keyDown[2] = true;
-        break;
+//        case KeyEvent.VK_SPACE : keyDown[2] = true;
+//        break;
         case KeyEvent.VK_P : 
             this.observer.update(null, StateV.PAUSE);
             break;
@@ -78,21 +77,21 @@ public class Input extends KeyAdapter{
      */
     public void update() {
         final PlayerImpl player = game.getPlayer();
-        if ((this.keyDown[0] && this.keyDown[1]) || (!this.keyDown[0] && !this.keyDown[1])) {
+        /*if ((this.keyDown[0] && this.keyDown[1]) || (!this.keyDown[0] && !this.keyDown[1])) {
             player.setSpeed(0, 0);
         } else if (this.keyDown[1]) {
             player.setSpeed(0, speed);
         } else {
             player.setSpeed(0, -speed);
-        }
-        if ((this.keyDown[2] && this.keyDown[3]) || (!this.keyDown[2] && !this.keyDown[3])) {
+        }*/
+        if ((this.keyDown[0] && this.keyDown[1]) || (!this.keyDown[0] && !this.keyDown[1])) {
             player.setSpeed(0, player.getSpeed().getY());
-        } else if (this.keyDown[3]) {
+        } else if (this.keyDown[1]) {
             player.setSpeed(speed, player.getSpeed().getY());
         } else {
             player.setSpeed(-speed, player.getSpeed().getY());
         }
-        if (this.keyDown[4] && shotReady) {
+        if (this.keyDown[2] && shotReady) {
             game.getBullets().add(new BulletImpl(player.getPosition().getX(), player.getPosition().getY() - (player.getHitbox().height / 2), player.getID()));
             shotReady = false;
             player.setShotReady(player.getCoolDown());
