@@ -73,6 +73,9 @@ public class ArenaView extends JPanel {
 	}
 	
 	public void render(final List<Entity> gameEntity,final int level,final int score) {
+		if (!this.hasFocus()) {
+            this.requestFocusInWindow();
+        }
 		this.EntityGame.clear();
 		widthProportion = (double) this.getWidth() /(double) GameImpl.ARENA_WIDTH;
 		heightProportion = (double) this.getHeight() /(double) GameImpl.ARENA_HEIGHT;
