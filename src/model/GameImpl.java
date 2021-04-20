@@ -216,7 +216,7 @@ public class GameImpl implements Game{
 		return this.bullets;
 	}
 	
-    public List<AbstractMeteor> getObstacles() {
+    public List<AbstractMeteor> getMeteor() {
         return this.meteors.get();
     }
     

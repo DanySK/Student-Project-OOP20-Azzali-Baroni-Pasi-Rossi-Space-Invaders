@@ -19,6 +19,6 @@ public class MeteorController {
 	}
 	
 	public MeteorImpl createMeteor() {
-		return new MeteorImpl(this.RandomSpawn(), VELOCITY, VELOCITY, LENGTH, ID.OBSTACLE);
+		return new MeteorImpl(this.RandomSpawn(), VELOCITY, VELOCITY, LENGTH, ID.METEOR);
 	}
 }
