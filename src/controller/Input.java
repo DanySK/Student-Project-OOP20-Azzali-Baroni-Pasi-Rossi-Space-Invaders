@@ -7,7 +7,9 @@ import controller.view.ViewObserver;
 import model.BulletImpl;
 import model.Game;
 import model.GameImpl;
+import model.ID;
 import model.PlayerImpl;
+import view.StateV;
 
 public class Input extends KeyAdapter{
 	
@@ -46,7 +48,7 @@ public class Input extends KeyAdapter{
         case KeyEvent.VK_SPACE : keyDown[2] = true;
         break;
         case KeyEvent.VK_P : 
-            //this.observer.update(null, ViewState.PAUSE);
+            this.observer.update(null, StateV.PAUSE);
             break;
         case KeyEvent.VK_ESCAPE : Runtime.getRuntime().exit(0);
         default:
@@ -91,7 +93,7 @@ public class Input extends KeyAdapter{
             player.setSpeed(-speed, player.getSpeed().getY());
         }
         if (this.keyDown[4] && shotReady) {
-            //game.getBullets().add(new BulletImpl(player.getPosition().getX(), player.getPosition().getY() - (player.getHitbox().height / 2), player.getID()));
+            game.getBullets().add(new BulletImpl(player.getPosition().getX(), player.getPosition().getY() - (player.getHitbox().height / 2), player.getID()));
             shotReady = false;
             player.setShotReady(player.getCoolDown());
         }

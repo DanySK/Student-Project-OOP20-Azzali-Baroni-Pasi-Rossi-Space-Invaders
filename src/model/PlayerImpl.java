@@ -22,6 +22,7 @@ public final class PlayerImpl extends EntityImpl implements Player{
     public PlayerImpl(final ID id, final GameImpl gameImpl) {
     	super(new Pair<Integer, Integer>(GameImpl.ARENA_WIDTH / 2, GameImpl.ARENA_HEIGHT / 4 * 3), 0, 0, id);
     	this.gameImpl = gameImpl;
+    	setHitbox(new Rectangle(this.getPosition().getX(),this.getPosition().getY(),WIDTH,HEIGHT));
     }
 
 	@Override
