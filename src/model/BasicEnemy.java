@@ -43,11 +43,13 @@ public class BasicEnemy extends AbstractEnemy {
 		if (ran.nextBoolean()) {
 			if (ran.nextBoolean()) {
 				dir = DirEnemy.RIGHT;
-				dir = DirEnemy.DOWN;
 			} else {
 				dir = DirEnemy.LEFT;
-				dir = DirEnemy.DOWN;
 			}
+		}else if(ran.nextBoolean()) {
+			dir = DirEnemy.DOWN;
+		}else {
+			dir = DirEnemy.DOWN;
 		}
 			return dir;
 		

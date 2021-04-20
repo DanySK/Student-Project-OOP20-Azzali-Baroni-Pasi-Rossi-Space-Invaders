@@ -31,13 +31,12 @@ public class SpawnerP {
 	}
 	
 	public List<PPowerUp> SpawnPowerUpPlayer(final int level){
-		//implementare dopo aver fatto il livello
 		final List<PPowerUp>list = new ArrayList<>();
 		final Random random = new Random();
 		final Strategy strategy = level < LEVEL_LIMIT_FOR_LOW ? new LowStrategy() : level < LEVEL_LIMIT_FOR_BASIC ? new BasicStrategy(): new HighStrategy();
 		int Number;
 		PowerUpT type;
-		int numberofSpawn = random.nextInt(4) +1;
+		int numberofSpawn = random.nextInt(1) +1;
 		while(numberofSpawn > 0) {
 			Number = random.nextInt(2);
 			switch(Number) {

@@ -51,6 +51,9 @@ public class ArenaView extends JPanel {
 		this.setPreferredSize(new Dimension(ViewImpl.SCREEN_WIDTH,ViewImpl.SCREEN_HEIGHT));
 		this.add(this.playerview,BorderLayout.NORTH);
 		this.addKeyListener(input);
+		if (!this.hasFocus()) {
+            this.requestFocusInWindow();
+        }
 		//settare il key input
 		
 	}
