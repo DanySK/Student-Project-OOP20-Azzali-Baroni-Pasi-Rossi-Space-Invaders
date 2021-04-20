@@ -46,9 +46,10 @@ public class BasicEnemy extends AbstractEnemy {
 			} else {
 				dir = DirEnemy.LEFT;
 			}
-		}else if(ran.nextBoolean()) {
-			dir = DirEnemy.DOWN;
-		}else {
+//			}else if(ran.nextBoolean()) {
+//				dir=DirEnemy.DOWN;	
+		}
+		else {
 			dir = DirEnemy.DOWN;
 		}
 			return dir;
@@ -75,8 +76,7 @@ public class BasicEnemy extends AbstractEnemy {
 			enemyShot(dir, game,MYID);
 			shotgun = 0;
 		}
-			
-		}
+	}
 	@Override
 	public void collide (final Entity entity) {
 		switch (entity.getID()) {
