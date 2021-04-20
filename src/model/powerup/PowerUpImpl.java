@@ -57,9 +57,9 @@ public abstract class PowerUpImpl extends ChronometerEntity implements PowerUp {
 	@Override
 	public void update() {
 		if(this.isActiveted == false){
-			this.getPosition().setX(this.getPosition().getX() + this.getSpeed().getX());
+			//this.getPosition().setX(this.getPosition().getX() + this.getSpeed().getX());
 			this.getPosition().setY(this.getPosition().getY() + this.getSpeed().getY());
-			this.setHitbox(new Rectangle(this.getPosition().getX() - WIDTH / 2, this.getPosition().getY()));
+			this.setHitbox(new Rectangle(this.getPosition().getX() - WIDTH / 2, this.getPosition().getY()- HEIGHT / 2,WIDTH,HEIGHT));
 			//capire come gestire la caduta dei power up dall'alto al basso//this.bounce();
 		}else {
 			this.setS();

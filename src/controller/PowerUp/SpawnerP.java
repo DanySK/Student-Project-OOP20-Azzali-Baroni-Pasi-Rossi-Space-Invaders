@@ -53,7 +53,7 @@ public class SpawnerP {
 	private Pair<Integer,Integer> generatePosition(){
 		final Random random = new Random();
         final int xP = Clamp.clamp(random.nextInt(GameImpl.ARENA_WIDTH), 0 + PowerUpImpl.WIDTH / 2, GameImpl.ARENA_WIDTH - PowerUpImpl.WIDTH / 2);
-        final int yP = Clamp.clamp(random.nextInt(GameImpl.ARENA_HEIGHT), 0 + PowerUpImpl.HEIGHT / 2, GameImpl.ARENA_HEIGHT - PowerUpImpl.HEIGHT / 2);
+        final int yP = 0;
         return new Pair<Integer, Integer>(xP, yP);
 	}
 	
