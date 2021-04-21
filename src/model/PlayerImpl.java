@@ -8,7 +8,7 @@ import utility.Pair;
 
 public final class PlayerImpl extends EntityImpl implements Player{
 
-	private static final int DAMAGE_MULTIPLIER = 5;//10
+	private static final int DAMAGE_MULTIPLIER = 2;//10
     private static final int WIDTH = GameImpl.ARENA_WIDTH / 20;
     private static final int HEIGHT = WIDTH + WIDTH / 100;
     private static final int DEFINITLY_NOT_SHOT_COOLDOWN = 20;
