@@ -24,4 +24,11 @@
 /utility/
 /view/
 /GameOver.jpg
+<<<<<<< HEAD
 /explosion1.png
+=======
+/powerup_Health.png
+/powerup_Freeze.png
+/powerup_FireBoost.png
+/powerup_healt.png
+>>>>>>> 65305e9943d591b626e6f5cb4c4758e2513991bf

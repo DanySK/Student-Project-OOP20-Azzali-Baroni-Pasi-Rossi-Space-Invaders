@@ -42,7 +42,7 @@ public class PPowerUp extends PowerUpImpl{
 	protected void InsertEffect() {
 		final Player player = this.getEntityStrategy();
 		if(this.getType().equals(PowerUpT.HEALTH)) {
-			player.setHealth(Clamp.clamp(player.getHealth() + this.strategy.multiplyEffect(STANDARD_HEALTH), 0, 50));
+			player.setHealth(Clamp.clamp(player.getHealth() + this.strategy.multiplyEffect(STANDARD_HEALTH), 0, 100));
         } else if (this.getType().equals(PowerUpT.FIRE_BOOST)) {
             player.setCoolDown(player.getCoolDown() - this.strategy.multiplyEffect(STANDARD_FIRE_RATE_BOOST));
         } 

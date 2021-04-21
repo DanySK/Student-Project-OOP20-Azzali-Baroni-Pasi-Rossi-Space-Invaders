@@ -69,13 +69,13 @@ public class ImageLoader {
         
         this.entityImages.put(ID.ENEMY_BULLET, loadImage(imgURL));
         
-        imgURL = ImageLoader.class.getResource("/powerupRed_star.png");
+        imgURL = ImageLoader.class.getResource("/powerup_FireBoost.png");
         this.powerUpImages.put(new Pair<>(ID.POWER_UP, PowerUpT.FIRE_BOOST), loadImage(imgURL));
         
-        imgURL = ImageLoader.class.getResource("/powerupRed_bolt.png");
+        imgURL = ImageLoader.class.getResource("/powerup_Freeze.png");
         this.powerUpImages.put(new Pair<>(ID.POWER_UP, PowerUpT.FREEZE), loadImage(imgURL)); 
         
-        imgURL = ImageLoader.class.getResource("/powerupRed_shield.png");
+        imgURL = ImageLoader.class.getResource("/powerup_Health.png");
         this.powerUpImages.put(new Pair<>(ID.POWER_UP, PowerUpT.HEALTH), loadImage(imgURL));
         
         imgURL = ImageLoader.class.getResource("/bulletSpeedUp.png");
