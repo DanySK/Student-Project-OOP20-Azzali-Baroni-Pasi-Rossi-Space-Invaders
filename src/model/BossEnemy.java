@@ -34,7 +34,7 @@ public class BossEnemy extends AbstractEnemy{
 		if(this.isDead()) {
 			this.setAlive();
 		}
-		this.life = game.getLevel();
+		this.life = 10;
 		createEnemy();
 		deleteList();
 		setHitbox();
@@ -68,7 +68,6 @@ public class BossEnemy extends AbstractEnemy{
 			break;
 			default:
 				life--;
-			
 		}
 		if (life == 0) {
 			this.setDead();

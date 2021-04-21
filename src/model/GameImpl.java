@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 import controller.Level;
 import controller.LevelImpl;
-
+import model.SpecialEffect.SpecialEffectT;
 import model.powerup.GPowerUp;
 import model.powerup.PPowerUp;
 
@@ -40,11 +40,11 @@ public class GameImpl implements Game{
     	this.enemies = Optional.of(new ArrayList<>());
     	this.meteors = Optional.of(new ArrayList<>());
         this.bullets = new ArrayList<>();
-       this.effects = new ArrayList<>();
-      this.shots = Optional.of(new ArrayList<>());
-      this.playerPowerUps = new ArrayList<>();
-      this.globalPowerUp = Optional.empty();
-      this.level = new LevelImpl(this);
+        this.effects = new ArrayList<>();
+        this.shots = Optional.of(new ArrayList<>());
+        this.playerPowerUps = new ArrayList<>();
+        this.globalPowerUp = Optional.empty();
+        this.level = new LevelImpl(this);
         this.score = 0;
         this.freeze = false;
     }
@@ -129,7 +129,7 @@ public class GameImpl implements Game{
 	@Override
 	public void checkCollision() {
 		//scommentare dopo aver fatto le meteore
-        //this.checkForCollisions(Arrays.asList(this.player), this.meteors.get().stream().collect(Collectors.toList()));
+        this.checkForCollisions(Arrays.asList(this.player), this.meteors.get().stream().collect(Collectors.toList()));
 
         this.checkForCollisions(Arrays.asList(this.player), this.enemies.get().stream().collect(Collectors.toList()));
         this.checkForCollisions(this.enemies.get().stream().filter(e -> !e.isDead()).collect(Collectors.toList()), 
@@ -166,7 +166,7 @@ public class GameImpl implements Game{
         final List<AbstractEnemy> deadEnemies = this.enemies.get().stream()
                 .filter(e -> e.isDead())
                 .peek(e -> this.score += (ENEMY_DEAD * this.level.getLevel()))
-                //.peek(e -> this.effects.add(new SpecialEffect(ID.EFFECT, e.getPosition(), e.getHitbox(), SpecialEffectType.EXPLOSION)))
+                .peek(e -> this.effects.add(new SpecialEffect(ID.EFFECT, e.getPosition(), e.getHitbox(), SpecialEffectT.EXPLOSION)))
                 .collect(Collectors.toList());
         deadEnemies.forEach(e -> this.enemies.get().remove(e));
         final List<AbstractMeteor> deadObstacles = this.meteors.get().stream().filter(a -> a.isDead()).collect(Collectors.toList());
@@ -177,7 +177,7 @@ public class GameImpl implements Game{
         }
     this.bullets.removeIf(b -> b.isDead());
     this.playerPowerUps.removeIf(pu -> pu.isDead());
-    //this.effects.removeIf(e -> e.isDead());
+    this.effects.removeIf(e -> e.isDead());
     }
     
     public Optional<List<AbstractEnemy>> getEnemies() {
