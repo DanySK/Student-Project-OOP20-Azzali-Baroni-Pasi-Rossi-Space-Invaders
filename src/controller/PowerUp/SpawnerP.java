@@ -17,7 +17,7 @@ import utility.Pair;
 
 public class SpawnerP {
 	
-	private static final int PROBABILITY_POWER_UP = 50;
+	private static final int PROBABILITY_POWER_UP = 10;
 	private static final int LEVEL_LIMIT_FOR_LOW = 10;
     private static final int LEVEL_LIMIT_FOR_BASIC = 20;
 	
@@ -36,9 +36,9 @@ public class SpawnerP {
 		final Strategy strategy = level < LEVEL_LIMIT_FOR_LOW ? new LowStrategy() : level < LEVEL_LIMIT_FOR_BASIC ? new BasicStrategy(): new HighStrategy();
 		int Number;
 		PowerUpT type;
-		int numberofSpawn = random.nextInt(1) +1;
+		int numberofSpawn = random.nextInt(3) +1;
 		while(numberofSpawn > 0) {
-			Number = random.nextInt(2);
+			Number = random.nextInt(3);
 			switch(Number) {
 			case 0 : type = PowerUpT.HEALTH;
 			break;
