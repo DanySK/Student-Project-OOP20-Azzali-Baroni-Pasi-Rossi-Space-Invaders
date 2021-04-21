@@ -3,6 +3,7 @@ package model.powerup;
 import controller.PowerUp.Strategy;
 import model.ID;
 import model.Player;
+import model.PlayerImpl;
 import utility.Clamp;
 import utility.Pair;
 
@@ -18,11 +19,6 @@ public class PPowerUp extends PowerUpImpl{
 		this.strategy = strategy;
 	}
 
-	@Override
-	public void InsertStrategy() {
-		
-		
-	}
 
 	@Override
 	public void reset() {
@@ -40,7 +36,7 @@ public class PPowerUp extends PowerUpImpl{
 
 	@Override
 	protected void InsertEffect() {
-		final Player player = this.getEntityStrategy();
+		final PlayerImpl player = this.getEntityStrategy();
 		if(this.getType().equals(PowerUpT.HEALTH)) {
 			player.setHealth(Clamp.clamp(player.getHealth() + this.strategy.multiplyEffect(STANDARD_HEALTH), 0, 100));
         } else if (this.getType().equals(PowerUpT.FIRE_BOOST)) {

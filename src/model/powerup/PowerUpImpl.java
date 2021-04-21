@@ -15,7 +15,7 @@ public abstract class PowerUpImpl extends ChronometerEntity implements PowerUp {
 	public static final int WIDTH = 60;
 	public static final int HEIGHT = 60;
 
-	public static final int LIFETIME_P = GameLoop.FPS * 5;
+	public static final int LIFETIME_P = GameLoop.FPS * 6;
 
 	private final PowerUpT type;
 	private boolean isActiveted;
@@ -57,10 +57,8 @@ public abstract class PowerUpImpl extends ChronometerEntity implements PowerUp {
 	@Override
 	public void update() {
 		if(this.isActiveted == false){
-			//this.getPosition().setX(this.getPosition().getX() + this.getSpeed().getX());
 			this.getPosition().setY(this.getPosition().getY() + this.getSpeed().getY());
 			this.setHitbox(new Rectangle(this.getPosition().getX() - WIDTH / 2, this.getPosition().getY()- HEIGHT / 2,WIDTH,HEIGHT));
-			//capire come gestire la caduta dei power up dall'alto al basso//this.bounce();
 		}else {
 			this.setS();
 			if(this.isEnded() == false) {
@@ -83,7 +81,7 @@ public abstract class PowerUpImpl extends ChronometerEntity implements PowerUp {
 	public void collide(final Entity entity) {
 		if(entity instanceof PlayerImpl) {
 			this.player = (PlayerImpl)entity;
-			this.InsertStrategy();
+			this.InsertStrategy();;
 			this.setPosition(entity.getPosition());
 			this.setHitbox(entity.getHitbox());
 		}
