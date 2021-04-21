@@ -32,8 +32,8 @@ public class playerView extends headUpDisplay{
 		final GroupLayout g = new GroupLayout(this);
 		this.setLayout(g);
 		this.setOpaque(false);
-		this.lifeBar = new JProgressBar(0,50);
-		this.lifeBar.setValue(50);
+		this.lifeBar = new JProgressBar(0,100);
+		this.lifeBar.setValue(100);
 		this.lifeBar.setBackground(Color.BLACK);
 		this.lifeBar.setForeground(Color.YELLOW);
 		scoretxt.setFont(new Font("Bauhaus 93", 2, ViewImpl.SCREEN_HEIGHT / headUpDisplay.FONT_P));
@@ -90,7 +90,7 @@ public class playerView extends headUpDisplay{
 //			this.lifeBar.setForeground(Color.ORANGE);
 //		}else {
 			this.lifeBar.setValue(player.getHealth());
-			this.lifeBar.setForeground(new Color((headUpDisplay.MAX_RGB * (50 - this.lifeBar.getValue()))/50,headUpDisplay.MAX_RGB * this.lifeBar.getValue()/50,0));
+			this.lifeBar.setForeground(new Color((headUpDisplay.MAX_RGB * (100 - this.lifeBar.getValue()))/100,headUpDisplay.MAX_RGB * this.lifeBar.getValue()/100,0));
 //		}
 		
 	}

@@ -25,17 +25,13 @@ public final class GameOverView extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	
-	public static String TITLE ="GAME OVER";
+	public static String TITLE ="Game Over";
 	private static final int PROPORTION_M = 15;
 	private static final int PROPORTION_T=20;
 	private static final int ROWS = 6;
 	private static final int COLS = 5;
 	private static final int FIRST_BUTTON=12;
 	private static final int SECOND_BUTTOn = 4;
-    private static final List<String> NOT_USEFUL = Arrays.asList("You're not that good....", "Try again", 
-            "Maybe next time you won't die so miserably", "Why you clicked here?", 
-            "Wow, that was a good one.... if you were a monkey", "Looser");
-    private static final String SECRET = "I HATE SWING!";
 
     private final Background back = new Background(TITLE);
     private final JButton backToMenu;
