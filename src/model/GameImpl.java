@@ -68,8 +68,7 @@ public class GameImpl implements Game{
 	}
 	
 	public void nextLevel() {
-        if (this.effects.isEmpty() && 
-        		this.enemies.isPresent() && this.enemies.get().isEmpty()) {
+        if (this.effects.isEmpty() && this.enemies.isPresent() && this.enemies.get().isEmpty()) {
             this.score += (LEVEL_CLEARED * this.level.getLevel() * this.player.getHealth());
             this.clearEntitiesLeft();
             this.level.nextLevel();

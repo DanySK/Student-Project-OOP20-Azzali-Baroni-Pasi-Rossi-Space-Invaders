@@ -99,8 +99,8 @@ public class ImageLoader {
         if (url.toString().endsWith("Explosion.png")) {
             width = 100;
             height = 100;
-            rows = 3;
-            cols = 4;
+            rows = 8;
+            cols = 8;
         } else  {
             width = DIMENSION_SPRITE;
             height = DIMENSION_SPRITE;
