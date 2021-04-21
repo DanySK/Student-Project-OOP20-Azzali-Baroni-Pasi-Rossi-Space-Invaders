@@ -5,6 +5,8 @@ public enum PowerUpT {
     HEALTH(false,0),
 
     FIRE_BOOST(false,(int) (PowerUpImpl.LIFETIME_P * 1.5)),
+    
+    SHIELD(true, PowerUpImpl.LIFETIME_P),
 
     FREEZE(false,PowerUpImpl.LIFETIME_P);
 

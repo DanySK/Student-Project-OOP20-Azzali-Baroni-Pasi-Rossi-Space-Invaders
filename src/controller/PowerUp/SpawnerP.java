@@ -38,9 +38,11 @@ public class SpawnerP {
 		PowerUpT type;
 		int numberofSpawn = random.nextInt(3) +1;
 		while(numberofSpawn > 0) {
-			Number = random.nextInt(3);
+			Number = random.nextInt(2);
 			switch(Number) {
 			case 0 : type = PowerUpT.HEALTH;
+			break;
+			case 1 : type = PowerUpT.SHIELD;
 			break;
 			default : type =PowerUpT.FIRE_BOOST;
 			}
