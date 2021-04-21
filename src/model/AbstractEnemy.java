@@ -3,7 +3,6 @@ package model;
 import java.awt.Rectangle;
 import java.util.concurrent.ThreadLocalRandom;
 
-
 import utility.Pair;
 
 public abstract class AbstractEnemy extends EntityImpl implements EnemyBehaviour {
@@ -32,7 +31,7 @@ public abstract class AbstractEnemy extends EntityImpl implements EnemyBehaviour
 		do {
 			number = ThreadLocalRandom.current().nextDouble(0, HEIGHT_Y);
 		} while ((number > HEIGHT_Y / 4 && number < (HEIGHT_Y * 3) / 4) || model.tiedupY((int) number));
-		this.getPosition().setY(0);
+		this.getPosition().setY(200);
 		done = false;
 		return this;
 	}
@@ -105,6 +104,8 @@ public abstract class AbstractEnemy extends EntityImpl implements EnemyBehaviour
 	            return DirEnemy.RIGHT;
 	        } else if (this.getPosition().getX() + hit >= GameImpl.ARENA_WIDTH) {
 	            return DirEnemy.LEFT;
+	        } else if (this.getPosition().getY() - hit <= 0) {
+	            return DirEnemy.UP;
 	        } else if (this.getPosition().getY() + hit >= GameImpl.ARENA_HEIGHT) {
 	            return DirEnemy.DOWN;
 	        }
