@@ -14,11 +14,13 @@ public class BossEnemy extends AbstractEnemy{
 	private static final int HIT = GameImpl.ARENA_HEIGHT / 3;
 	private static final ID MYID = ID.BOSS_ENEMY;
 	private static final int SPD = 1;
-	private static final int TIMESHOT = 75;
+	private static final int TIMESHOT = 20;
+	private static final int CMOVIM = 10;
 	private final GameImpl game;
 	private final Random ran;
 	private int shotgun;
 	private int life;
+	private int count;
 	private DirEnemy dir;
 	
 	public BossEnemy(final GameImpl game) {
@@ -36,6 +38,7 @@ public class BossEnemy extends AbstractEnemy{
 		createEnemy();
 		deleteList();
 		setHitbox();
+		dir = casualMovs();
 		return this;
 		
 	}
@@ -43,6 +46,15 @@ public class BossEnemy extends AbstractEnemy{
 	@Override
 	public void update() {
 		shotgun++;
+		if(count == CMOVIM) {
+			dir = casualMovs();
+			move(dir);
+			count = 0;
+		} else {
+			count++;
+			move(dir);
+			dir = checkPosition(dir);
+			}
 		if(checkShotgun(shotgun, TIMESHOT)) {
 			enemyShot(dir, game, MYID);
 			shotgun = 0;

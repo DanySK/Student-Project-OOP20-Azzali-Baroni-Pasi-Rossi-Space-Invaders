@@ -23,9 +23,7 @@ public class EnemyImpl implements Enemy{
 			}
 		}
 		
-		return false;
-		// TODO Auto-generated method stub
-		
+		return false;		
 	}
 
 	@Override
@@ -34,8 +32,6 @@ public class EnemyImpl implements Enemy{
 			if (x == n || (x >= - hit && x <= n + hit)) {}
 			return true;
 		}
-		
-		// TODO Auto-generated method stub
 		return false;
 	}
 
