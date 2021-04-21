@@ -33,7 +33,7 @@ public class ArenaView extends JPanel {
 	
 	private final headUpDisplay playerview;
 	private final Background back;
-   private final EntityView entityview;
+    private final EntityView entityview;
 	private final List<Pair<Entity, Image>> EntityGame;
 	private double widthProportion;
 	private double heightProportion;

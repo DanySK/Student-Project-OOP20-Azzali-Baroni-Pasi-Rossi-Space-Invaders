@@ -10,7 +10,7 @@ import utility.Pair;
 public class PPowerUp extends PowerUpImpl{
 	private static final int STANDARD_HEALTH = 20;
 	private static final int STANDARD_SPEED_BOOST = 2;
-	private static final int STANDARD_FIRE_RATE_BOOST = 2;
+	private static final int STANDARD_FIRE_RATE_BOOST = 1;
 	private static final int STANDARD_SHIELD = 100;
 	private final Strategy strategy;
 

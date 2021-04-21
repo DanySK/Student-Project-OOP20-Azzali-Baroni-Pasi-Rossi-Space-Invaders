@@ -49,7 +49,7 @@ public class ImageLoader {
         imgURL = ImageLoader.class.getResource("/backgroundGame.png");
         this.backgroundImages.put(ArenaView.TITLE, loadImage(imgURL));
         
-        imgURL = ImageLoader.class.getResource("/GameOver.jpg");
+        imgURL = ImageLoader.class.getResource("/BackgroundMenu.jpg");
         this.backgroundImages.put(GameOverView.TITLE, loadImage(imgURL));
         
         imgURL = ImageLoader.class.getResource("/Player.png");
@@ -99,8 +99,8 @@ public class ImageLoader {
         if (url.toString().endsWith("Explosion.png")) {
             width = 100;
             height = 100;
-            rows = 3;
-            cols = 4;
+            rows = 8;
+            cols = 8;
         } else  {
             width = DIMENSION_SPRITE;
             height = DIMENSION_SPRITE;

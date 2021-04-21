@@ -2,17 +2,14 @@ package model;
 
 import java.util.Random;
 
-import model.GameImpl;
-import model.ID;
 import utility.Pair;
-import model.EnemyBehaviour;
 
 public class BasicEnemy extends AbstractEnemy {
 	
 	private static final int HIT = GameImpl.ARENA_HEIGHT / 12;
 	private static final ID MYID = ID.BASIC_ENEMY;
 	private static final int SPD = 1;
-	private static final int TIMESHOT = 75;
+	private static final int TIMESHOT = 150;
 	private static final int CMOVIM = 50;
 	private final GameImpl game;
 	private final Random ran;
@@ -73,10 +70,11 @@ public class BasicEnemy extends AbstractEnemy {
 			dir = checkPosition(dir);
 			}
 		if (checkShotgun(shotgun, TIMESHOT)) {
-			enemyShot(dir, game,MYID);
+			enemyShot(dir, game, MYID);
 			shotgun = 0;
 		}
 	}
+	
 	@Override
 	public void collide (final Entity entity) {
 		switch (entity.getID()) {
@@ -89,7 +87,7 @@ public class BasicEnemy extends AbstractEnemy {
 			this.setDead();
 		}
 	}
-	}
+}
 	 
 
 		
