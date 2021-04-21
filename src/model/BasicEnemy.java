@@ -13,7 +13,7 @@ public class BasicEnemy extends AbstractEnemy {
 	private static final ID MYID = ID.BASIC_ENEMY;
 	private static final int SPD = 1;
 	private static final int TIMESHOT = 75;
-	private static final int CMOVIM = 250;
+	private static final int CMOVIM = 50;
 	private final GameImpl game;
 	private final Random ran;
 	private int shotgun;
