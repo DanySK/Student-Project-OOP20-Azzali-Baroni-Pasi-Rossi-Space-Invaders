@@ -25,7 +25,7 @@ public final class GameOverView extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	
-	public static String TITLE ="Game Over";
+	public static String TITLE ="GameOver";
 	private static final int PROPORTION_M = 15;
 	private static final int PROPORTION_T=20;
 	private static final int ROWS = 6;
@@ -60,12 +60,22 @@ public final class GameOverView extends JPanel {
     }
 
 	@Override
-	public void paintComponents(Graphics g) {
-		super.paintComponents(g);
-		this.backToMenu.setFont(new Font("Bauhaus 93",2,this.getHeight() / PROPORTION_M));
+	protected void paintComponent(Graphics g) {
+		// TODO Auto-generated method stub
+		super.paintComponent(g);
+  		this.backToMenu.setFont(new Font("Bauhaus 93",2,this.getHeight() / PROPORTION_M));
         this.text.setFont(new Font("Bauhaus 93", 2, this.getHeight() / PROPORTION_T));
         g.drawImage(back.loadImage(),0, 0, this.getWidth(), this.getHeight(), this);
 	}
+
+//	@Override
+//	public void paintComponents(final Graphics g) {
+//		super.paintComponents(g);
+//		this.backToMenu.setFont(new Font("Bauhaus 93",2,this.getHeight() / PROPORTION_M));
+//        this.text.setFont(new Font("Bauhaus 93", 2, this.getHeight() / PROPORTION_T));
+//        g.drawImage(back.loadImage(),0, 0, this.getWidth(), this.getHeight(), this);
+//	}
+    
     
     
 }
