@@ -17,6 +17,7 @@ import model.ID;
 import model.SpecialEffect.SpecialEffectT;
 import model.powerup.PowerUpT;
 import view.ArenaView;
+import view.GameOverView;
 import view.MenuP;
 
 public class ImageLoader {
@@ -47,6 +48,9 @@ public class ImageLoader {
 
         imgURL = ImageLoader.class.getResource("/backgroundGame.png");
         this.backgroundImages.put(ArenaView.TITLE, loadImage(imgURL));
+        
+        imgURL = ImageLoader.class.getResource("/GameOver.jpg");
+        this.backgroundImages.put(GameOverView.TITLE, loadImage(imgURL));
         
         imgURL = ImageLoader.class.getResource("/Player.png");
         this.entityImages.put(ID.PLAYER, loadImage(imgURL));
