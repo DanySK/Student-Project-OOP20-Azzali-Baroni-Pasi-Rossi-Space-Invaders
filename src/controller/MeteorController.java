@@ -14,7 +14,7 @@ public class MeteorController {
 	private static final int VELOCITY = 5;
 	
 	private Pair<Integer,Integer> RandomSpawn(){
-		return new Pair<Integer,Integer>(this.random.nextInt(GameImpl.ARENA_WIDTH - 2 * LENGTH) + LENGTH, LENGTH);
+		return new Pair<Integer,Integer>(this.random.nextInt(GameImpl.ARENA_HEIGHT - 2 * LENGTH) + LENGTH, 0);
 		//per ora va bene poi si vedra
 	}
 	

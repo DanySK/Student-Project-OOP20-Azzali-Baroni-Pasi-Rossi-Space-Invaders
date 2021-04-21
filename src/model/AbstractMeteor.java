@@ -10,7 +10,6 @@ public abstract class AbstractMeteor extends EntityImpl implements Meteor{
 	}
 	
 	public void update() {
-		this.getPosition().setX(this.getPosition().getX() +this.getSpeed().getX());
 		this.getPosition().setY(this.getPosition().getY() + this.getSpeed().getY());
 	    ((MeteorHitBox) (this.getHitbox())).updteHitBox(this.getPosition());
 		this.updateEntity();
