@@ -61,6 +61,18 @@ public class LevelImpl implements Level{
         	create(nEnemy, ID.BASIC_ENEMY);
         	create(nMeteor, ID.METEOR);
         break;
+        case 2: 
+        	create(nEnemy, ID.BASIC_ENEMY);
+        	create(nMeteor, ID.METEOR);
+        break;
+        case 3: 
+        	create(nEnemy, ID.BASIC_ENEMY);
+        	create(nMeteor, ID.METEOR);
+        break;
+        case 4: 
+        	create(nEnemy, ID.BASIC_ENEMY);
+        	create(nMeteor, ID.METEOR);
+        break;
         case LEVEL_BOSS: 
         	create(1, ID.BOSS_ENEMY);
         	create(nMeteor, ID.METEOR);
@@ -88,6 +100,7 @@ public class LevelImpl implements Level{
 		gameImpl.getPlayer().resetPosition();
         currentLevel++;
         myLevel++;
+        nEnemy++;
         if (myLevel <= LEVEL_BOSS) {
             createSomething();
         } else {

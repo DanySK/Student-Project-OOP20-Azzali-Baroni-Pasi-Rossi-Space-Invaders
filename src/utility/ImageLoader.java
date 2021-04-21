@@ -62,7 +62,9 @@ public class ImageLoader {
         
         imgURL = ImageLoader.class.getResource("/BlueBullet.png");
         this.bulletImages.put(new Pair<>(ID.PLAYER_BULLET, ID.PLAYER), loadImage(imgURL));
+        
         this.entityImages.put(ID.ENEMY_BULLET, loadImage(imgURL));
+        
         imgURL = ImageLoader.class.getResource("/powerupRed_star.png");
         this.powerUpImages.put(new Pair<>(ID.POWER_UP, PowerUpT.FIRE_BOOST), loadImage(imgURL));
         

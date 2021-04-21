@@ -4,6 +4,9 @@ import model.GameImpl;
 import model.Entity;
 import model.ID;
 import utility.Pair;
+
+import java.util.Random;
+
 import model.EnemyBehaviour;
 
 public class BossEnemy extends AbstractEnemy{
@@ -13,13 +16,15 @@ public class BossEnemy extends AbstractEnemy{
 	private static final int SPD = 1;
 	private static final int TIMESHOT = 75;
 	private final GameImpl game;
+	private final Random ran;
 	private int shotgun;
 	private int life;
 	private DirEnemy dir;
 	
 	public BossEnemy(final GameImpl game) {
-		super(new Pair<Integer,Integer>(0, 0), SPD,SPD, MYID, HIT );
+		super(new Pair<Integer,Integer>(0, 0), SPD, SPD, MYID, HIT);
 		this.game = game;
+		ran = new Random();
 	}
 	
 	@Override
@@ -61,7 +66,19 @@ public class BossEnemy extends AbstractEnemy{
 	
 	@Override
 	public DirEnemy casualMovs() {
-		return null;
+		if (ran.nextBoolean()) {
+			if (ran.nextBoolean()) {
+				dir = DirEnemy.RIGHT;
+			} else {
+				dir = DirEnemy.LEFT;
+			}
+//			}else if(ran.nextBoolean()) {
+//				dir=DirEnemy.DOWN;	
+		}
+		else {
+			dir = DirEnemy.DOWN;
+		}
+			return dir;
 	}
 	
 }
