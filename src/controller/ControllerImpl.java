@@ -5,6 +5,7 @@ import model.GameImpl;
 import model.GameStatus;
 import view.ArenaView;
 import view.GameP;
+import view.HighScoreP;
 //import view.HighScoresPanel;
 import view.View;
 import view.StateV;
@@ -14,11 +15,11 @@ public class ControllerImpl implements Controller{
 	private View view;
 	private GameLoop gameLoop;
 	private Game game;
-	//private final HighscoreManager highscore;
+	private final ScoreController highscore;
 	
 	
 	public ControllerImpl() {
-		//this.highscore = new HighscoreManager();
+		this.highscore = new ScoreController();
 	}
 	//final GameMode mode
     private void startGame() throws IllegalStateException {
@@ -27,15 +28,15 @@ public class ControllerImpl implements Controller{
         }
         this.game = new GameImpl();
         final Input input = new Input(game, this);
-        this.gameLoop = new GameLoop(this.game, this.view,input); //this.highscore);
+        this.gameLoop = new GameLoop(this.game, this.view,this.highscore,input);
         this.view.switchWindow(new ArenaView(input), ArenaView.TITLE);
         this.gameLoop.start();
     }
     
     public void update(final GameP gamePanel, StateV viewStatus) {
-        /*if (viewStatus.equals(ViewStatus.HIGHSCORES) && gamePanel instanceof HighScoresPanel) {
-            ((HighScoresPanel) gamePanel).setHighscores(highscore.getHighscores());
-        } else */
+        if (viewStatus.equals(StateV.HIGHSCORES) && gamePanel instanceof HighScoreP) {
+            ((HighScoreP) gamePanel).setScores(highscore.getScore());
+        } else
     	if (viewStatus.equals(StateV.RESUME)) {
             this.gameLoop.resume();
         } else if (viewStatus.equals(StateV.ABORT)) {

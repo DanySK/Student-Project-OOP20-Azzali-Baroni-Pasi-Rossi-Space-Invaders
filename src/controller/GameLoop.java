@@ -22,15 +22,15 @@ public final class GameLoop implements Runnable{
 	private volatile GameLoopStatus gameLoopStatus;
     private final Game game;
     private final View view;
-    //private final HighscoreManager highscore;
+    private final ScoreController highscore;
     private final Input input;
     private final MenuP pauseMenu;
 	
     
-    public GameLoop(final Game game, final View view /*, final HighscoreManager highscore*/, final Input input) {
+    public GameLoop(final Game game, final View view , final ScoreController highscore, final Input input) {
         this.game = game;
         this.view = view;
-        //this.highscore = highscore;
+        this.highscore = highscore;
         this.input = input;
         this.gameLoopStatus = GameLoopStatus.READY;
         this.pauseMenu = new MenuP(view, MenuState.Pause);
@@ -106,7 +106,7 @@ public final class GameLoop implements Runnable{
                 frames = 0;
             }
         }
-            //this.highscore.checkHighscores(game.getScore());
+            this.highscore.checkScore(game.getScore());
         try {
             SwingUtilities.invokeAndWait(new Runnable() {
                 public void run() {
