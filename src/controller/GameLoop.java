@@ -6,6 +6,7 @@ import javax.swing.SwingUtilities;
 
 import model.Game;
 import model.GameStatus;
+import view.GameOverView;
 import view.MenuP;
 import view.MenuP.MenuState;
 import view.View;
@@ -101,7 +102,7 @@ public final class GameLoop implements Runnable{
             }
             if (System.currentTimeMillis() - timer > 1000) {
                 timer += 1000;
-                System.out.println("FPS:" + frames);
+                //System.out.println("FPS:" + frames);
                 frames = 0;
             }
         }
@@ -109,8 +110,8 @@ public final class GameLoop implements Runnable{
         try {
             SwingUtilities.invokeAndWait(new Runnable() {
                 public void run() {
-                    //GameLoop.this.view.switchWindow(new EndScreen(GameLoop.this.game.getMode(), 
-                            //GameLoop.this.game.getPlayer(), GameLoop.this.game.getScore(), GameLoop.this.view), EndScreen.TITLE);
+                    GameLoop.this.view.switchWindow(new GameOverView(GameLoop.this.game.getPlayer(), 
+                             GameLoop.this.game.getScore(), GameLoop.this.view), GameOverView.TITLE);
                 }
             });
         } catch (InvocationTargetException | InterruptedException e) {

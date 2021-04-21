@@ -72,7 +72,7 @@ public abstract class AbstractEnemy extends EntityImpl implements EnemyBehaviour
 			}
 		} else {
 				switch (dir) {
-				case DOWN: game.getShot().add(new ShotEnemyImpl(this.getPosition().getX(), this.getPosition().getY() + spd, dir));
+				case DOWN: game.getShot().add(new ShotEnemyImpl(this.getPosition().getX(), this.getPosition().getY()+spd, dir));
 				break;
 				default:
 					break;
@@ -104,8 +104,6 @@ public abstract class AbstractEnemy extends EntityImpl implements EnemyBehaviour
 	            return DirEnemy.RIGHT;
 	        } else if (this.getPosition().getX() + hit >= GameImpl.ARENA_WIDTH) {
 	            return DirEnemy.LEFT;
-	        } else if (this.getPosition().getY() - hit <= 0) {
-	            return DirEnemy.UP;
 	        } else if (this.getPosition().getY() + hit >= GameImpl.ARENA_HEIGHT) {
 	            return DirEnemy.DOWN;
 	        }
