@@ -78,6 +78,9 @@ public class ImageLoader {
         imgURL = ImageLoader.class.getResource("/powerup_Health.png");
         this.powerUpImages.put(new Pair<>(ID.POWER_UP, PowerUpT.HEALTH), loadImage(imgURL));
         
+        imgURL = ImageLoader.class.getResource("/powerup_Shield.png");
+        this.powerUpImages.put(new Pair<>(ID.POWER_UP, PowerUpT.SHIELD), loadImage(imgURL));
+        
         imgURL = ImageLoader.class.getResource("/bulletSpeedUp.png");
         this.AnimationsPowerUp.put(new Pair<>(ID.POWER_UP, PowerUpT.FIRE_BOOST), loadEffect(imgURL));
         
