@@ -71,7 +71,7 @@ public final class PlayerImpl extends EntityImpl implements Player{
 
 	@Override
 	public void resetPosition() {
-		this.setPosition(new Pair<Integer, Integer>(GameImpl.ARENA_WIDTH / 2, GameImpl.ARENA_HEIGHT / 2));
+		this.setPosition(new Pair<Integer, Integer>(GameImpl.ARENA_WIDTH / 2, Y_INIZIAL));
 	}
 
 	@Override

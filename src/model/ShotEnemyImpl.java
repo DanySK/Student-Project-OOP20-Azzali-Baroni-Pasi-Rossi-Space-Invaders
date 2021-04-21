@@ -23,13 +23,13 @@ public class ShotEnemyImpl extends EntityImpl implements ShotEnemy {
 	private void whichSpeed() {
 		switch (dir) {
 		case DOWN: spd.setX(0);
-		spd.setY(-STDSPD);
+		spd.setY(+STDSPD);
 		break;
 		case D_R: spd.setX(STDSPD);
-		spd.setY(-STDSPD);
+		spd.setY(+STDSPD);
 		break;
 		case D_L: spd.setX(-STDSPD);
-		spd.setY(-STDSPD);
+		spd.setY(+STDSPD);
 		break;
 		default:
 			break;
