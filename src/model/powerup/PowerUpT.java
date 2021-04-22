@@ -21,7 +21,7 @@ public enum PowerUpT {
     public final boolean isRequiringUpdate() {
         return this.requiringUpdate;
     }
-
+    
     public final int getLifetime() {
         return this.lifetime;
     }

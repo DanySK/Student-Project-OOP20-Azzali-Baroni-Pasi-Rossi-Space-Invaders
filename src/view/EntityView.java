@@ -52,7 +52,7 @@ public class EntityView {
 			if(!((PowerUpImpl) e).isActivated()) {
 				return loader.getPowerUpImages().get(new Pair <>(e.getID(), ((PowerUpImpl) e).getType())).get(0);
 				} else {
-					if (((PowerUpImpl) e).getType() != PowerUpT.HEALTH && ((PowerUpImpl) e).getType() != PowerUpT.FIRE_BOOST && ((PowerUpImpl) e).getType() != PowerUpT.FREEZE) {
+					if (((PowerUpImpl) e).getType() != PowerUpT.HEALTH ) {
 						addIfNotPresent (e);
 						return getRightImage(e);
 					}

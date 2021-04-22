@@ -86,7 +86,9 @@ public class ImageLoader {
         
         imgURL = ImageLoader.class.getResource("/Explosion.png");
         this.AnimationsEffect.put(new Pair<>(ID.EFFECT, SpecialEffectT.EXPLOSION), loadEffect(imgURL));
-        
+
+        imgURL = ImageLoader.class.getResource("/freeze.png");
+        this.AnimationsPowerUp.put(new Pair<>(ID.POWER_UP, PowerUpT.FREEZE), loadImage(imgURL));
     }
 
     public static ImageLoader getImageLoader() {
