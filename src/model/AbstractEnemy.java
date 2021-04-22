@@ -12,6 +12,7 @@ public abstract class AbstractEnemy extends EntityImpl implements EnemyBehaviour
 	//private final int spd;
 	private final int hit; 
 	private boolean done;
+	private PlayerImpl player;
 	
 	public AbstractEnemy(final Pair<Integer, Integer> position, final int speedX, final int speedY, final ID id, final int hit) {
 		super(position, speedX, speedY, id);
@@ -85,6 +86,10 @@ public abstract class AbstractEnemy extends EntityImpl implements EnemyBehaviour
 //	            else if (this.getPosition().getY() + hit >= GameImpl.ARENA_HEIGHT) {
 //	            return DirEnemy.DOWN;
 //	        }
+		 if(this.getPosition().getY() >= 900) {
+			 this.player = new PlayerImpl(ID.PLAYER, null);
+			 this.player.setDead();
+		 }
 		setHitbox();
 		return dir;
 

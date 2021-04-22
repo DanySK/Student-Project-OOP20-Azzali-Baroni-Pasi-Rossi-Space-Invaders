@@ -18,6 +18,7 @@ public final class PlayerImpl extends EntityImpl implements Player{
     private int shield;
     private static int Y_INIZIAL = 900;
     private final GameImpl gameImpl;
+
     
     public PlayerImpl(final ID id, final GameImpl gameImpl) {
     	super(new Pair<Integer, Integer>(GameImpl.ARENA_WIDTH / 2, Y_INIZIAL), 0, 0, id);
