@@ -3,7 +3,9 @@ package view;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -21,11 +23,11 @@ public class HighScoreP extends GameP {
 	
 	public static final String TITLE = "HighScore" ;
 	private final JTextPane JtP = new JTextPane();
-	//creare lista Scores
+	private final List<String> highscores;
 	
 	public HighScoreP(final View view) {
 		super(view,HighScoreP.TITLE);
-		//settare array
+		this.highscores = new ArrayList<>();
 		JtP.setEditable(false);
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		
@@ -53,16 +55,17 @@ public class HighScoreP extends GameP {
 
 	@Override
 	public void display() {
-		//settare update hishscore
+		this.updateHighScoreP();
 		this.getView().switchWindow(this, HighScoreP.TITLE);	
-		}
+	}
 	
 	private void updateHighScoreP() {
 		this.getView().getObserver().update(this, StateV.HIGHSCORES);
-		//settare testo tabella
+		this.JtP.setText(this.highscores.stream().collect(Collectors.joining()));
 	}
 	public void setScores(final List<String> highscores) {
-		//implementare con lista da creare
+		this.highscores.clear();
+		this.highscores.addAll(highscores);
 	}
 
 }
