@@ -40,7 +40,6 @@ public class playerView extends headUpDisplay{
 		leveltxt.setFont(new Font("Bauhaus 93", 2, ViewImpl.SCREEN_HEIGHT / headUpDisplay.FONT_P));
 		scoretxt.setEditable(false);
 		leveltxt.setEditable(false);
-		//si potrebbe mettere un border
 		scoretxt.setBorder(BorderFactory.createEmptyBorder());
 		leveltxt.setBorder(BorderFactory.createEmptyBorder());
 		scoretxt.setOpaque(false);
@@ -74,7 +73,6 @@ public class playerView extends headUpDisplay{
 
 	@Override
 	protected void paintComponent(Graphics g) {
-		// TODO Auto-generated method stub
 		super.paintComponent(g);
 		this.score.setFont(new Font("Bauhaus 93", 2, this.getParent().getHeight() / headUpDisplay.FONT_P));
 	    this.level.setFont(new Font("Bauhaus 93", 2, this.getParent().getHeight() / headUpDisplay.FONT_P));
@@ -82,7 +80,6 @@ public class playerView extends headUpDisplay{
 
 	@Override
 	public void render(PlayerImpl player, int score,int level) {
-		// TODO Auto-generated method stub
 		this.level.setText("Level: "+ score);
 		this.score.setText("score: "+ level);
 		if(player.getShield() > 0) {
