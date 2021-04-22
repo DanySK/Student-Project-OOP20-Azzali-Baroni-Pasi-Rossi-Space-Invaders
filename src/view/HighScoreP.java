@@ -21,7 +21,7 @@ public class HighScoreP extends GameP {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	public static final String TITLE = "HighScore" ;
+	public static final String TITLE = "HighScores";
 	private final JTextPane JtP = new JTextPane();
 	private final List<String> highscores;
 	

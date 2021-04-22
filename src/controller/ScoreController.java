@@ -48,7 +48,7 @@ public class ScoreController {
 				break;
 			}
 		}
-		if(Highscoretrue == true) {
+		if(Highscoretrue) {
 			highscore.add(INDEX_SCORE, score);
 			Collections.sort(highscore);
 			Collections.reverse(highscore);
@@ -64,10 +64,12 @@ public class ScoreController {
 			}
 			try {
 				bufferedWriter = new BufferedWriter(new FileWriter(new File(FILE)));
+				
 				for(int i=0; i <= INDEX_SCORE; i++) {
 					bufferedWriter.write(Integer.toString(highscore.get(i)));
 					bufferedWriter.newLine();
 				}
+				bufferedWriter.close();
 			}catch (IOException e) {
 				System.out.printf("Errore di scrittura del file: %s>\n", e);
 			}
@@ -107,7 +109,7 @@ public class ScoreController {
 			}
 			bufferedWrite.close();
 		}catch (IOException e) {
-			System.out.println(e.getMessage());
+			System.out.printf("ERROR writing score to file: %s\n", e);
 			
 		}
 	}
