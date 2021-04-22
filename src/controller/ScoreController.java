@@ -33,7 +33,6 @@ public class ScoreController {
 				bufferedReader.close();
 			}
 		}catch (Exception e) {
-			// TODO: handle exception
 			System.out.println(e.getMessage());
 		}
 	}
@@ -46,13 +45,16 @@ public class ScoreController {
 		for(int i=0; i<highscore.size(); i++) {
 			if(score >highscore.get(i)) {
 				Highscoretrue = true;
+				break;
 			}
 		}
 		if(Highscoretrue == true) {
 			highscore.add(INDEX_SCORE, score);
 			Collections.sort(highscore);
 			Collections.reverse(highscore);
-			
+//			for (final int i : highscore) {
+//               System.out.println(i);
+//             }
 			if(!file.exists()) {
 				try {
 					file.createNewFile();
@@ -61,14 +63,13 @@ public class ScoreController {
 				}
 			}
 			try {
-				bufferedWriter = new BufferedWriter(new FileWriter(FILE));
+				bufferedWriter = new BufferedWriter(new FileWriter(new File(FILE)));
 				for(int i=0; i <= INDEX_SCORE; i++) {
 					bufferedWriter.write(Integer.toString(highscore.get(i)));
 					bufferedWriter.newLine();
 				}
 			}catch (IOException e) {
-				// TODO: handle exception
-				System.out.println(e.getMessage());
+				System.out.printf("Errore di scrittura del file: %s>\n", e);
 			}
 		}
 	}
@@ -81,7 +82,6 @@ public class ScoreController {
 				initializeHighscore();
 			}
 		}catch (IOException e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 		try {
@@ -91,7 +91,6 @@ public class ScoreController {
 				getScore.add(String.valueOf(i));
 			}
 		}catch (Exception e) {
-			// TODO: handle exception
 			System.out.println(e.getMessage());
 		}
 		return getScore;
@@ -99,7 +98,6 @@ public class ScoreController {
 	}
 
 	private void initializeHighscore() {
-		// TODO Auto-generated method stub
 		BufferedWriter bufferedWrite = null;
 		try {
 			bufferedWrite = new BufferedWriter(new FileWriter(new File(FILE)));
@@ -109,7 +107,6 @@ public class ScoreController {
 			}
 			bufferedWrite.close();
 		}catch (IOException e) {
-			// TODO: handle exception
 			System.out.println(e.getMessage());
 			
 		}

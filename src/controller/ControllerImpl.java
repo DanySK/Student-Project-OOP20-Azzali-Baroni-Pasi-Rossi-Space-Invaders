@@ -21,7 +21,6 @@ public class ControllerImpl implements Controller{
 	public ControllerImpl() {
 		this.highscore = new ScoreController();
 	}
-	//final GameMode mode
     private void startGame() throws IllegalStateException {
         if (this.view == null) {
             throw new IllegalStateException();

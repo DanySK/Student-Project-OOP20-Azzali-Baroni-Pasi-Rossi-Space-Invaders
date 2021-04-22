@@ -56,7 +56,6 @@ public final class GameLoop implements Runnable{
 		long lastTime = System.nanoTime();
         double delta = 0;
         long timer = System.currentTimeMillis();
-        int frames = 0;
 
         while (!this.gameLoopStatus.equals(GameLoopStatus.ENDED)) {
             if (this.gameLoopStatus.equals(GameLoopStatus.PAUSED)) {
@@ -92,7 +91,6 @@ public final class GameLoop implements Runnable{
             if (!this.game.getStatus().equals(GameStatus.RUNNING)) {
                 this.gameLoopStatus = GameLoopStatus.ENDED;
             }
-            frames++;
             if (lastTime - System.nanoTime() + NANOSECONDS_FRAME > 0) {
                 try {
                     Thread.sleep((long) (lastTime - System.nanoTime() + NANOSECONDS_FRAME) / NANO_MILLISECONDS);
@@ -102,8 +100,6 @@ public final class GameLoop implements Runnable{
             }
             if (System.currentTimeMillis() - timer > 1000) {
                 timer += 1000;
-                //System.out.println("FPS:" + frames);
-                frames = 0;
             }
         }
             this.highscore.checkScore(game.getScore());
