@@ -4,20 +4,15 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.swing.JPanel;
 
 import controller.Input;
 import model.Entity;
 import model.GameImpl;
-import model.GameStatus;
-import model.ID;
-import model.Player;
 import model.PlayerImpl;
 import utility.Pair;
 

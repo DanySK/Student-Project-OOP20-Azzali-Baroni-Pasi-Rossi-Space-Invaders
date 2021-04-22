@@ -1,13 +1,9 @@
 package model;
 
-import model.GameImpl;
-import model.Entity;
-import model.ID;
 import utility.Pair;
 
 import java.util.Random;
 
-import model.EnemyBehaviour;
 
 public class BossEnemy extends AbstractEnemy{
 	

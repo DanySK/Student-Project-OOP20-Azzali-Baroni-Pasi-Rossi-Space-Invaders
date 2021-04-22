@@ -61,7 +61,7 @@ public class HighScoreP extends GameP {
 	
 	private void updateHighScoreP() {
 		this.getView().getObserver().update(this, StateV.HIGHSCORES);
-		this.JtP.setText(this.highscores.stream().collect(Collectors.joining()));
+		this.JtP.setText(this.highscores.stream().collect(Collectors.joining("\n")));
 	}
 	public void setScores(final List<String> highscores) {
 		this.highscores.clear();

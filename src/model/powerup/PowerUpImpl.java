@@ -6,7 +6,6 @@ import controller.ChronometerEntity;
 import controller.GameLoop;
 import model.Entity;
 import model.ID;
-import model.Player;
 import model.PlayerImpl;
 import utility.Pair;
 

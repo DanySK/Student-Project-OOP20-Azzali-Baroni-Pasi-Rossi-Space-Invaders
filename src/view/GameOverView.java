@@ -5,15 +5,11 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridLayout;
-import java.util.Arrays;
-import java.util.List;
 import java.util.stream.IntStream;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.JButton;
-import javax.swing.JFormattedTextField;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -48,16 +44,16 @@ public final class GameOverView extends JPanel {
     	this.backToMenu.addActionListener(e -> view.resetToMenu());
     	this.backToMenu.setBorder(BorderFactory.createEmptyBorder());
     	 this.backToMenu.setBackground(Color.YELLOW);
-         this.backToMenu.setForeground(Color.BLACK);
+         this.backToMenu.setForeground(Color.WHITE);
          this.backToMenu.setOpaque(false);
          this.text.setBorder(BorderFactory.createEmptyBorder());
          this.text.setBackground(Color.YELLOW);
-         this.text.setForeground(Color.BLACK);
+         this.text.setForeground(Color.RED);
          this.text.setOpaque(false);
-         this.GAME_OVER.setBorder(BorderFactory.createEmptyBorder());
-         this.GAME_OVER.setBackground(Color.YELLOW);
-         this.GAME_OVER.setForeground(Color.BLACK);
-         this.GAME_OVER.setOpaque(false);
+//         this.GAME_OVER.setBorder(BorderFactory.createEmptyBorder());
+//         this.GAME_OVER.setBackground(Color.YELLOW);
+//         this.GAME_OVER.setForeground(Color.BLACK);
+//         this.GAME_OVER.setOpaque(false);
          this.setLayout(new GridLayout(ROWS, COLS));
          IntStream.range(0, FIRST_BUTTON).forEach(i -> this.add(Box.createRigidArea(new Dimension(0, 0))));
          this.add(this.text);
