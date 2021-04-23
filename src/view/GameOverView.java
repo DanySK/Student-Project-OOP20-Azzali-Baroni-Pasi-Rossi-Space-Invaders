@@ -25,22 +25,24 @@ public final class GameOverView extends JPanel {
 	
 	public static String TITLE ="GameOver";
 	private static final int PROPORTION_M = 15;
-	private static final int PROPORTION_T=20;
-	private static final int ROWS = 6;
-	private static final int COLS = 5;
+	private static final int PROPORTION_T=30;
+	private static final int ROWS = 5;
+	private static final int COLS = 6;
 	private static final int FIRST_BUTTON=12;
 	private static final int SECOND_BUTTOn = 4;
 
     private final Background back = new Background(TITLE);
     private final JButton backToMenu;
     private final JTextField text;
-    private final JTextField GAME_OVER;
-    
+    /**
+     * @param player the that played this game
+     * @param score stored score
+     * @param view the view displayed on this screen
+     */
     public GameOverView(PlayerImpl player,final int score,final View view) {
     	super();
     	this.backToMenu = new JButton("Back");
     	this.text = new JTextField("Score: "+ score);
-    	this.GAME_OVER = new JTextField("GAME OVER");
     	this.backToMenu.addActionListener(e -> view.resetToMenu());
     	this.backToMenu.setBorder(BorderFactory.createEmptyBorder());
     	 this.backToMenu.setBackground(Color.YELLOW);
@@ -50,10 +52,6 @@ public final class GameOverView extends JPanel {
          this.text.setBackground(Color.YELLOW);
          this.text.setForeground(Color.RED);
          this.text.setOpaque(false);
-//         this.GAME_OVER.setBorder(BorderFactory.createEmptyBorder());
-//         this.GAME_OVER.setBackground(Color.YELLOW);
-//         this.GAME_OVER.setForeground(Color.BLACK);
-//         this.GAME_OVER.setOpaque(false);
          this.setLayout(new GridLayout(ROWS, COLS));
          IntStream.range(0, FIRST_BUTTON).forEach(i -> this.add(Box.createRigidArea(new Dimension(0, 0))));
          this.add(this.text);
@@ -65,11 +63,9 @@ public final class GameOverView extends JPanel {
 
 	@Override
 	protected void paintComponent(Graphics g) {
-		// TODO Auto-generated method stub
 		super.paintComponent(g);
   		this.backToMenu.setFont(new Font("Bauhaus 93",2,this.getHeight() / PROPORTION_M));
         this.text.setFont(new Font("Bauhaus 93", 2, this.getHeight() / PROPORTION_T));
-//        this.GAME_OVER.setFont(new Font("Bauhaus 93", 2, this.getHeight() / PROPORTION_T));
         g.drawImage(back.loadImage(),0, 0, this.getWidth(), this.getHeight(), this);
 	}
 
