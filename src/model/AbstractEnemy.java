@@ -8,20 +8,18 @@ import utility.Pair;
 public abstract class AbstractEnemy extends EntityImpl implements EnemyBehaviour {
 	private static final int WIDTH_X = GameImpl.ARENA_WIDTH;
 	private static final int HEIGHT_Y = GameImpl.ARENA_HEIGHT;
+	private static final int ENEMY_SPAWN_HEIGHT = 115;
 	private final Enemy model;
-	//private final int spd;
 	private final int hit; 
 	private boolean done;
-	private PlayerImpl player;
-	
+
 	public AbstractEnemy(final Pair<Integer, Integer> position, final int speedX, final int speedY, final ID id, final int hit) {
 		super(position, speedX, speedY, id);
-//		this.spd = speedX;
 		this.hit = hit;
 		done = false;
 		model = new EnemyImpl(hit);
 	}
-	
+
 	protected AbstractEnemy createEnemy() {
 		double number;
 		do {
@@ -32,37 +30,37 @@ public abstract class AbstractEnemy extends EntityImpl implements EnemyBehaviour
 		do {
 			number = ThreadLocalRandom.current().nextDouble(0, HEIGHT_Y);
 		} while ((number > HEIGHT_Y / 4 && number < (HEIGHT_Y * 3) / 4) || model.tiedupY((int) number));
-		this.getPosition().setY(200);
+		this.getPosition().setY(ENEMY_SPAWN_HEIGHT);
 		done = false;
 		return this;
 	}
-	
+
 	protected void deleteList() {
 		if (!done) {
 			model.deleteList();
 			done = true;
 		}
 	}
-	
+
 	protected void setHitbox() {
 		setHitbox(new Rectangle(this.getPosition().getX() - (hit / 2 ), this.getPosition().getY() - (hit / 2), hit, hit));
-		
+
 	}	
-	
+
 	protected void enemyShot(final DirEnemy dir, final GameImpl game, final ID id) {
 		if (id == ID.BOSS_ENEMY) {
-				game.getShot().add(new ShotEnemyImpl(this.getPosition().getX(), this.getPosition().getY(), DirEnemy.D_R));
-				game.getShot().add(new ShotEnemyImpl(this.getPosition().getX(), this.getPosition().getY(), DirEnemy.D_L));
-				game.getShot().add(new ShotEnemyImpl(this.getPosition().getX(), this.getPosition().getY(), DirEnemy.DOWN));
+			game.getShot().add(new ShotEnemyImpl(this.getPosition().getX(), this.getPosition().getY(), DirEnemy.D_R));
+			game.getShot().add(new ShotEnemyImpl(this.getPosition().getX(), this.getPosition().getY(), DirEnemy.D_L));
+			game.getShot().add(new ShotEnemyImpl(this.getPosition().getX(), this.getPosition().getY(), DirEnemy.DOWN));
 		} else {
 			game.getShot().add(new ShotEnemyImpl(this.getPosition().getX(), this.getPosition().getY(), DirEnemy.DOWN));
-			}
 		}
-	
+	}
+
 	protected boolean checkShotgun(final int shotgun, final int timeShot) {
 		return shotgun == timeShot ? true : false;
 	}
-	
+
 	protected void move(final DirEnemy dir) {
 		switch (dir) {
 		case DOWN: this.getPosition().setY(this.getPosition().getY() + this.getSpeed().getY());
@@ -76,23 +74,23 @@ public abstract class AbstractEnemy extends EntityImpl implements EnemyBehaviour
 		}
 		setHitbox();
 	}
-	
+
 	protected DirEnemy checkPosition(final DirEnemy dir) {
-		 if (this.getPosition().getX() - hit <= 0) {
-	            return DirEnemy.RIGHT;
-	        } else if (this.getPosition().getX() + hit >= GameImpl.ARENA_WIDTH) {
-	            return DirEnemy.LEFT;
-        } 
+		if (this.getPosition().getX() - hit <= 0) {
+			return DirEnemy.RIGHT;
+		} else if (this.getPosition().getX() + hit >= GameImpl.ARENA_WIDTH) {
+			return DirEnemy.LEFT;
+		} 
 
 		setHitbox();
 		return dir;
 
 	}
-		public Boolean gameOver(AbstractEnemy enemy) {
-			if(this.getPosition().getY() >= 900) {
-				return true;
-				}
-				return false;
+	public Boolean gameOver(AbstractEnemy enemy) {
+		if(this.getPosition().getY() >= 900) {
+			return true;
 		}
+		return false;
 	}
+}
 

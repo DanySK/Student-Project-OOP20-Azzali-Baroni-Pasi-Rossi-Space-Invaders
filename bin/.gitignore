@@ -1,19 +1,2 @@
-/application/
-/controller/
-/model/
-/utility/
-/view/
-/redBullet.png
-/bluBullet.png
-/blueBullet.png
-/boss.png
-<<<<<<< HEAD
-/Free Synthwave Loop.wav
-/music.wav
-=======
-/gameOver.jpg
-<<<<<<< HEAD
+/powerup_Health.png
 /test/
-=======
->>>>>>> 58bb9da65d33042cf1a882c68004d5e27faa7615
->>>>>>> a3853f43795f8e4f533eee1ab75f695811edf02b
