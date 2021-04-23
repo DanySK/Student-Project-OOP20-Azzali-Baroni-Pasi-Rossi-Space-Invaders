@@ -30,10 +30,6 @@ public class PPowerUp extends PowerUpImpl{
 	        }
 	}
 
-	@Override
-	public boolean isActivated() {
-		return false;
-	}
 
 	@Override
 	protected void InsertEffect() {
