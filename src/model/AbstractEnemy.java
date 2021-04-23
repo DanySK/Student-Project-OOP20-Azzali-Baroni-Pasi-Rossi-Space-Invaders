@@ -83,17 +83,16 @@ public abstract class AbstractEnemy extends EntityImpl implements EnemyBehaviour
 	        } else if (this.getPosition().getX() + hit >= GameImpl.ARENA_WIDTH) {
 	            return DirEnemy.LEFT;
         } 
-//	            else if (this.getPosition().getY() + hit >= GameImpl.ARENA_HEIGHT) {
-//	            return DirEnemy.DOWN;
-//	        }
-		 if(this.getPosition().getY() >= 900) {
-			 this.player = new PlayerImpl(ID.PLAYER, null);
-			 this.player.setDead();
-		 }
+
 		setHitbox();
 		return dir;
 
 	}
-	
+		public Boolean gameOver(AbstractEnemy enemy) {
+			if(this.getPosition().getY() >= 900) {
+				return true;
+				}
+				return false;
+		}
 	}
 

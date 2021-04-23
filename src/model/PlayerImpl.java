@@ -28,7 +28,6 @@ public final class PlayerImpl extends EntityImpl implements Player{
 
 	@Override
 	public int getHealth() {
-		// TODO Auto-generated method stub
 		return this.health;
 	}
 
@@ -39,7 +38,6 @@ public final class PlayerImpl extends EntityImpl implements Player{
 
 	@Override
 	public int getCoolDown() {
-		// TODO Auto-generated method stub
 		return this.shootCD;
 	}
 

@@ -33,6 +33,7 @@ public class GameImpl implements Game{
     private final Level level;
     private int score;
     private boolean freeze;
+    private boolean check;
     
     public GameImpl() {
     	this.gameStatus = GameStatus.RUNNING;
@@ -47,6 +48,7 @@ public class GameImpl implements Game{
         this.level = new LevelImpl(this);
         this.score = 0;
         this.freeze = false;
+        this.check = false;
     }
 	
 
@@ -127,7 +129,6 @@ public class GameImpl implements Game{
 
 	@Override
 	public void checkCollision() {
-		//scommentare dopo aver fatto le meteore
         this.checkForCollisions(Arrays.asList(this.player), this.meteors.get().stream().collect(Collectors.toList()));
 
         this.checkForCollisions(Arrays.asList(this.player), this.enemies.get().stream().collect(Collectors.toList()));
@@ -147,6 +148,14 @@ public class GameImpl implements Game{
         this.nextLevel();
         }
         this.removeDeadEntities();
+        //prova fine gioco
+       
+        this.enemies.get().forEach(e ->{
+        check = e.gameOver(e);
+	    });
+        if(check == true) {
+        	this.player.setDead();
+        }
 	}
 	
 	private void checkForCollisions(final List<EntityImpl> entities1, final List<EntityImpl> entities2) {
