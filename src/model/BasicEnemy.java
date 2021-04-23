@@ -43,8 +43,6 @@ public class BasicEnemy extends AbstractEnemy {
 			} else {
 				dir = DirEnemy.LEFT;
 			}
-//			}else if(ran.nextBoolean()) {
-//				dir=DirEnemy.DOWN;	
 		}
 		else {
 			dir = DirEnemy.DOWN;
@@ -87,6 +85,8 @@ public class BasicEnemy extends AbstractEnemy {
 			this.setDead();
 		}
 	}
+	
+	
 }
 	 
 

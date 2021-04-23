@@ -58,7 +58,7 @@ public class ImageLoader {
         imgURL = ImageLoader.class.getResource("/Enemy1.png");
         this.entityImages.put(ID.BASIC_ENEMY, loadImage(imgURL));
         
-        imgURL = ImageLoader.class.getResource("/Enemy2.png");
+        imgURL = ImageLoader.class.getResource("/boss.png");
         this.entityImages.put(ID.BOSS_ENEMY, loadImage(imgURL));
         
         imgURL = ImageLoader.class.getResource("/meteorBrown_big1.png");

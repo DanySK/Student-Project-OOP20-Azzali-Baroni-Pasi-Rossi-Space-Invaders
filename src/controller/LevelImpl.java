@@ -88,14 +88,6 @@ public class LevelImpl implements Level{
 	}
 
 	@Override
-	public void resetLevel() {
-        myLevel = 1;
-        currentLevel = 1;
-        nEnemy = 2;
-        nMeteor = 1;
-	}
-
-	@Override
     public void nextLevel() {
 		gameImpl.getPlayer().resetPosition();
         currentLevel++;
