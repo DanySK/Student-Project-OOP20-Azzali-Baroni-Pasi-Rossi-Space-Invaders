@@ -17,7 +17,7 @@ import utility.Pair;
 
 public class SpawnerP {
 	
-	private static final int PROBABILITY_POWER_UP = 1;
+	private static final int PROBABILITY_POWER_UP = 5;
 	private static final int LEVEL_LIMIT_FOR_LOW = 10;
     private static final int LEVEL_LIMIT_FOR_BASIC = 20;
 	

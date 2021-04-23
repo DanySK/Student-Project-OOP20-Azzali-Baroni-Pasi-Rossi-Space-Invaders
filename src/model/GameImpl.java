@@ -152,10 +152,13 @@ public class GameImpl implements Game{
        
         this.enemies.get().forEach(e ->{
         check = e.gameOver(e);
-	    });
         if(check == true) {
         	this.player.setDead();
         }
+	    });
+//        if(check == true) {
+//        	this.player.setDead();
+//        }
 	}
 	
 	private void checkForCollisions(final List<EntityImpl> entities1, final List<EntityImpl> entities2) {
