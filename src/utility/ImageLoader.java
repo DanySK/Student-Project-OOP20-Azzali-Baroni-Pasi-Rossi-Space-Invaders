@@ -49,7 +49,7 @@ public class ImageLoader {
         imgURL = ImageLoader.class.getResource("/backgroundGame.png");
         this.backgroundImages.put(ArenaView.TITLE, loadImage(imgURL));
         
-        imgURL = ImageLoader.class.getResource("/BackgroundMenu.jpg");
+        imgURL = ImageLoader.class.getResource("/gameOver.jpg");
         this.backgroundImages.put(GameOverView.TITLE, loadImage(imgURL));
         
         imgURL = ImageLoader.class.getResource("/Player.png");
