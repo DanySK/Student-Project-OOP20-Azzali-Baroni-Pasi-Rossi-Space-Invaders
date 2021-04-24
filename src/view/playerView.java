@@ -3,7 +3,6 @@ package view;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
@@ -15,18 +14,32 @@ import javax.swing.SwingConstants;
 
 import model.PlayerImpl;
 
+/**
+ * The Class playerView.
+ */
 public class playerView extends headUpDisplay{
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+	
+	/** The life bar. */
 	private final JProgressBar lifeBar;
+	
+	/** The score. */
 	private final JTextField score;
+	
+	/** The level. */
 	private final JTextField level;
+	
+	/** The scoretxt. */
 	final JTextField scoretxt = new JTextField(10);
+	
+	/** The leveltxt. */
 	final JTextField leveltxt = new JTextField(10);
 	
+	/**
+	 * Instantiates a new player view.
+	 */
 	public playerView() {
 		super();
 		final GroupLayout g = new GroupLayout(this);
@@ -71,6 +84,11 @@ public class playerView extends headUpDisplay{
 				);		
 	}
 
+	/**
+	 * Paint component.
+	 *
+	 * @param g the g
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -78,6 +96,13 @@ public class playerView extends headUpDisplay{
 	    this.level.setFont(new Font("Bauhaus 93", 2, this.getParent().getHeight() / headUpDisplay.FONT_P));
 	}
 
+	/**
+	 * Render.
+	 *
+	 * @param player the player
+	 * @param score the score
+	 * @param level the level
+	 */
 	@Override
 	public void render(PlayerImpl player, int score,int level) {
 		this.level.setText("Level: "+ score);

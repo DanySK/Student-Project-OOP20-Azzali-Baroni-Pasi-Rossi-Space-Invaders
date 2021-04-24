@@ -7,18 +7,43 @@ import model.BossEnemy;
 import model.EnemyBehaviour;
 import model.GameImpl;
 
+/**
+ * The Class LevelImpl.
+ */
 public class LevelImpl implements Level{
 	
+	/** The game impl. */
 	private final GameImpl gameImpl;
+	
+	/** The Constant LEVEL_BOSS. */
 	private static final int LEVEL_BOSS = 5;
+    
+    /** The spawner power up. */
     private final SpawnerP spawnerPowerUp;
+    
+    /** The meteors. */
     private final MeteorController meteors;
+    
+    /** The boss enemy. */
     private final EnemyBehaviour bossEnemy;
+    
+    /** The my level. */
     private int myLevel = 1;
+    
+    /** The current level. */
     private int currentLevel = 1;
+    
+    /** The n enemy. */
     private int nEnemy = 2;
+    
+    /** The n meteor. */
     private int nMeteor = 1;
     
+    /**
+     * Instantiates a new level impl.
+     *
+     * @param gameImpl the game impl
+     */
     public LevelImpl(final GameImpl gameImpl) {
     	this.gameImpl = gameImpl;
     	this.spawnerPowerUp = new SpawnerP();
@@ -27,11 +52,20 @@ public class LevelImpl implements Level{
     	createSomething();
     }
     
+    /**
+     * Creates the power up.
+     */
     private void createPowerUp() {
             gameImpl.getPlayerPowerUps().addAll(this.spawnerPowerUp.SpawnPowerUpPlayer(this.currentLevel));
             gameImpl.setGlobalPowerUp(this.spawnerPowerUp.spawnGlobalPowerUp().orElse(null));
     }
     
+    /**
+     * Creates the.
+     *
+     * @param number the number
+     * @param id the id
+     */
     private void create(final int number, final ID id) {
         switch (id) {
         case BASIC_ENEMY: 
@@ -54,6 +88,9 @@ public class LevelImpl implements Level{
         }
     }
     
+    /**
+     * Creates the something.
+     */
     private void createSomething() {
     	createPowerUp();
     	switch (myLevel) {
@@ -82,11 +119,19 @@ public class LevelImpl implements Level{
         }
     }
 
+	/**
+	 * Gets the level.
+	 *
+	 * @return the level
+	 */
 	@Override
 	public int getLevel() {
 		return this.currentLevel;
 	}
 
+	/**
+	 * Next level.
+	 */
 	@Override
     public void nextLevel() {
 		gameImpl.getPlayer().resetPosition();

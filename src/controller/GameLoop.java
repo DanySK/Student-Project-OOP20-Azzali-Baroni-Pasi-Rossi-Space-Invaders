@@ -11,22 +11,47 @@ import view.MenuP;
 import view.MenuP.MenuState;
 import view.View;
 
-
-
+/**
+ * The Class GameLoop.
+ */
 public final class GameLoop implements Runnable{
 	
+	/** The Constant FPS. */
 	public static final int FPS = 60;
+	
+	/** The Constant NANOSECONDS_FRAME. */
 	private static final double NANOSECONDS_FRAME = 1000000000 / FPS;
+	
+	/** The Constant NANO_MILLISECONDS. */
 	private static final int NANO_MILLISECONDS = 1000000;
 	
+	/** The game loop status. */
 	private volatile GameLoopStatus gameLoopStatus;
+    
+    /** The game. */
     private final Game game;
+    
+    /** The view. */
     private final View view;
+    
+    /** The highscore. */
     private final ScoreController highscore;
+    
+    /** The input. */
     private final Input input;
+    
+    /** The pause menu. */
     private final MenuP pauseMenu;
 	
     
+    /**
+     * Instantiates a new game loop.
+     *
+     * @param game the game
+     * @param view the view
+     * @param highscore the highscore
+     * @param input the input
+     */
     public GameLoop(final Game game, final View view , final ScoreController highscore, final Input input) {
         this.game = game;
         this.view = view;
@@ -38,6 +63,9 @@ public final class GameLoop implements Runnable{
 	
 	
 	
+	/**
+	 * Start.
+	 */
 	public synchronized void start() {
 		final Thread thread;
 		thread = new Thread(this);
@@ -47,10 +75,16 @@ public final class GameLoop implements Runnable{
         }
 	}
 	
+	/**
+	 * Stop.
+	 */
 	public synchronized void stop() {
 		this.gameLoopStatus = GameLoopStatus.PAUSED;
 	}
 	
+	/**
+	 * Run.
+	 */
 	@Override
 	public void run() {
 		long lastTime = System.nanoTime();

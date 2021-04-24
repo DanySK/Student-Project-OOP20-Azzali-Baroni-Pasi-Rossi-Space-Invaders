@@ -18,10 +18,17 @@ import model.DirEnemy;
 import model.ShotEnemyImpl;
 import utility.Pair;
 
+/**
+ * The Class TestEnemy.
+ */
 public class TestEnemy {
 	
+	/** The Constant EXPECTED. */
 	private static final int EXPECTED = 6;
 	
+	/**
+	 * Test basic enemy.
+	 */
 	@Test
 	public void testBasicEnemy() {
 		final GameImpl game = new GameImpl();
@@ -38,6 +45,9 @@ public class TestEnemy {
 		assertFalse(basic.isDead());
 	}
 	
+	/**
+	 * Test boss enemy.
+	 */
 	@Test
 	public void testBossEnemy() {
 		final GameImpl game = new GameImpl();
@@ -60,6 +70,9 @@ public class TestEnemy {
 
 	}
 	
+	/**
+	 * Test shoot.
+	 */
 	@Test
 	public void testShoot() {
 		final ShotEnemyImpl shotenemy = new ShotEnemyImpl(6, 6, DirEnemy.DOWN);

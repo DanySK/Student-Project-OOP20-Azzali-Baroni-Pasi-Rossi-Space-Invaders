@@ -20,15 +20,25 @@ import model.powerup.PowerUpT;
 import utility.ImageLoader;
 import utility.Pair;
 
+/**
+ * The Class TestPowerUp.
+ */
 public class TestPowerUp {
 	
+	/** The Constant XEXPECTED. */
 	private static final int XEXPECTED = 0;
+    
+    /** The Constant YEXPECTED. */
     private static final int YEXPECTED= 9;
+    
+    /** The Constant INITIAL_H. */
     private static final int INITIAL_H = 20;
+    
+    /** The Constant FINAL_H. */
     private static final int FINAL_H = 40;
 
     /**
-     * 
+     * Test power up B.
      */
     @Test
 	public void TestPowerUpB() {
@@ -49,8 +59,9 @@ public class TestPowerUp {
 	    ppu.collide(new PPowerUp(new Pair<>(0, 0), 1, 1,ID.POWER_UP, PowerUpT.SHIELD, new HighStrategy()));
 	    assertFalse(ppu.isActivated());
 	}
+    
     /**
-     * 
+     * Test health power up.
      */
     @Test
     public void TestHealthPowerUp() {
@@ -64,6 +75,9 @@ public class TestPowerUp {
     	assertTrue(ppu.isDead());
     }
     
+    /**
+     * Test shield power up.
+     */
     @Test
     public void TestShieldPowerUp() {
     	final PlayerImpl player = new PlayerImpl(ID.PLAYER, new GameImpl());
@@ -76,6 +90,10 @@ public class TestPowerUp {
     	assertTrue(ppu.isDead());
     	assertEquals(player.getShield(),0);
     }
+    
+    /**
+     * Test imageloader.
+     */
     @Test
     public void testImageloader() {
     	final ImageLoader loader = ImageLoader.getImageLoader();

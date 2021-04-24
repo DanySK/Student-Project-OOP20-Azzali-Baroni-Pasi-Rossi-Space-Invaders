@@ -10,13 +10,27 @@ import model.GameImpl;
 import model.PlayerImpl;
 import view.StateV;
 
+/**
+ * The Class Input.
+ */
 public class Input extends KeyAdapter{
 	
-    private static final int NUMBER_OF_KEY_EACH_PLAYER_CAN_PRESS = 5;
+    /** The Constant NUMBER_OF_KEY_EACH_PLAYER_CAN_PRESS. */
+    private static final int NUMBER_OF_KEY_EACH_PLAYER_CAN_PRESS = 3;
+    
+    /** The speed. */
     private final int speed = GameImpl.ARENA_WIDTH / 150;
+    
+    /** The key down. */
     private boolean [] keyDown = new boolean[NUMBER_OF_KEY_EACH_PLAYER_CAN_PRESS];
+    
+    /** The shot ready. */
     private boolean shotReady = true;
+    
+    /** The game. */
     private final Game game;
+    
+    /** The observer. */
     private final ViewObserver observer;
 
     /**

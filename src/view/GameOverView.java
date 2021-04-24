@@ -15,26 +15,48 @@ import javax.swing.JTextField;
 
 import model.PlayerImpl;
 
+/**
+ * The Class GameOverView.
+ */
 public final class GameOverView extends JPanel {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
 	
+	/** The title. */
 	public static String TITLE ="GameOver";
+	
+	/** The Constant PROPORTION_M. */
 	private static final int PROPORTION_M = 15;
+	
+	/** The Constant PROPORTION_T. */
 	private static final int PROPORTION_T=30;
+	
+	/** The Constant ROWS. */
 	private static final int ROWS = 5;
+	
+	/** The Constant COLS. */
 	private static final int COLS = 6;
+	
+	/** The Constant FIRST_BUTTON. */
 	private static final int FIRST_BUTTON=12;
+	
+	/** The Constant SECOND_BUTTOn. */
 	private static final int SECOND_BUTTOn = 4;
 
+    /** The back. */
     private final Background back = new Background(TITLE);
+    
+    /** The back to menu. */
     private final JButton backToMenu;
+    
+    /** The text. */
     private final JTextField text;
+    
     /**
+     * Instantiates a new game over view.
+     *
      * @param player the that played this game
      * @param score stored score
      * @param view the view displayed on this screen
@@ -61,6 +83,11 @@ public final class GameOverView extends JPanel {
          this.repaint();
     }
 
+	/**
+	 * Paint component.
+	 *
+	 * @param g the g
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);

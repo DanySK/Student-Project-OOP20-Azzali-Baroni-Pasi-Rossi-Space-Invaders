@@ -17,16 +17,29 @@ import model.powerup.PowerUpT;
 import utility.Pair;
 import utility.ImageLoader;
 
-
-
+/**
+ * The Class EntityView.
+ */
 public class EntityView {
 	
+	/** The Constant FRAME_IMAGE. */
 	public static final int FRAME_IMAGE = GameLoop.FPS / 20;
+	
+	/** The loader. */
 	private final ImageLoader loader;
+	
+	/** The current image. */
 	private final Map<Entity, Integer> currentImage;
+	
+	/** The Time last image. */
 	private final Map <Entity, Integer> TimeLastImage;
+	
+	/** The tick. */
 	private int tick;
 	
+	/**
+	 * Instantiates a new entity view.
+	 */
 	public EntityView () {
 		this.tick = 0;
 		this.loader = ImageLoader.getImageLoader();
@@ -36,6 +49,12 @@ public class EntityView {
 		
 	}
 	
+	/**
+	 * Load image.
+	 *
+	 * @param e the e
+	 * @return the image
+	 */
 	public Image loadImage(final Entity e) {
 		if (tick > GameLoop.FPS * 10) {
 			this.removeUselessEntities();
@@ -66,6 +85,9 @@ public class EntityView {
 		}
 	}
 	
+	/**
+	 * Removes the useless entities.
+	 */
 	private void removeUselessEntities() {
 		final List<Entity> uselessEntities = this.currentImage.keySet().stream().filter(e -> e.isDead()).collect(Collectors.toList());
 		uselessEntities.forEach(e -> {
@@ -77,6 +99,12 @@ public class EntityView {
 
 	
 	
+/**
+ * Gets the right image.
+ *
+ * @param entity the entity
+ * @return the right image
+ */
 private Image getRightImage(final Entity entity) {		
 	final ChronometerEntity CEntity = (ChronometerEntity) entity;
 	final int oTime = TimeLastImage.get(CEntity);
@@ -98,6 +126,11 @@ private Image getRightImage(final Entity entity) {
 	return images.get(currentImage.get(entity));
 }
 	
+	/**
+	 * Adds the if not present.
+	 *
+	 * @param entity the entity
+	 */
 	private void addIfNotPresent(final Entity entity) {
 		if (!this.currentImage.containsKey(entity)) {
 			switch (entity.getID()) {

@@ -9,8 +9,14 @@ import model.BulletImpl;
 import model.ID;
 import utility.Pair;
 
-
+/**
+ * The Class TestBullet.
+ */
 public class TestBullet {
+	
+	/**
+	 * Test bullet.
+	 */
 	@Test
     public void testBullet() {
         final BulletImpl testBullet = new BulletImpl(0, 0, ID.PLAYER);

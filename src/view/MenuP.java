@@ -7,23 +7,44 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+/**
+ * The Class MenuP.
+ */
 public class MenuP extends GameP{
 	
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+	
+	/** The Score view. */
 	private final GameP ScoreView;
+	
+	/** The menu state. */
 	private final MenuState menuState;
 	
+	/** The Constant PAUSE_T. */
 	public static final String PAUSE_T="Pause";
+	
+	/** The Constant TITLE. */
 	public static final String TITLE = "Start";
 	
 
+	/**
+	 * The Enum MenuState.
+	 */
 	public enum MenuState{
-		Start,Pause;
+		
+		/** The Start. */
+		Start,
+/** The Pause. */
+Pause;
 	}
 
+	/**
+	 * Instantiates a new menu P.
+	 *
+	 * @param view the view
+	 * @param menuState the menu state
+	 */
 	public MenuP(View view, final MenuState menuState) {
 		super(view, menuState == MenuState.Start ? MenuP.TITLE : MenuP.PAUSE_T );
 		this.menuState = menuState;
@@ -72,8 +93,17 @@ public class MenuP extends GameP{
 		
 		
 	}
+	
+	/**
+	 * Help view.
+	 */
 	private void helpView() {
-		JOptionPane.showMessageDialog(this,"Contacts:"
+		JOptionPane.showMessageDialog(this,"Commands"
+				+ "\nLEFT ARROW KEY = LEFT"
+				+ "\nRIGHT ARROW KEY = RIGHT"
+				+ "\nSPACE = Shoot"
+				+ "\nP = Pause"
+				+ "\nContacts:"
 				+ "\nAlberto Rossi"
 				+ "\nEnrico Baroni"
 				+ "\nMichele Pasi"

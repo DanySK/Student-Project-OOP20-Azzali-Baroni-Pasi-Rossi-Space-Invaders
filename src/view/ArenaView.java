@@ -16,23 +16,41 @@ import model.GameImpl;
 import model.PlayerImpl;
 import utility.Pair;
 
+/**
+ * The Class ArenaView.
+ */
 public class ArenaView extends JPanel {
 
 	
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
+	/** The Constant TITLE. */
 	public static final String TITLE ="Game";
 	
+	/** The playerview. */
 	private final headUpDisplay playerview;
+	
+	/** The back. */
 	private final Background back;
+    
+    /** The entityview. */
     private final EntityView entityview;
+	
+	/** The Entity game. */
 	private final List<Pair<Entity, Image>> EntityGame;
+	
+	/** The width proportion. */
 	private double widthProportion;
+	
+	/** The height proportion. */
 	private double heightProportion;
 	
+	/**
+	 * Instantiates a new arena view.
+	 *
+	 * @param input the input
+	 */
 	public ArenaView(final Input input){
 		super();
 		this.setLayout(new BorderLayout());
@@ -52,6 +70,11 @@ public class ArenaView extends JPanel {
 		
 	}
 
+	/**
+	 * Paint component.
+	 *
+	 * @param g the g
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
 		// TODO Auto-generated method stub
@@ -66,6 +89,13 @@ public class ArenaView extends JPanel {
 		});
 	}
 	
+	/**
+	 * Render.
+	 *
+	 * @param gameEntity the game entity
+	 * @param level the level
+	 * @param score the score
+	 */
 	public void render(final List<Entity> gameEntity,final int level,final int score) {
 		if (!this.hasFocus()) {
             this.requestFocusInWindow();

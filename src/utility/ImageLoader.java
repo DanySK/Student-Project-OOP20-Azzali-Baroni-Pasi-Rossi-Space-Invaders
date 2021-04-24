@@ -20,28 +20,45 @@ import view.ArenaView;
 import view.GameOverView;
 import view.MenuP;
 
+/**
+ * The Class ImageLoader.
+ */
 public class ImageLoader {
 
+    /** The Constant IMAGE. */
     private static final ImageLoader IMAGE = new ImageLoader();
 
+    /** The Constant DIMENSION_SPRITE. */
     private static final int DIMENSION_SPRITE = 192;
     
+    /** The entity images. */
     private final Map<ID, List<Image>> entityImages = new HashMap<>();
 
+    /** The background images. */
     private final Map<String, List<Image>> backgroundImages = new HashMap<>();
     
+    /** The bullet images. */
     private final Map<Pair<ID, ID>, List<Image>> bulletImages = new HashMap<>();
     
+    /** The power up images. */
     private final Map<Pair<ID, PowerUpT>, List<Image>> powerUpImages = new HashMap<>();
     
+    /** The Animations power up. */
     private final Map<Pair<ID, PowerUpT>, List<Image>> AnimationsPowerUp = new HashMap<>();
     
+    /** The Animations effect. */
     private final Map<Pair<ID, SpecialEffectT>, List<Image>> AnimationsEffect = new HashMap<>();
 
 
 
+    /**
+     * Instantiates a new image loader.
+     */
     private ImageLoader() {}
 
+    /**
+     * Find images.
+     */
     public void findImages() {
         URL imgURL = ImageLoader.class.getResource("/BackgroundMenu.jpg");
         this.backgroundImages.put(MenuP.TITLE, loadImage(imgURL));
@@ -92,10 +109,21 @@ public class ImageLoader {
         this.AnimationsPowerUp.put(new Pair<>(ID.POWER_UP, PowerUpT.FREEZE), loadImage(imgURL));
     }
 
+    /**
+     * Gets the image loader.
+     *
+     * @return the image loader
+     */
     public static ImageLoader getImageLoader() {
         return ImageLoader.IMAGE;
     }
     
+    /**
+     * Load effect.
+     *
+     * @param url the url
+     * @return the list
+     */
     private List<Image> loadEffect(final URL url){
     	final List<Image> list = new ArrayList<>();
         final int width;
@@ -125,29 +153,66 @@ public class ImageLoader {
         return list;
     }
     
+    /**
+     * Load image.
+     *
+     * @param url the url
+     * @return the list
+     */
     private List<Image>loadImage(final URL url){
         return Arrays.asList(new ImageIcon(url).getImage());
     }
     
+    /**
+     * Gets the background images.
+     *
+     * @return the background images
+     */
     public Map<String, List<Image>> getBackgroundImages(){
         return backgroundImages;
     }
     
+    /**
+     * Gets the entity images.
+     *
+     * @return the entity images
+     */
     public Map<ID, List<Image>> getEntityImages() {
         return entityImages;
     }
     
+    /**
+     * Gets the bullet images.
+     *
+     * @return the bullet images
+     */
     public Map<Pair<ID, ID>, List<Image>> getBulletImages() {
         return bulletImages;
     }
     
+    /**
+     * Gets the power up images.
+     *
+     * @return the power up images
+     */
     public Map<Pair<ID, PowerUpT>, List<Image>> getPowerUpImages() {
         return powerUpImages;
     }
+    
+    /**
+     * Gets the animations power up.
+     *
+     * @return the animations power up
+     */
     public Map<Pair<ID, PowerUpT>, List<Image>> getAnimationsPowerUp() {
         return AnimationsPowerUp;
     }
 
+    /**
+     * Gets the animations effect.
+     *
+     * @return the animations effect
+     */
     public Map<Pair<ID, SpecialEffectT>, List<Image>> getAnimationsEffect() {
         return AnimationsEffect;
     }

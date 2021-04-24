@@ -4,48 +4,95 @@ import java.awt.Rectangle;
 
 import utility.Pair;
 
-// Interfaccia per gli oggetti del gioco//
-
+/**
+ * The Interface Entity.
+ */
 public interface Entity {
 
 // Metodo per aggiornare lo status degli oggetti//
 	
-	void update();
+	/**
+ * Update.
+ */
+void update();
 	
 // Avvisa qundo un entità entra in collissione con un altra entità//
 	
-	void collide(Entity entity);
+	/**
+ * Collide.
+ *
+ * @param entity the entity
+ */
+void collide(Entity entity);
 	
 // ritorna l'Hitbox dell'oggetto//
 	
-	Rectangle getHitbox();
+	/**
+ * Gets the hitbox.
+ *
+ * @return the hitbox
+ */
+Rectangle getHitbox();
 	
 //ritorna se l'entità è morta//
 
-	boolean isDead();
+	/**
+ * Checks if is dead.
+ *
+ * @return true, if is dead
+ */
+boolean isDead();
 	
 	//ritorna la velocità corrente//
 	
-  Pair<Integer, Integer> getSpeed();
+  /**
+	 * Gets the speed.
+	 *
+	 * @return the speed
+	 */
+	Pair<Integer, Integer> getSpeed();
   
   //Ritorna la poszione dell'oggetto corrente//
   
+  /**
+   * Gets the position.
+   *
+   * @return the position
+   */
   Pair<Integer, Integer> getPosition();
   
   //ritorna l'ID dell'oggetto//
  
+  /**
+   * Gets the id.
+   *
+   * @return the id
+   */
   ID getID(); 
   
   // Setta l'Hitbox dell'oggetto//
   
+  /**
+   * Sets the hitbox.
+   *
+   * @param hitbox the new hitbox
+   */
   void setHitbox(Rectangle hitbox);
   
   // Setta un oggetto come morto//
   
+  /**
+   * Sets the dead.
+   */
   void setDead();
   
   //Setta la posizione dell'oggetto//
   
+  /**
+   * Sets the position.
+   *
+   * @param position the position
+   */
   void setPosition(Pair<Integer, Integer> position);
   
 }
