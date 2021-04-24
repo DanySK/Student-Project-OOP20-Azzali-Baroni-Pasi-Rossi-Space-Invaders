@@ -68,15 +68,18 @@ public class TestEnemy {
 		assertEquals(new Pair<Integer, Integer> (EXPECTED, EXPECTED), shotenemy.getPosition());
 		shotenemy.update();
 		shotenemy.update();
+
 		 assertEquals(new Pair<Integer, Integer>(EXPECTED, EXPECTED*2), shotenemy.getPosition());
 	        shotenemy.setDir(DirEnemy.D_R);
 	        shotenemy.update();
 	        shotenemy.update();
-	        assertEquals(new Pair<Integer, Integer>(EXPECTED, EXPECTED*2), shotenemy.getPosition());
+	        assertEquals(new Pair<Integer, Integer>(EXPECTED*2, EXPECTED*3), shotenemy.getPosition());
 	        shotenemy.setDir(DirEnemy.D_L);
 	        shotenemy.update();
 	        shotenemy.update();
-	        assertEquals(new Pair<Integer, Integer>(EXPECTED, EXPECTED*2), shotenemy.getPosition());
+	        
+	       
+	        assertEquals(new Pair<Integer, Integer>(EXPECTED, EXPECTED*4), shotenemy.getPosition());
 	        shotenemy.setDead();
 	        assertTrue(shotenemy.isDead());
 	        shotenemy.setAlive();
@@ -85,6 +88,7 @@ public class TestEnemy {
 	        shotenemy.update();
 	        shotenemy.update();
 	        shotenemy.update();
+
 	        assertTrue(shotenemy.isDead());
 	}
 }

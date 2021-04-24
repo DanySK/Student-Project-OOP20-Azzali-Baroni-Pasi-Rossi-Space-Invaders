@@ -23,5 +23,10 @@
 /powerup_Shield.png
 /redBullet.png
 /test/
+<<<<<<< HEAD
+/model/
+/controller/
+=======
 /utility/
 /view/
+>>>>>>> ec58c2166fe9940b1ef3c1ffd5fde0bba7305556
