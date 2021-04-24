@@ -64,7 +64,7 @@ public class ImageLoader {
         imgURL = ImageLoader.class.getResource("/meteorBrown_big1.png");
         this.entityImages.put(ID.METEOR, loadImage(imgURL));
         
-        imgURL = ImageLoader.class.getResource("/blueBullet.png");
+        imgURL = ImageLoader.class.getResource("/BlueBullet.png");
         this.bulletImages.put(new Pair<>(ID.PLAYER_BULLET, ID.PLAYER), loadImage(imgURL));
         
         imgURL = ImageLoader.class.getResource("/redBullet.png");
