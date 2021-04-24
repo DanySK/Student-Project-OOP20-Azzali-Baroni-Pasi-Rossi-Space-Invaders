@@ -1,7 +1,32 @@
-<<<<<<< HEAD
-=======
+/BackgroundMenu.jpg
+/BlueBullet.png
+/Enemy1.png
+/Enemy2.png
+/Enemy3.png
+/Explosion.png
+/Player.png
+/Player1.png
+/Speed.png
+/application/
+/backgroundGame.png
+/boss.png
+/bulletSpeedUp.png
+/controller/
+/freeze.png
+/gameOver.jpg
+/meteorBrown_big1.png
+/model/
+/music.wav
+/powerup_FireBoost.png
+/powerup_Freeze.png
 /powerup_Health.png
->>>>>>> 63b4804fe8b7a27fedd0cf6b238013cf166dba51
+/powerup_Shield.png
+/redBullet.png
 /test/
+<<<<<<< HEAD
 /model/
 /controller/
+=======
+/utility/
+/view/
+>>>>>>> ec58c2166fe9940b1ef3c1ffd5fde0bba7305556

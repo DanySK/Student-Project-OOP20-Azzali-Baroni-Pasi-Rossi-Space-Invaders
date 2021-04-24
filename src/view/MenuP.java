@@ -48,7 +48,12 @@ public class MenuP extends GameP{
 			});
 		}
 		this.prepareButton("Play", this).addActionListener(e -> {
+			if(this.menuState == MenuState.Pause) {
+				this.getView().getObserver().update(this, StateV.ABORT);
+
+			}else {
 				this.getView().getObserver().update(this, StateV.START);
+			}
 		});
 		this.prepareButton("Score",this).addActionListener(e ->{
 			this.ScoreView.display();
