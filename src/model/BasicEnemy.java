@@ -5,7 +5,7 @@ import java.util.Random;
 import utility.Pair;
 
 /**
- * The Class BasicEnemy.
+ * The Class to create a Basic enemy {@link BasicEnemy} extend the abstract class {@link AbstactEnemy}.
  */
 public class BasicEnemy extends AbstractEnemy {
 	
@@ -46,7 +46,7 @@ public class BasicEnemy extends AbstractEnemy {
 	private DirEnemy dir;
 	
 	/**
-	 * Instantiates a new basic enemy.
+	 * Constructor for {@link BasicEnemy}.
 	 *
 	 * @param game the game
 	 */
@@ -58,9 +58,9 @@ public class BasicEnemy extends AbstractEnemy {
 	}
 	
 	/**
-	 * Creates the this enemy.
+	 * Method of {@link Enemy}.
 	 *
-	 * @return the abstract enemy
+	 * @return {@link AbstarctEnemy}.
 	 */
 	@Override
 	public AbstractEnemy createThisEnemy() {
@@ -72,10 +72,10 @@ public class BasicEnemy extends AbstractEnemy {
 	}
 	
 	/**
-	 * Casual movs.
+	 * Method of {@link EnemyBehaviour}.
 	 *
-	 * @return the dir enemy
-	 */
+	 * @return {@link DirEnemy}.
+	 *  */
 	@Override
 	public DirEnemy casualMovs() {
 		if (ran.nextBoolean()) {
@@ -93,7 +93,7 @@ public class BasicEnemy extends AbstractEnemy {
 	} 
 	
 	/**
-	 * Update.
+	 * Method of {@link EnemyBehaviour}.
 	 */
 	@Override
 	public void update() {
@@ -118,9 +118,8 @@ public class BasicEnemy extends AbstractEnemy {
 	}
 	
 	/**
-	 * Collide.
-	 *
-	 * @param entity the entity
+	 * 	Method of {@link model.EntityImpl}.
+	 * @param entity {@link mode.Entity}.
 	 */
 	@Override
 	public void collide (final Entity entity) {

@@ -1,15 +1,16 @@
 package model;
 
+
+
 /**
  * The Interface ShotEnemy.
  */
 public interface ShotEnemy {
 	
-	/**
-	 * Sets the dir.
-	 *
-	 * @param dir the new dir of shot
-	 */
+    /**
+     * Method to set shot's direction.
+     * @param dir {@link DirEnemy}.
+     */
 	void setDir(DirEnemy dir);
 
 }

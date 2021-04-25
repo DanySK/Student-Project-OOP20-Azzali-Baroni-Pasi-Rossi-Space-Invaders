@@ -1,10 +1,13 @@
 package model;
 
 import java.awt.Rectangle;
+
+
 import utility.Pair;
 
 /**
- * The Class ShotEnemyImpl.
+ * Class to create the enemies's shots, implements the interface {@link ShotEnemy}.
+ *
  */
 public class ShotEnemyImpl extends EntityImpl implements ShotEnemy {
 	
@@ -24,12 +27,11 @@ public class ShotEnemyImpl extends EntityImpl implements ShotEnemy {
 	private DirEnemy dir;
 	
 	/**
-	 * Instantiates a new shot enemy impl.
-	 *
-	 * @param enemyX the enemy X
-	 * @param enemyY the enemy Y
-	 * @param dir the dir
-	 */
+	 * Constructor for shot enemy class {@link ShotEnemyImpl}.
+     * @param enemyX Integer: Coordinate X of the enemy that called this class.
+     * @param enemyY Integer: Coordinate Y of the enemy that called this class.
+     * @param dir DirEnemy: Direction of the enemy that called this class.
+     */
 	public ShotEnemyImpl(final Integer enemyX, final Integer enemyY, final DirEnemy dir) {
 		super(new Pair<Integer, Integer>(enemyX, enemyY), 0, 0, MYID);
 		this.dir = dir;
@@ -39,9 +41,9 @@ public class ShotEnemyImpl extends EntityImpl implements ShotEnemy {
 		setHitbox(new Rectangle(this.getPosition().getX() - (HIT / 2), this.getPosition().getY() - (HIT / 2), HIT, HIT));
 	}
 	
-	/**
-	 * Which speed.
-	 */
+    /**
+     * Method to check the direction of the shot and to set the speed.
+     */
 	private void whichSpeed() {
 		switch (dir) {
 		case DOWN: spd.setX(0);
@@ -59,7 +61,7 @@ public class ShotEnemyImpl extends EntityImpl implements ShotEnemy {
 	}
 	
 	/**
-	 * Update.
+	 * Method of {@link model.EntityImpl}.
 	 */
 	@Override
 	public void update() {
@@ -74,9 +76,9 @@ public class ShotEnemyImpl extends EntityImpl implements ShotEnemy {
 	}
 	
 	/**
-	 * Collide.
+	 * Method of {@link model.EntityImpl}.
 	 *
-	 * @param entity the entity
+	 * @param entity {@link Entity}
 	 */
 	@Override
 	public void collide(final Entity entity) {
@@ -84,9 +86,9 @@ public class ShotEnemyImpl extends EntityImpl implements ShotEnemy {
 	}
 	
 	/**
-	 * Sets the dir.
+	 * Method of {@link ShotEnemy}
 	 *
-	 * @param dir the new dir
+	 * @param dir {@link DirEnemy}
 	 */
 	@Override
 	public void setDir(final DirEnemy dir){

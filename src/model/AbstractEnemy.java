@@ -6,7 +6,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import utility.Pair;
 
 /**
- * The Class AbstractEnemy.
+ * The Abstract class implements {@link Enemy} to create entity for both type of enemies. {@link BasicEnemy}, {@link BossEnemy}.
  */
 public abstract class AbstractEnemy extends EntityImpl implements EnemyBehaviour {
 	
@@ -29,13 +29,13 @@ public abstract class AbstractEnemy extends EntityImpl implements EnemyBehaviour
 	private boolean done;
 
 	/**
-	 * Instantiates a new abstract enemy.
+	 * Constructor for {@link AbstarctEnemy}.
 	 *
-	 * @param position the position
-	 * @param speedX the speed X
-	 * @param speedY the speed Y
-	 * @param id the id
-	 * @param hit the hit
+	 * @param position : Position of the Enemy.
+	 * @param speedX : Speed's coordinate X.
+	 * @param speedY : Speed's coordinate Y.
+	 * @param id : ID of the enemy.
+	 * @param hit : size of the Hitbox.
 	 */
 	public AbstractEnemy(final Pair<Integer, Integer> position, final int speedX, final int speedY, final ID id, final int hit) {
 		super(position, speedX, speedY, id);
@@ -45,7 +45,7 @@ public abstract class AbstractEnemy extends EntityImpl implements EnemyBehaviour
 	}
 
 	/**
-	 * Creates the enemy.
+	 * Method to create the enemy's coordinate X and Y
 	 *
 	 * @return the abstract enemy
 	 */
@@ -65,7 +65,7 @@ public abstract class AbstractEnemy extends EntityImpl implements EnemyBehaviour
 	}
 
 	/**
-	 * Delete list.
+	 * Delete list in {@link EnemyImpl}.
 	 */
 	protected void deleteList() {
 		if (!done) {
@@ -83,11 +83,11 @@ public abstract class AbstractEnemy extends EntityImpl implements EnemyBehaviour
 	}	
 
 	/**
-	 * Enemy shot.
+	 * Method to create Enemy's Shot with {@link ShotEnemyImpl }.
 	 *
-	 * @param dir the dir
-	 * @param game the game
-	 * @param id the id
+	 * @param dir {@link DirEnemy}
+	 * @param game {@link model.GameImpl}.
+	 * @param id {@link model.GameImpl}.
 	 */
 	protected void enemyShot(final DirEnemy dir, final GameImpl game, final ID id) {
 		if (id == ID.BOSS_ENEMY) {
@@ -102,18 +102,18 @@ public abstract class AbstractEnemy extends EntityImpl implements EnemyBehaviour
 	/**
 	 * Check shotgun.
 	 *
-	 * @param shotgun the shotgun
-	 * @param timeShot the time shot
-	 * @return true, if successful
+	 * @param shotgun variable to shot
+	 * @param timeShot time to shot
+	 * @return boolean: true if the shot {@link Shot} can be create, false otherwise.
 	 */
 	protected boolean checkShotgun(final int shotgun, final int timeShot) {
 		return shotgun == timeShot ? true : false;
 	}
 
 	/**
-	 * Move.
+	 * Method to check direction  of the enemy and move it.
 	 *
-	 * @param dir the dir
+	 * @param dir {@link DirEnemy}.
 	 */
 	protected void move(final DirEnemy dir) {
 		switch (dir) {
@@ -130,10 +130,10 @@ public abstract class AbstractEnemy extends EntityImpl implements EnemyBehaviour
 	}
 
 	/**
-	 * Check position.
+	 * Check position of the enemy.
 	 *
-	 * @param dir the dir
-	 * @return the dir enemy
+	 * @param dir {@link DirEnemy}.
+	 * @return DirEnemy {@link DirEnemy}.
 	 */
 	protected DirEnemy checkPosition(final DirEnemy dir) {
 		if (this.getPosition().getX() - hit <= 0) {

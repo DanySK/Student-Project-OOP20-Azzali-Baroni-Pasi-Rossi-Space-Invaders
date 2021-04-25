@@ -4,8 +4,10 @@ import utility.Pair;
 
 import java.util.Random;
 
+
+
 /**
- * The Class BossEnemy.
+ * The Class to create boss enemy {@link BossEnemy} extends the abstract class {@link AbstarctEnemy}.
  */
 public class BossEnemy extends AbstractEnemy{
 	
@@ -43,9 +45,9 @@ public class BossEnemy extends AbstractEnemy{
 	private DirEnemy dir;
 	
 	/**
-	 * Instantiates a new boss enemy.
+	 * Classic constructor for {@link BossEnemy}.
 	 *
-	 * @param game the game
+	 * @param game {@link model.GameImpl}
 	 */
 	public BossEnemy(final GameImpl game) {
 		super(new Pair<Integer,Integer>(0, 0), SPD, SPD, MYID, HIT);
@@ -54,9 +56,9 @@ public class BossEnemy extends AbstractEnemy{
 	}
 	
 	/**
-	 * Creates the this enemy.
+	 * Method of {@link EnemyBehaviour}.
 	 *
-	 * @return the abstract enemy
+	 * @return {@link AbstractEnemy}.
 	 */
 	@Override
 	public AbstractEnemy createThisEnemy() {
@@ -73,7 +75,7 @@ public class BossEnemy extends AbstractEnemy{
 	}
 	
 	/**
-	 * Update.
+	 * Method of {@link EntityImpl}
 	 */
 	@Override
 	public void update() {
@@ -94,9 +96,9 @@ public class BossEnemy extends AbstractEnemy{
 	}
 	
 	/**
-	 * Collide.
+	 * Method of {@link model.EntityImpl}
 	 *
-	 * @param entity the entity
+	 * @param entity {@link model.Entity}
 	 */
 	@Override
 	public void collide (final Entity entity) {

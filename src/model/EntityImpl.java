@@ -5,7 +5,7 @@ import java.awt.Rectangle;
 import utility.Pair;
 
 /**
- * The Class EntityImpl.
+ * A class describing the basic behavior of every entity in the game.
  */
 public abstract class EntityImpl implements Entity {
 	

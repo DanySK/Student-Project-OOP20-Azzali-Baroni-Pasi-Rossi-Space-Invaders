@@ -1,24 +1,25 @@
 package model;
 
+
+
 /**
- * The Interface Enemy.
+ * 
+ * A class with methods to check the position of the enemies, to delete the coordinates's enemies,
+ * to add a number to the coordinate's enemies {@link EnemyImpl}.
+ * 
  */
 public interface Enemy {
-	
-	/**
-	 * Tiedup X.
-	 *
-	 * @param n the n
-	 * @return true, if successful
-	 */
+    /**
+     * Method to check the number.
+     * @param n int number to check.
+     * @return boolean: true if the number exists in the X coordinates's enemies, false otherwise.
+     */
 	boolean tiedupX(int n);
-	
-	/**
-	 * Tiedup Y.
-	 *
-	 * @param n the n
-	 * @return true, if successful
-	 */
+    /**
+     * Method to check the number.
+     * @param n int number to check.
+     * @return boolean: true if the number exists in the Y coordinates's enemies, false otherwise.
+     */
 	boolean tiedupY(int n);
 	
 	/**
@@ -26,12 +27,11 @@ public interface Enemy {
 	 */
 	void deleteList();
 	
-	/**
-	 * Adds the number.
-	 *
-	 * @param list the list
-	 * @param n the n
-	 */
+	 /**
+     * Method to add a number in a list.
+     * @param list boolean: true if the number is a X coordinate, false otherwise.
+     * @param n int number to add.
+     */
 	void addNumber(boolean list, int n);
 
 }

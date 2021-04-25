@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * The Class EnemyImpl.
+ * The Class EnemyImpl to check enemies's coordinate, implements {@link Enemy}.
  */
 public class EnemyImpl implements Enemy{
 	
@@ -18,9 +18,9 @@ public class EnemyImpl implements Enemy{
 	private final int hit; 
 	
 	/**
-	 * Instantiates a new enemy impl.
+	 * Constructor of {@link EnemyImpl}
 	 *
-	 * @param hit the hit
+	 * @param hit hitbox
 	 */
 	public EnemyImpl(final int hit) {
 		this.hit = hit;
@@ -29,10 +29,10 @@ public class EnemyImpl implements Enemy{
 	}
 
 	/**
-	 * Tiedup X.
+	 * Method of {@link Enemy}.
 	 *
-	 * @param n the n
-	 * @return true, if successful
+	 * @param n to check.
+	 * @return true, if successful.
 	 */
 	@Override
 	public boolean tiedupX(final int n) {
@@ -46,10 +46,10 @@ public class EnemyImpl implements Enemy{
 	}
 
 	/**
-	 * Tiedup Y.
+	 * Method of {@link Enemy}.
 	 *
-	 * @param n the n
-	 * @return true, if successful
+	 * @param n to check.
+	 * @return true, if successful.
 	 */
 	@Override
 	public boolean tiedupY(final int n) {
@@ -73,10 +73,10 @@ public class EnemyImpl implements Enemy{
 	}
 
 	/**
-	 * Adds the number.
+	 * Method of {@link Enemy}
 	 *
-	 * @param list the list
-	 * @param n the n
+	 * @param list list to add the number n to
+	 * @param n number to check
 	 */
 	@Override
 	public void addNumber(boolean list, int n) {

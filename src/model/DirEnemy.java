@@ -1,7 +1,7 @@
 package model;
 
 /**
- * The Enum DirEnemy.
+ * Class for the enemies's direction. {@link BasicEnemy}, {@link BossEnemy}.
  */
 public enum DirEnemy {
 	

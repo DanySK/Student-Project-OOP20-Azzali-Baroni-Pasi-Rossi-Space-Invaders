@@ -5,93 +5,58 @@ import java.awt.Rectangle;
 import utility.Pair;
 
 /**
- * The Interface Entity.
+ * The Interface Entity for every object present in game
  */
 public interface Entity {
 
-// Metodo per aggiornare lo status degli oggetti//
-	
 	/**
- * Update.
+ * The method that updates the status of the object.
  */
 void update();
 	
-// Avvisa qundo un entità entra in collissione con un altra entità//
-	
-	/**
- * Collide.
- *
- * @param entity the entity
+/**
+ * Notifies this entity that it's colliding with another entity.
+ * @param entity the entity this entity is colliding with
  */
 void collide(Entity entity);
-	
-// ritorna l'Hitbox dell'oggetto//
-	
-	/**
- * Gets the hitbox.
- *
- * @return the hitbox
+/**
+ * @return the hitbox of the object
  */
-Rectangle getHitbox();
-	
-//ritorna se l'entità è morta//
 
-	/**
- * Checks if is dead.
- *
- * @return true, if is dead
+Rectangle getHitbox();
+/**
+ * @return whether this object is dead
  */
-boolean isDead();
-	
-	//ritorna la velocità corrente//
-	
-  /**
-	 * Gets the speed.
-	 *
-	 * @return the speed
-	 */
+
+boolean isDead();	
+/**
+ * @return the current speed
+ */
 	Pair<Integer, Integer> getSpeed();
   
-  //Ritorna la poszione dell'oggetto corrente//
-  
-  /**
-   * Gets the position.
-   *
-   * @return the position
-   */
+    /**
+     * @return the current position of this object
+     */
   Pair<Integer, Integer> getPosition();
-  
-  //ritorna l'ID dell'oggetto//
  
   /**
-   * Gets the id.
-   *
-   * @return the id
+   * @return the current position of this object
    */
   ID getID(); 
-  
-  // Setta l'Hitbox dell'oggetto//
-  
   /**
-   * Sets the hitbox.
-   *
-   * @param hitbox the new hitbox
+   * Sets the hitbox of this object.
+   * @param hitbox the new hitbox of the object
    */
   void setHitbox(Rectangle hitbox);
-  
-  // Setta un oggetto come morto//
   
   /**
    * Sets the dead.
    */
   void setDead();
   
-  //Setta la posizione dell'oggetto//
-  
   /**
-   * Sets the position.
-   *
-   * @param position the position
+   * Sets the position of this object.
+   * @param position the new position of the object
    */
   void setPosition(Pair<Integer, Integer> position);
   

@@ -6,16 +6,16 @@ package model;
 public interface EnemyBehaviour {
 	
 	/**
-	 * Creates the this enemy.
+	 * Method for create the enemies.
 	 *
-	 * @return the abstract enemy
+	 * @return {@link AbstarctEnemy}.
 	 */
 	AbstractEnemy createThisEnemy();
 	
 	/**
-	 * Casual movs.
+	 * Method for the enemies's movement.
 	 *
-	 * @return the dir enemy
+	 * @return {@link DirEnemy}.
 	 */
 	DirEnemy casualMovs();
 	
