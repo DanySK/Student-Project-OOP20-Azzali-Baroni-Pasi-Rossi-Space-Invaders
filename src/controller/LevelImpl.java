@@ -8,7 +8,7 @@ import model.EnemyBehaviour;
 import model.GameImpl;
 
 /**
- * The Class LevelImpl.
+ * The Class LevelImpl manages the creation of the level.
  */
 public class LevelImpl implements Level{
 	

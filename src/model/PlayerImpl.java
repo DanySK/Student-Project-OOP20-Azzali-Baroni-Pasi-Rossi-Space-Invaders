@@ -6,7 +6,7 @@ import utility.Clamp;
 import utility.Pair;
 
 /**
- * The Class PlayerImpl.
+ * The Class PlayerImpl that manages the creation of the player.
  */
 public final class PlayerImpl extends EntityImpl implements Player{
 

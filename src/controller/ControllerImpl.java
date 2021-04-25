@@ -11,7 +11,8 @@ import view.View;
 import view.StateV;
 
 /**
- * The Class ControllerImpl.
+ * The Class ControllerImpl it's a filter between the view and the Gameloop. It makes sure the view doesn't access directly
+ * to the main thread of the gam.
  */
 public class ControllerImpl implements Controller{
 	

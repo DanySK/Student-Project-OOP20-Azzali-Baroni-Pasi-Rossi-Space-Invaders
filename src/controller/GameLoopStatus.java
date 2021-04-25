@@ -5,15 +5,15 @@ package controller;
  */
 public enum GameLoopStatus {
 	
-	/** The ready. */
+	/** Gameloop ready. */
 	READY,
 	
-	/** The running. */
+	/** Gameloop running. */
 	RUNNING,
 	
-	/** The paused. */
+	/** Gameloop paused. */
 	PAUSED,
 	
-	/** The ended. */
+	/** Gameloop ended. */
 	ENDED;
 }

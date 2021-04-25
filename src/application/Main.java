@@ -18,7 +18,7 @@ import view.ViewImpl;
 
 
 /**
- * The Class Main.
+ * The Class Main that launches the game.
  */
 public class Main {
 	

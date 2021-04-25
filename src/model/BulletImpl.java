@@ -5,7 +5,7 @@ import java.awt.Rectangle;
 import utility.Pair;
 
 /**
- * The Class BulletImpl.
+ * The Class BulletImpl that manages the creation of the player bullet.
  */
 public class BulletImpl extends EntityImpl implements Bullet {
 	

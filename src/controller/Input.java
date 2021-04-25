@@ -11,7 +11,7 @@ import model.PlayerImpl;
 import view.StateV;
 
 /**
- * The Class Input.
+ * The Class Input that manages the input .
  */
 public class Input extends KeyAdapter{
 	

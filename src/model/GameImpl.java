@@ -14,7 +14,7 @@ import model.powerup.GPowerUp;
 import model.powerup.PPowerUp;
 
 /**
- * The Class GameImpl.
+ * The Class GameImpl that manages the creation of the game.
  */
 public class GameImpl implements Game{
 

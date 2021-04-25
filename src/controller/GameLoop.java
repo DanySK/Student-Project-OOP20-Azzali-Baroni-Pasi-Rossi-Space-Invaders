@@ -12,7 +12,7 @@ import view.MenuP.MenuState;
 import view.View;
 
 /**
- * The Class GameLoop.
+ * The Class GameLoop that manages the loop of the game.
  */
 public final class GameLoop implements Runnable{
 	

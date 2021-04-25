@@ -5,12 +5,12 @@ package model;
  */
 public enum GameStatus {
 	
-	/** The running. */
+	/** Game running. */
 	RUNNING,
 	
-	/** The ended. */
+	/** Game ended. */
 	ENDED,
 	
-	/** The lost. */
+	/** Game lost. */
 	LOST;
 }
