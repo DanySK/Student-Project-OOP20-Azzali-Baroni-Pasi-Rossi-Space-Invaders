@@ -16,27 +16,44 @@ import model.GameImpl;
 import model.PlayerImpl;
 import utility.Pair;
 
+/**
+ * The Class ArenaView.
+ */
 public class ArenaView extends JPanel {
 
 	
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
+	/** The Constant TITLE. */
 	public static final String TITLE ="Game";
 	
+	/** The playerview. */
 	private final headUpDisplay playerview;
+	
+	/** The back. */
 	private final Background back;
+    
+    /** The entityview. */
     private final EntityView entityview;
+	
+	/** The Entity game. */
 	private final List<Pair<Entity, Image>> EntityGame;
+	
+	/** The width proportion. */
 	private double widthProportion;
+	
+	/** The height proportion. */
 	private double heightProportion;
 	
+	/**
+	 * Instantiates a new arena view.
+	 *
+	 * @param input the input
+	 */
 	public ArenaView(final Input input){
 		super();
 		this.setLayout(new BorderLayout());
-		//settare le entita
 	    this.entityview = new EntityView();
 		this.back = new Background(TITLE);
 		this.EntityGame = Collections.synchronizedList(new LinkedList<>());
@@ -52,9 +69,14 @@ public class ArenaView extends JPanel {
 		
 	}
 
+	/**
+	 * Paint component.
+	 *
+	 * @param g the g
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
-		// TODO Auto-generated method stub
+		
 		super.paintComponent(g);
 		g.drawImage(back.loadImage(), 0, 0, this.getWidth(), this.getHeight(), this);
 		this.EntityGame.forEach(e->{
@@ -66,6 +88,13 @@ public class ArenaView extends JPanel {
 		});
 	}
 	
+	/**
+	 * Render.
+	 *
+	 * @param gameEntity the game entity
+	 * @param level the level
+	 * @param score the score
+	 */
 	public void render(final List<Entity> gameEntity,final int level,final int score) {
 		if (!this.hasFocus()) {
             this.requestFocusInWindow();
@@ -76,7 +105,7 @@ public class ArenaView extends JPanel {
 	    gameEntity.stream().filter(e -> e.getHitbox() != null).map(e -> new Pair<>(e, entityview.loadImage(e)))
 	         .forEach(p -> this.EntityGame.add(p));
 		this.repaint();
-		//da controllare
+		
 		final PlayerImpl player = (PlayerImpl) gameEntity.get(0);
 		playerview.render(player, score, level);
 	         

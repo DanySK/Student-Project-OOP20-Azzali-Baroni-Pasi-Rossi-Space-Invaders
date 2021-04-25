@@ -14,17 +14,28 @@ import javax.swing.JTextPane;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 
+/**
+ * The Class HighScoreP.
+ */
 public class HighScoreP extends GameP {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 	
+	/** The Constant TITLE. */
 	public static final String TITLE = "HighScores";
+	
+	/** The Jt P. */
 	private final JTextPane JtP = new JTextPane();
+	
+	/** The highscores. */
 	private final List<String> highscores;
 	
+	/**
+	 * Instantiates a new high score P.
+	 *
+	 * @param view the view
+	 */
 	public HighScoreP(final View view) {
 		super(view,HighScoreP.TITLE);
 		this.highscores = new ArrayList<>();
@@ -53,16 +64,28 @@ public class HighScoreP extends GameP {
 		this.add(Box.createHorizontalGlue());
 	}
 
+	/**
+	 * Display.
+	 */
 	@Override
 	public void display() {
 		this.updateHighScoreP();
 		this.getView().switchWindow(this, HighScoreP.TITLE);	
 	}
 	
+	/**
+	 * Update high score P.
+	 */
 	private void updateHighScoreP() {
 		this.getView().getObserver().update(this, StateV.HIGHSCORES);
 		this.JtP.setText(this.highscores.stream().collect(Collectors.joining("\n")));
 	}
+	
+	/**
+	 * Sets the scores.
+	 *
+	 * @param highscores the new scores
+	 */
 	public void setScores(final List<String> highscores) {
 		this.highscores.clear();
 		this.highscores.addAll(highscores);

@@ -15,21 +15,39 @@ import model.powerup.PowerUpT;
 import utility.Clamp;
 import utility.Pair;
 
+/**
+ * The Class to spawner PowerUp.
+ */
 public class SpawnerP {
 	
+	/** The Constant PROBABILITY_POWER_UP. */
 	private static final int PROBABILITY_POWER_UP = 5;
+	
+	/** The Constant LEVEL_LIMIT_FOR_LOW. */
 	private static final int LEVEL_LIMIT_FOR_LOW = 10;
+    
+    /** The Constant LEVEL_LIMIT_FOR_BASIC. */
     private static final int LEVEL_LIMIT_FOR_BASIC = 20;
 	
+	/** The spawn frezee. */
 	private final int spawnFrezee;
 
 	
+	/**
+	 * Instantiates a new spawner P.
+	 */
 	public SpawnerP() {
 		final Random random = new Random();
 		this.spawnFrezee = random.nextInt(PROBABILITY_POWER_UP);
 		
 	}
 	
+	/**
+	 * Spawn power up player.
+	 *
+	 * @param level the level
+	 * @return the list of powerUp
+	 */
 	public List<PPowerUp> SpawnPowerUpPlayer(final int level){
 		final List<PPowerUp>list = new ArrayList<>();
 		final Random random = new Random();
@@ -52,6 +70,11 @@ public class SpawnerP {
 		return list;
 	}
 	
+	/**
+	 * Generate position.
+	 *
+	 * @return the pair
+	 */
 	private Pair<Integer,Integer> generatePosition(){
 		final Random random = new Random();
         final int xP = Clamp.clamp(random.nextInt(GameImpl.ARENA_WIDTH), 0 + PowerUpImpl.WIDTH / 2, GameImpl.ARENA_WIDTH - PowerUpImpl.WIDTH / 2);
@@ -59,12 +82,22 @@ public class SpawnerP {
         return new Pair<Integer, Integer>(xP, yP);
 	}
 	
+	/**
+	 * Generate velocity.
+	 *
+	 * @return the int
+	 */
 	private int generateVelocity() {
         final Random random = new Random();
         return random.nextInt(PowerUpT.values().length) + 1;
     }
 	
-	 public Optional<GPowerUp> spawnGlobalPowerUp() {
+	 /**
+ 	 * Spawn global power up.
+ 	 *
+ 	 * @return the optional
+ 	 */
+ 	public Optional<GPowerUp> spawnGlobalPowerUp() {
 	        final Random random = new Random();
 	        final int Number;
 	        final PowerUpT type;

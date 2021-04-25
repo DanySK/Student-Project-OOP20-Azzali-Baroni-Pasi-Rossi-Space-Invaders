@@ -8,22 +8,36 @@ import java.awt.Graphics;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+/**
+ * The Class GameP.
+ */
 public class GameP extends JPanel {
 	
 	
 	
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+	
+	/** The view. */
 	private final View view;
+	
+	/** The title. */
 	private final String title;
+	
+	/** The background. */
 	private final Background background = new Background(MenuP.TITLE);
 	
+	/** The Constant BUTTON_DIMENSION. */
 	public static final Dimension BUTTON_DIMENSION = new Dimension(ViewImpl.SCREEN_WIDTH / 6,ViewImpl.SCREEN_HEIGHT/9);
 	
 	
 	
+	/**
+	 * Instantiates a new game P.
+	 *
+	 * @param view the view
+	 * @param title the title
+	 */
 	public GameP(final View view, String title) {
 		super();
 		this.view = view;
@@ -32,11 +46,21 @@ public class GameP extends JPanel {
 
 
 
+	/**
+	 * Display.
+	 */
 	public void display() {
 		this.view.switchWindow(this, this.title);
 	}
 	
 	
+	/**
+	 * Prepare button.
+	 *
+	 * @param title the title
+	 * @param panel the panel
+	 * @return the j button
+	 */
 	protected JButton prepareButton(final String title,final JPanel panel) {
 		final JButton button = new JButton(title);
 		button.setMaximumSize(new Dimension(BUTTON_DIMENSION.width,BUTTON_DIMENSION.height));
@@ -47,9 +71,21 @@ public class GameP extends JPanel {
 		return button;
 		
 	}
+	
+	/**
+	 * Gets the view.
+	 *
+	 * @return the view
+	 */
 	protected View getView() {
 		return this.view;
 	}
+	
+	/**
+	 * Paint component.
+	 *
+	 * @param g the g
+	 */
 	@Override
 	protected void paintComponent(final Graphics g) {
 		g.drawImage(this.background.loadImage(),0 ,0,this.getWidth(),this.getHeight(),this);

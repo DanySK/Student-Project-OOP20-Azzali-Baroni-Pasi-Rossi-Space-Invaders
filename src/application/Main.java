@@ -17,7 +17,16 @@ import view.ViewImpl;
 
 
 
+/**
+ * The Class Main.
+ */
 public class Main {
+	
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(final String[] args) {
 		ImageLoader.getImageLoader().findImages();
 		final Controller controller = new ControllerImpl();
@@ -34,6 +43,9 @@ public class Main {
 		});
 	}
 
+	/**
+	 * Play music.
+	 */
 	public static void playMusic() {
 		AudioInputStream audioIn;
 		Clip clip;

@@ -10,14 +10,29 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * The Class ScoreController manages the writing on file of the best scores
+ */
 public class ScoreController {
 
+	/** The index score. */
 	private final int INDEX_SCORE = 9;
+	
+	/** The Constant HOME. */
 	private static final String HOME = System.getProperty("user.home");
+	
+	/** The Constant SEPARATOR. */
 	private static final String SEPARATOR = File.separator;
+	
+	/** The Constant FILE. */
 	private static final String FILE = HOME + SEPARATOR + "Score.txt";
+	
+	/** The highscore. */
 	private final List<Integer> highscore = new ArrayList<Integer>();
 
+	/**
+	 * Read file.
+	 */
 	private void readFile() {
 		BufferedReader bufferedReader = null;
 		String s;
@@ -37,6 +52,11 @@ public class ScoreController {
 		}
 	}
 	
+	/**
+	 * Check score.
+	 *
+	 * @param score the score
+	 */
 	public void checkScore(final int score) {
 		BufferedWriter bufferedWriter = null; 
 		readFile();
@@ -76,6 +96,11 @@ public class ScoreController {
 		}
 	}
 	
+	/**
+	 * Gets the score.
+	 *
+	 * @return the score
+	 */
 	public List<String> getScore(){
 		final List<String> getScore = new ArrayList<>();
 		final File file = new File(FILE);
@@ -99,6 +124,9 @@ public class ScoreController {
 		
 	}
 
+	/**
+	 * Initialize highscore.
+	 */
 	private void initializeHighscore() {
 		BufferedWriter bufferedWrite = null;
 		try {

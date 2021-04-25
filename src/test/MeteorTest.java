@@ -7,23 +7,28 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import controller.MeteorController;
-import model.AbstractMeteor;
 import model.BulletImpl;
-import model.GameImpl;
 import model.ID;
 import model.MeteorImpl;
-import model.PlayerImpl;
 import utility.Pair;
 
-
-
+/**
+ * The Class MeteorTest.
+ */
 public class MeteorTest {
 
+	/** The Constant LENGTH. */
 	private static final int LENGTH = 50;
+	
+	/** The Constant XEXPECTED. */
 	private static final int XEXPECTED = 0;
+	
+	/** The Constant YEXPECTED. */
 	private static final int YEXPECTED = 3;
 	
+	/**
+	 * Test meteor.
+	 */
 	@Test
 	public void testMeteor() {
 		final MeteorImpl meteorimpl = new MeteorImpl(new Pair<>(0,0), 1, 1, LENGTH, ID.METEOR);
@@ -36,6 +41,9 @@ public class MeteorTest {
 		assertEquals(meteorimpl.getPosition().getY().intValue(), YEXPECTED);	
 	}
 	
+	/**
+	 * Test collide meteor with bullet.
+	 */
 	@Test
 	public void testCollideMeteorWithBullet() {
 		final MeteorImpl meteorimpl = new MeteorImpl(new Pair<>(0,0), 1, 1, LENGTH, ID.METEOR);

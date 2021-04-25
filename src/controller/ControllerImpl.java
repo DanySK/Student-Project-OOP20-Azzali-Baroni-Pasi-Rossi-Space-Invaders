@@ -10,17 +10,36 @@ import view.HighScoreP;
 import view.View;
 import view.StateV;
 
+/**
+ * The Class ControllerImpl.
+ */
 public class ControllerImpl implements Controller{
 	
+	/** The view. */
 	private View view;
+	
+	/** The game loop. */
 	private GameLoop gameLoop;
+	
+	/** The game. */
 	private Game game;
+	
+	/** The highscore. */
 	private final ScoreController highscore;
 	
 	
+	/**
+	 * Instantiates a new controller impl.
+	 */
 	public ControllerImpl() {
 		this.highscore = new ScoreController();
 	}
+    
+    /**
+     * Start game.
+     *
+     * @throws IllegalStateException the illegal state exception
+     */
     private void startGame() throws IllegalStateException {
         if (this.view == null) {
             throw new IllegalStateException();
@@ -32,6 +51,12 @@ public class ControllerImpl implements Controller{
         this.gameLoop.start();
     }
     
+    /**
+     * Update.
+     *
+     * @param gamePanel the game panel
+     * @param viewStatus the view status
+     */
     public void update(final GameP gamePanel, StateV viewStatus) {
         if (viewStatus.equals(StateV.HIGHSCORES) && gamePanel instanceof HighScoreP) {
             ((HighScoreP) gamePanel).setScores(highscore.getScore());
@@ -47,10 +72,21 @@ public class ControllerImpl implements Controller{
         }
     }
     
+	/**
+	 * Sets the view.
+	 *
+	 * @param view the new view
+	 */
 	@Override
 	public void setView(View view) {
 		this.view = view;
 	}
+	
+	/**
+	 * Check game status.
+	 *
+	 * @return the game status
+	 */
 	@Override
 	public GameStatus checkGameStatus() {
 		return this.game.getStatus();

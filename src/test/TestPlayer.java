@@ -10,8 +10,14 @@ import model.ID;
 import model.PlayerImpl;
 import utility.Pair;
 
+/**
+ * The Class TestPlayer.
+ */
 public class TestPlayer {
 	
+	/**
+	 * Test player.
+	 */
 	@Test
     public void testPlayer() {
         final GameImpl gameTest = new GameImpl();

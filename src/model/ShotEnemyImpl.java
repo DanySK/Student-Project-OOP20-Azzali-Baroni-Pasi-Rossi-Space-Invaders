@@ -3,14 +3,33 @@ package model;
 import java.awt.Rectangle;
 import utility.Pair;
 
+/**
+ * The Class ShotEnemyImpl.
+ */
 public class ShotEnemyImpl extends EntityImpl implements ShotEnemy {
 	
+	/** The Constant MYID. */
 	private static final ID MYID = ID.ENEMY_BULLET;
+	
+	/** The Constant STDSPD. */
 	private static final int STDSPD = 3;
+	
+	/** The Constant HIT. */
 	private static final int HIT = GameImpl.ARENA_HEIGHT / 25;
+	
+	/** The spd. */
 	private final Pair<Integer, Integer> spd;
+	
+	/** The dir. */
 	private DirEnemy dir;
 	
+	/**
+	 * Instantiates a new shot enemy impl.
+	 *
+	 * @param enemyX the enemy X
+	 * @param enemyY the enemy Y
+	 * @param dir the dir
+	 */
 	public ShotEnemyImpl(final Integer enemyX, final Integer enemyY, final DirEnemy dir) {
 		super(new Pair<Integer, Integer>(enemyX, enemyY), 0, 0, MYID);
 		this.dir = dir;
@@ -20,6 +39,9 @@ public class ShotEnemyImpl extends EntityImpl implements ShotEnemy {
 		setHitbox(new Rectangle(this.getPosition().getX() - (HIT / 2), this.getPosition().getY() - (HIT / 2), HIT, HIT));
 	}
 	
+	/**
+	 * Which speed.
+	 */
 	private void whichSpeed() {
 		switch (dir) {
 		case DOWN: spd.setX(0);
@@ -36,6 +58,9 @@ public class ShotEnemyImpl extends EntityImpl implements ShotEnemy {
 		}
 	}
 	
+	/**
+	 * Update.
+	 */
 	@Override
 	public void update() {
 		whichSpeed();
@@ -48,11 +73,21 @@ public class ShotEnemyImpl extends EntityImpl implements ShotEnemy {
 		
 	}
 	
+	/**
+	 * Collide.
+	 *
+	 * @param entity the entity
+	 */
 	@Override
 	public void collide(final Entity entity) {
 		this.setDead();
 	}
 	
+	/**
+	 * Sets the dir.
+	 *
+	 * @param dir the new dir
+	 */
 	@Override
 	public void setDir(final DirEnemy dir){
 		this.dir = dir;
