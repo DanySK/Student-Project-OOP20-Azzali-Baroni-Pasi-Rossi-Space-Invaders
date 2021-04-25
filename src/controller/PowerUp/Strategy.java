@@ -1,7 +1,7 @@
 package controller.PowerUp;
 
 /**
- * The Interface Strategy.
+ * The Interface Strategy to determinate the power of powerUp.
  */
 public interface Strategy {
 

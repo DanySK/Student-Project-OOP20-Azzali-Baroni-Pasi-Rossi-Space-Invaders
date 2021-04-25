@@ -16,7 +16,7 @@ import utility.Clamp;
 import utility.Pair;
 
 /**
- * The Class SpawnerP.
+ * The Class to spawner PowerUp.
  */
 public class SpawnerP {
 	

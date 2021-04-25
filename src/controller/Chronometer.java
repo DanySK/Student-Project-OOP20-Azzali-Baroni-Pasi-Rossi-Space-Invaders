@@ -1,7 +1,7 @@
 package controller;
 
 /**
- * Classe per contare il tempo in modo sincrono con gameLoop.
+ * A class used to count time synchronously with the gameLoop.
  */
 
 public interface Chronometer {

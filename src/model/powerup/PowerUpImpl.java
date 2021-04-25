@@ -10,7 +10,7 @@ import model.PlayerImpl;
 import utility.Pair;
 
 /**
- * The Class PowerUpImpl.
+ * The Class PowerUpImpl implements powerUp.
  */
 public abstract class PowerUpImpl extends ChronometerEntity implements PowerUp {
 	
@@ -112,6 +112,7 @@ public abstract class PowerUpImpl extends ChronometerEntity implements PowerUp {
 	
 	/**
 	 * Sets the S.
+	 * set the position and the hitbox of the powerUp
 	 */
 	protected abstract void setS();
 	

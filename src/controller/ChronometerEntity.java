@@ -6,7 +6,7 @@ import model.ID;
 import utility.Pair;
 
 /**
- * The Class ChronometerEntity.
+ * An entity with a time-limited life..
  */
 public abstract class ChronometerEntity extends EntityImpl implements Chronometer {
 
@@ -17,11 +17,11 @@ public abstract class ChronometerEntity extends EntityImpl implements Chronomete
 	/**
 	 * Instantiates a new chronometer entity.
 	 *
-	 * @param position the position
-	 * @param veloX the velo X
-	 * @param veloY the velo Y
-	 * @param id the id
-	 * @param chronometer the chronometer
+	 * @param position the position of this entity
+	 * @param veloX the velo X of  entity
+	 * @param veloY the velo Y of entity
+	 * @param id the id of entity
+	 * @param chronometer the chronometer of entity
 	 */
 	public ChronometerEntity(final Pair<Integer, Integer>position,final int veloX,final int veloY,final ID id, final int chronometer ) {
 		super(position,veloX,veloY,id);
