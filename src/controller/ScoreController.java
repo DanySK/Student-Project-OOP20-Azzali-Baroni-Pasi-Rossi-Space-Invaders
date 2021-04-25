@@ -11,7 +11,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * The Class ScoreController.
+ * The Class ScoreController manages the writing on file of the best scores
  */
 public class ScoreController {
 

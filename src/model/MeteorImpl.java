@@ -3,7 +3,7 @@ package model;
 import utility.Pair;
 
 /**
- * The Class MeteorImpl.
+ * The Class MeteorImpl manages the behaviors of each meteor
  */
 public class MeteorImpl extends AbstractMeteor{
 	

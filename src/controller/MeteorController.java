@@ -8,7 +8,7 @@ import model.MeteorImpl;
 import utility.Pair;
 
 /**
- * The Class MeteorController.
+ * The Class MeteorController manages the creation of meteors
  */
 public class MeteorController {
 

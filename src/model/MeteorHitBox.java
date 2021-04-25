@@ -5,7 +5,7 @@ import java.awt.Rectangle;
 import utility.Pair;
 
 /**
- * The Class MeteorHitBox.
+ * The Class MeteorHitBox manages hitbox of each meteor
  */
 public class MeteorHitBox extends Rectangle {
 

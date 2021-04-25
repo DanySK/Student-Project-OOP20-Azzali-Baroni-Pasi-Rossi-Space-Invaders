@@ -15,7 +15,7 @@ import javax.swing.SwingConstants;
 import model.PlayerImpl;
 
 /**
- * The Class playerView.
+ * The Class playerView print life, score and player level on screen
  */
 public class playerView extends headUpDisplay{
 
