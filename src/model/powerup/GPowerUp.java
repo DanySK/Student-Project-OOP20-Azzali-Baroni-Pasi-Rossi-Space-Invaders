@@ -7,7 +7,7 @@ import model.ID;
 import utility.Pair;
 
 /**
- * The Class GPowerUp.
+ * The Class GPowerUp for all the entity.
  */
 public class GPowerUp extends PowerUpImpl{
 	
@@ -19,11 +19,11 @@ public class GPowerUp extends PowerUpImpl{
 	/**
 	 * Instantiates a new g power up.
 	 *
-	 * @param position the position
-	 * @param veloX the velo X
-	 * @param veloY the velo Y
-	 * @param id the id
-	 * @param type the type
+	 * @param position the position of powerUp
+	 * @param veloX the velo X of powerUp
+	 * @param veloY the velo Y of powerUp
+	 * @param id the id of powerUp
+	 * @param type the type of powerUp
 	 */
 	public GPowerUp(Pair<Integer, Integer> position, int veloX, int veloY, ID id, PowerUpT type) {
 		super(position, veloX, veloY, id, type);

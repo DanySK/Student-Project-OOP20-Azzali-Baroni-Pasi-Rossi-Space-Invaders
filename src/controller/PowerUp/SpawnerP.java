@@ -46,7 +46,7 @@ public class SpawnerP {
 	 * Spawn power up player.
 	 *
 	 * @param level the level
-	 * @return the list
+	 * @return the list of powerUp
 	 */
 	public List<PPowerUp> SpawnPowerUpPlayer(final int level){
 		final List<PPowerUp>list = new ArrayList<>();

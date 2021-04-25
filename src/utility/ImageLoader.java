@@ -21,7 +21,7 @@ import view.GameOverView;
 import view.MenuP;
 
 /**
- * The Class ImageLoader.
+ * The Class ImageLoader load all images of the game.
  */
 public class ImageLoader {
 
@@ -57,7 +57,7 @@ public class ImageLoader {
     private ImageLoader() {}
 
     /**
-     * Find images.
+     * Find images in the folder.
      */
     public void findImages() {
         URL imgURL = ImageLoader.class.getResource("/BackgroundMenu.jpg");
@@ -145,7 +145,6 @@ public class ImageLoader {
             final BufferedImage img = ImageIO.read(url);
             IntStream.rangeClosed(0, rows).forEach(i -> IntStream.rangeClosed(0, cols).forEach(j -> {
                 list.add(img.getSubimage(j * width, i * height, width, height));
-//                System.out.println("Loaded" + i + " " + j);
             }));
         } catch (final IOException e) {
             System.out.println("Error loading Effect");

@@ -43,7 +43,7 @@ public class ViewImpl extends JFrame implements View{
 	
 	
 	/**
-	 * Instantiates a new view impl.
+	 * Instantiates a new view impl for all the windows.
 	 */
 	public ViewImpl() {
 		super();

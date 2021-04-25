@@ -54,7 +54,6 @@ public class ArenaView extends JPanel {
 	public ArenaView(final Input input){
 		super();
 		this.setLayout(new BorderLayout());
-		//settare le entita
 	    this.entityview = new EntityView();
 		this.back = new Background(TITLE);
 		this.EntityGame = Collections.synchronizedList(new LinkedList<>());
@@ -77,7 +76,7 @@ public class ArenaView extends JPanel {
 	 */
 	@Override
 	protected void paintComponent(Graphics g) {
-		// TODO Auto-generated method stub
+		
 		super.paintComponent(g);
 		g.drawImage(back.loadImage(), 0, 0, this.getWidth(), this.getHeight(), this);
 		this.EntityGame.forEach(e->{
@@ -106,7 +105,7 @@ public class ArenaView extends JPanel {
 	    gameEntity.stream().filter(e -> e.getHitbox() != null).map(e -> new Pair<>(e, entityview.loadImage(e)))
 	         .forEach(p -> this.EntityGame.add(p));
 		this.repaint();
-		//da controllare
+		
 		final PlayerImpl player = (PlayerImpl) gameEntity.get(0);
 		playerview.render(player, score, level);
 	         

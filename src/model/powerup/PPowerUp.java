@@ -8,7 +8,7 @@ import utility.Clamp;
 import utility.Pair;
 
 /**
- * The Class PPowerUp.
+ * The Class PPowerUp for the player.
  */
 public class PPowerUp extends PowerUpImpl{
 	
@@ -16,7 +16,6 @@ public class PPowerUp extends PowerUpImpl{
 	private static final int STANDARD_HEALTH = 20;
 	
 	/** The Constant STANDARD_FIRE_RATE_BOOST. */
-	//private static final int STANDARD_SPEED_BOOST = 2;
 	private static final int STANDARD_FIRE_RATE_BOOST = 2;
 	
 	/** The Constant SHIELD_S. */
@@ -28,12 +27,12 @@ public class PPowerUp extends PowerUpImpl{
 	/**
 	 * Instantiates a new p power up.
 	 *
-	 * @param position the position
-	 * @param veloX the velo X
-	 * @param veloY the velo Y
-	 * @param id the id
-	 * @param type the type
-	 * @param strategy the strategy
+	 * @param position the position of powerUp
+	 * @param veloX the velo X of powerUp
+	 * @param veloY the velo Y of powerUp
+	 * @param id the id of powerUp
+	 * @param type the type of powerUp
+	 * @param strategy the strategy of powerUp
 	 */
 	public PPowerUp(final Pair<Integer, Integer> position, final int veloX, final int veloY,final ID id, final PowerUpT type,final Strategy strategy) {
 		super(position, veloX, veloY, id, type);
